@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-grithq-cream: #e8dee3;
+  --color-grithq-mauve: #9b5d8a;
+  --color-grithq-burgundy: #4d1730;
+  --color-grithq-plum: #5a0c3d;
+  --color-grithq-offwhite: #f7f3f4;
+  --color-grithq-dark: #48132b;
+  --color-grithq-deepAccent: #5a0c3d;
+  --color-grithq-black: #0a0608;
+  --color-grithq-warm: #1a0e14;
+  --color-grithq-impact: #2d1522;
+
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Poppins", sans-serif;
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-grithq-black);
+    color: var(--color-grithq-offwhite);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-grithq-plum);
+    color: var(--color-grithq-offwhite);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-28;
+  }
+
+  .section-y {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
