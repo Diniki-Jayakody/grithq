@@ -160,9 +160,11 @@ export const STRINGS = {
     exploreProject: 'Explore Project →',
     viewProject: 'VIEW PROJECT',
     currentOpportunity: 'Current Opportunity',
+    availableFor: 'Available For',
+    saleRent: 'Sale / Rent',
     availableSaleRent: 'Available — Sale / Rent',
     exploreGritHQ: 'Explore GritHQ',
-    viewOpportunity: 'View Opportunity',
+    viewOpportunity: 'View Opportunity →',
   },
 
   message: {
@@ -178,12 +180,19 @@ export const STRINGS = {
     back: '← Back',
     eyebrow: 'Current Opportunity',
     availability: 'Available — Sale / Rent',
-    descriptionHeading: 'The Asset',
-    termsHeading: 'Commercial Terms',
+    available: 'Available',
+    termsHeading: 'Sale / Rent Opportunity',
     saleLabel: 'Sale',
     rentLabel: 'Rent',
-    buildingHeading: 'Building Information',
-    photosCta: 'View Building Photos ↗',
+    summaryHeading: 'Executive Summary',
+    figuresHeading: 'Key Property Figures',
+    specsHeading: 'Building Specifications',
+    floorConfigHeading: 'Floor Configuration',
+    workspaceHeading: 'Workspace Capacity',
+    featuresHeading: 'Specialized Features',
+    locationHeading: 'Location Benefits',
+    photosCta: 'View Building Photos →',
+    photosHeading: 'Building Photographs',
     inquiryHeading: 'Interested in GritHQ?',
     inquiryIntro:
       'For sales, leasing and investment inquiries, contact our team.',
@@ -193,6 +202,28 @@ export const STRINGS = {
     emailLabel: 'Email',
     whatsappLabel: 'WhatsApp',
     locationLabel: 'Location',
+    form: {
+      name: 'Name',
+      email: 'Email',
+      phone: 'Phone',
+      inquiryType: 'Inquiry Type',
+      message: 'Message',
+      messagePlaceholder: 'Please let us know how we can assist you regarding GritHQ.',
+      submit: 'Send Inquiry →',
+      sending: 'Sending...',
+      success: 'Inquiry Sent',
+      successMessage: 'Thank you. We have received your inquiry and will be in touch.',
+      error: 'Something Went Wrong',
+      errorMessage: 'Your inquiry could not be sent. Please try again.',
+      retry: 'Try Again',
+      inquiryTypes: ['Sale', 'Rent', 'General Inquiry'] as const,
+      validation: {
+        name: 'Please enter your name.',
+        email: 'Please enter a valid email address.',
+        inquiryType: 'Please select an inquiry type.',
+        message: 'Please enter a message.',
+      },
+    },
   },
 
   common: {
@@ -246,3 +277,4 @@ export const STRINGS = {
 } as const
 
 export type EnquiryType = (typeof STRINGS.contact.enquiryTypes)[number]
+export type OpportunityInquiryType = (typeof STRINGS.opportunity.form.inquiryTypes)[number]

@@ -53,4 +53,14 @@ export const styles = {
     'max-w-2xl text-[0.95rem] leading-[1.85] text-grithq-burgundy/70 break-words md:text-base md:leading-[1.9]',
   innerPage:
     'relative min-h-screen overflow-x-hidden pt-28 pb-20 md:pt-32 md:pb-28 lg:pt-36 lg:pb-32',
+  opportunitySection: 'relative py-14 md:py-16 lg:py-20',
+  opportunityHeading:
+    'font-display text-xs tracking-[0.4em] text-grithq-mauve uppercase',
+  opportunityDealPanel:
+    'border border-grithq-burgundy/15 bg-grithq-offwhite/40 px-5 py-5 md:px-8 md:py-6',
+  formLabel:
+    'mb-2 block font-display text-[10px] tracking-[0.25em] text-grithq-mauve uppercase',
+  formField:
+    'w-full border-b border-grithq-cream/20 bg-transparent py-3 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none',
+  formError: 'mt-2 text-xs leading-relaxed text-grithq-cream/65',
 } as const

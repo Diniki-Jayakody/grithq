@@ -50,6 +50,21 @@ All content is data-driven. Edit files in `src/data/`:
 
 Replace `[PLACEHOLDER]` values with verified content only.
 
+## EmailJS (GritHQ inquiry form)
+
+The GritHQ opportunity page sends inquiries through EmailJS.
+
+1. Copy `.env.example` to `.env.local`
+2. Add your EmailJS values:
+
+```
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+```
+
+Template variables sent by the form: `name`, `email`, `phone`, `inquiry_type`, `message`, `property`, `submitted_at`.
+
 ## Image Assets
 
 Place local images in `public/images/` and update references in `src/data/images.ts` and `src/data/portfolio.ts`.

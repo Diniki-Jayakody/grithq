@@ -12,6 +12,6 @@ export const ROUTES = {
 } as const
 
 export const EXTERNAL_LINKS = {
-  /** Replace with the confirmed Google Drive folder URL when available */
-  grithqPhotoDrive: '#',
+  grithqPhotoDrive:
+    'https://drive.google.com/drive/folders/1EdrdHzB7gsF7-r1dUql675puhQxWLmcI?usp=share_link',
 } as const

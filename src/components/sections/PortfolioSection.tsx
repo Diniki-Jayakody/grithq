@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowUpRight } from 'lucide-react'
 import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import {
@@ -19,14 +18,14 @@ import { useIsMobile } from '@/hooks/useMediaQuery'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const secondaryOffsets = ['lg:mt-0', 'lg:mt-16', 'lg:mt-8']
+const secondaryOffsets = ['lg:mt-0', 'lg:mt-16', 'lg:mt-12']
 
 function FeaturedOpportunity({ project }: { project: Project }) {
   const cardRef = useRef<HTMLElement>(null)
   const { setCursorState } = useCursorState()
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
-  const href = project.deal?.route ?? ROUTES.project(project.slug)
+  const href = project.deal?.route ?? ROUTES.grithqOpportunity
 
   useEffect(() => {
     const card = cardRef.current
@@ -35,9 +34,9 @@ function FeaturedOpportunity({ project }: { project: Project }) {
     const ctx = gsap.context(() => {
       gsap.from(card.querySelector('.portfolio-featured-content'), {
         scrollTrigger: { trigger: card, start: 'top 78%' },
-        y: 40,
+        y: 32,
         opacity: 0,
-        duration: 1,
+        duration: 0.9,
         ease: 'power3.out',
       })
 
@@ -61,15 +60,16 @@ function FeaturedOpportunity({ project }: { project: Project }) {
   }, [reducedMotion])
 
   return (
-    <article ref={cardRef} className="portfolio-project">
+    <article ref={cardRef} className="portfolio-project min-w-0">
       <Link
         to={href}
         className="group block"
         onMouseEnter={() => !isMobile && setCursorState('view-project')}
         onMouseLeave={() => !isMobile && setCursorState('default')}
+        aria-label={`${project.name} — ${STRINGS.portfolio.viewOpportunity}`}
       >
         <div className="relative overflow-hidden">
-          <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/10] lg:max-h-[62vh]">
+          <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/10] lg:max-h-[58vh]">
             <img
               src={project.heroImage}
               alt={`${project.name} commercial building`}
@@ -78,12 +78,9 @@ function FeaturedOpportunity({ project }: { project: Project }) {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/85 via-grithq-burgundy/25 to-transparent" />
-          <div className="absolute top-5 left-5 right-5 flex flex-wrap items-start justify-between gap-3 md:top-8 md:left-8 md:right-8">
+          <div className="absolute top-5 left-5 md:top-8 md:left-8">
             <span className="font-display text-[10px] tracking-[0.3em] text-grithq-cream">
               {STRINGS.portfolio.currentOpportunity}
-            </span>
-            <span className="border border-grithq-cream/25 px-3 py-1.5 font-display text-[10px] tracking-[0.22em] text-grithq-cream">
-              {STRINGS.portfolio.availableSaleRent}
             </span>
           </div>
           <div className="portfolio-featured-content absolute right-5 bottom-5 left-5 md:right-8 md:bottom-8 md:left-8">
@@ -93,13 +90,26 @@ function FeaturedOpportunity({ project }: { project: Project }) {
             <p className="mt-2 text-xs tracking-[0.25em] text-grithq-cream/70 uppercase">
               {project.category}
             </p>
-            <span className="mt-5 inline-flex items-center gap-2 font-display text-[10px] tracking-[0.3em] text-grithq-cream uppercase transition-colors group-hover:text-grithq-offwhite">
-              {STRINGS.portfolio.exploreGritHQ}
-              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
-            </span>
           </div>
         </div>
       </Link>
+
+      <div className={`${styles.opportunityDealPanel} mt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between md:mt-6`}>
+        <div>
+          <p className={styles.eyebrowLight}>{STRINGS.portfolio.availableFor}</p>
+          <p className="mt-2 font-display text-[clamp(1.35rem,3vw,2rem)] font-light tracking-tight text-grithq-burgundy">
+            {STRINGS.portfolio.saleRent}
+          </p>
+        </div>
+        <Link
+          to={href}
+          className={`${styles.ctaButtonLight} w-full min-h-11 px-6 sm:w-auto`}
+          onMouseEnter={() => !isMobile && setCursorState('open')}
+          onMouseLeave={() => !isMobile && setCursorState('default')}
+        >
+          {STRINGS.portfolio.viewOpportunity}
+        </Link>
+      </div>
     </article>
   )
 }
@@ -115,7 +125,7 @@ function SecondaryProject({
   const isMobile = useIsMobile()
 
   return (
-    <article className={`portfolio-secondary ${offsetClass}`}>
+    <article className={`portfolio-secondary min-w-0 ${offsetClass}`}>
       <Link
         to={ROUTES.project(project.slug)}
         className="group block"
@@ -128,7 +138,12 @@ function SecondaryProject({
         <p className="mt-1 text-[10px] tracking-[0.22em] text-grithq-burgundy/45 uppercase">
           {project.category}
         </p>
-        <div className="relative mt-4 overflow-hidden">
+        {project.status === 'Under Development' && (
+          <p className="mt-2 font-display text-[10px] tracking-[0.28em] text-grithq-deepAccent uppercase">
+            {project.status}
+          </p>
+        )}
+        <div className="relative mt-3 overflow-hidden">
           <div className="aspect-[4/5] sm:aspect-[3/4]">
             <img
               src={project.heroImage}
@@ -139,6 +154,11 @@ function SecondaryProject({
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/40 via-transparent to-transparent" />
         </div>
+        {project.valueStatement && (
+          <p className="mt-3 font-display text-sm font-light leading-snug text-grithq-burgundy/70">
+            {project.valueStatement}
+          </p>
+        )}
       </Link>
     </article>
   )
@@ -190,19 +210,12 @@ export function PortfolioSection() {
           {STRINGS.sections.portfolio.subtext}
         </p>
 
-        <div className="mt-12 md:mt-16">
+        <div className="mt-10 md:mt-12">
           {featured && <FeaturedOpportunity project={featured} />}
 
-          <div className="portfolio-secondary-grid mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:mt-16 lg:grid-cols-12 lg:gap-8">
+          <div className="portfolio-secondary-grid mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-12 lg:grid-cols-12 lg:items-start lg:gap-8">
             {secondary.map((project, index) => (
-              <div
-                key={project.id}
-                className={
-                  index === 2
-                    ? 'sm:col-span-2 sm:mx-auto sm:max-w-md lg:col-span-4 lg:col-start-5 lg:mx-0 lg:max-w-none'
-                    : 'lg:col-span-4'
-                }
-              >
+              <div key={project.id} className="lg:col-span-4">
                 <SecondaryProject
                   project={project}
                   offsetClass={secondaryOffsets[index] ?? ''}

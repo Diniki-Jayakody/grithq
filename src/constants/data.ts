@@ -131,6 +131,7 @@ export interface Project {
   year: string
   emphasis?: 'primary' | 'standard'
   deal?: ProjectDeal
+  valueStatement?: string
 }
 
 export const projects: Project[] = [
@@ -157,6 +158,7 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.asayaSands.gallery],
     featured: true,
     year: '2024',
+    valueStatement: 'The Best Aesthetic Coworking Space',
   },
   {
     id: 'asaya-summit',
@@ -164,7 +166,7 @@ export const projects: Project[] = [
     name: 'Asaya Summit',
     category: 'Hospitality / Real Estate',
     location: 'Central Highlands, Sri Lanka',
-    status: 'Planning Phase',
+    status: 'Under Development',
     developmentType: 'Destination Concept',
     shortDescription:
       'A distinctive destination concept positioned around experience, place and long-term potential.',
@@ -181,6 +183,7 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.asayaSummit.gallery],
     featured: true,
     year: '2025',
+    valueStatement: 'Hidden Secret in a Mountain',
   },
   {
     id: 'grithq',
@@ -234,6 +237,7 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.southBeach.gallery],
     featured: true,
     year: '2024',
+    valueStatement: 'The Luxury Penthouse by Sea',
   },
 ]
 
@@ -253,9 +257,12 @@ export function getPrimaryPortfolioProject(): Project | undefined {
   return projects.find((p) => p.emphasis === 'primary') ?? projects.find((p) => p.id === 'grithq')
 }
 
+const SECONDARY_PORTFOLIO_ORDER = ['asaya-sands', 'asaya-summit', 'south-beach'] as const
+
 export function getSecondaryPortfolioProjects(): Project[] {
-  const primary = getPrimaryPortfolioProject()
-  return projects.filter((p) => p.id !== primary?.id)
+  return SECONDARY_PORTFOLIO_ORDER.map((id) => projects.find((project) => project.id === id)).filter(
+    (project): project is Project => project !== undefined
+  )
 }
 
 // ─── Developments ───────────────────────────────────────────────────────────
@@ -552,52 +559,140 @@ export const identityVisual = {
   alt: STRINGS.sections.identity.identityImageAlt,
 } as const
 
-export interface BuildingFact {
-  label: string
-  value: string
-}
-
-export const grithqOpportunity = {
+export const gritHQPropertyData = {
   id: 'grithq',
   name: 'GritHQ',
   route: ROUTES.grithqOpportunity,
   backHref: ROUTES.portfolio,
+  inquiryHref: '#inquiry',
   heroImage: portfolioImages.grithq.hero,
-  gallery: [...portfolioImages.grithq.gallery],
   category: 'Commercial Real Estate',
-  location: 'Colombo, Sri Lanka',
-  status: 'Operational',
-  developmentType: 'Commercial Office',
-  year: '2023',
-  description:
-    'GritHQ represents the holding company\'s commercial real estate capability — a modern workspace asset designed for connectivity, flexibility and enduring occupancy value.',
-  overview: [
-    'This commercial asset combines contemporary architecture with functional workspace design, supporting businesses that value location, quality and long-term stability.',
-    'The building emphasises natural light, flexible floor plates and premium common areas — attributes that sustain value across market cycles.',
-    'GritHQ demonstrates the holding company\'s approach to commercial assets with strategic positioning.',
-  ],
+  location: 'Battaramulla, Sri Lanka',
+  driveLink: EXTERNAL_LINKS.grithqPhotoDrive,
   commercialTerms: {
     sale: {
       label: STRINGS.opportunity.saleLabel,
-      value: '[SAMPLE] Available on request',
+      value: STRINGS.opportunity.available,
     },
     rent: {
       label: STRINGS.opportunity.rentLabel,
-      value: '[SAMPLE] Available on request',
+      value: STRINGS.opportunity.available,
     },
   },
-  buildingFacts: [
-    { label: 'Property Type', value: 'Commercial Office' },
-    { label: 'Location', value: 'Colombo, Sri Lanka' },
-    { label: 'Status', value: 'Operational' },
-    { label: 'Year', value: '2023' },
-    { label: 'Floor Information', value: '[SAMPLE] To be confirmed' },
-    { label: 'Approximate Area', value: '[SAMPLE] To be confirmed' },
-    { label: 'Facilities', value: 'Natural light, flexible floor plates, premium common areas' },
-    { label: 'Parking', value: '[SAMPLE] To be confirmed' },
-    { label: 'Development', value: 'Commercial workspace asset in Colombo' },
-    { label: 'Suitable Use', value: 'Modern business, connectivity and long-term occupancy' },
-  ] satisfies BuildingFact[],
-  driveLink: EXTERNAL_LINKS.grithqPhotoDrive,
-  inquiryHref: ROUTES.contact,
+  executiveSummary: [
+    'We are pleased to present this exceptional commercial opportunity at a state-of-the-art, fully furnished office complex designed to meet the demanding requirements of modern corporations.',
+    'This premium property offers nearly 25,000 sq ft of total floor area across six floors. It is located in the heart of Battaramulla\'s thriving business district.',
+    'The building provides capacity for 381 occupants, with 266 individual workstations and comprehensive meeting facilities for 50.',
+  ],
+  keyFigures: [
+    { value: '24,746', label: 'SQ FT COVERED' },
+    { value: '6', label: 'FLOORS' },
+    { value: '266', label: 'WORKSTATIONS' },
+    { value: '6', label: 'CONFERENCE ROOMS' },
+    { value: '160KW', label: 'GENERATOR' },
+  ],
+  specifications: [
+    {
+      name: 'Ground Floor',
+      details: ['4,213 sq ft covered area', '+ 3,772 sq ft open parking area'],
+    },
+    {
+      name: 'First Floor',
+      details: ['4,119 sq ft'],
+    },
+    {
+      name: 'Second Floor',
+      details: ['4,119 sq ft'],
+    },
+    {
+      name: 'Third Floor',
+      details: ['4,054 sq ft'],
+    },
+    {
+      name: 'Fourth Floor',
+      details: ['4,054 sq ft'],
+    },
+    {
+      name: 'Fifth Floor',
+      details: ['4,187 sq ft'],
+    },
+    {
+      name: 'Total Available',
+      details: ['24,746 sq ft covered', '+ 3,772 sq ft open parking space'],
+    },
+  ],
+  additionalParking:
+    'An additional rented parking facility behind the building may also be made available.',
+  floorConfiguration: [
+    {
+      title: 'Six Floors Total',
+      text: 'Including basement parking level.',
+    },
+    {
+      title: 'Flexible Layout',
+      text: 'Open-plan design with modular workstations.',
+    },
+  ],
+  workspace: [
+    {
+      title: 'Individual Workstations',
+      value: '266 dedicated workspaces',
+      note: '(including meeting room capacity)',
+    },
+    {
+      title: 'Meeting Room Capacity',
+      value: '50 seats across six conference rooms',
+    },
+    {
+      title: 'Common Area Seating',
+      value: '65 additional seats for collaboration and break areas',
+    },
+    {
+      title: 'Total Occupancy Capacity',
+      value: '331 people',
+    },
+  ],
+  features: [
+    'Four sound-proof phone booths with integrated power and data connections',
+    'Double-pane glass frontage for superior insulation and noise reduction',
+    'Professional-grade flooring and lighting',
+    '160KW generator',
+    'All floors and meeting rooms are air-conditioned except the 5th floor',
+    'Each floor has a mini pantry',
+    'Larger pantry and bar on the 5th floor',
+    'Mitsubishi elevator',
+  ],
+  locationBenefits: [
+    {
+      title: 'Location',
+      text: 'Heart of Battaramulla — premium commercial district location',
+    },
+    {
+      title: 'Strategic Position',
+      text: "Positioned in Sri Lanka's emerging business hub",
+    },
+    {
+      title: 'Connectivity',
+      text: 'Excellent connectivity to Colombo and surrounding areas',
+    },
+    {
+      title: 'Accessibility',
+      text: 'Close proximity to government institutions and corporate offices',
+    },
+    {
+      title: 'Business Environment',
+      text: 'Professional business district setting with high visibility',
+    },
+    {
+      title: 'Energy Efficiency',
+      text: 'Modern building systems designed to reduce operational costs',
+    },
+    {
+      title: 'Parking',
+      text: 'Ample on-site parking for staff and clients',
+    },
+  ],
 } as const
+
+/** @deprecated Use gritHQPropertyData */
+export const grithqOpportunity = gritHQPropertyData
