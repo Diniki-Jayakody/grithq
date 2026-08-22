@@ -9,6 +9,8 @@ export const COLORS = {
   black: '#0a0608',
   warm: '#1a0e14',
   impact: '#2d1522',
+  landingBackground: '#3E2537',
+  portfolioBackground: '#F1CEDC',
 } as const
 
 export type BrandColor = keyof typeof COLORS

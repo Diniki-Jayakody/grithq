@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { navItems } from '@/constants/navigation'
+import { images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
+import { styles } from '@/styles/styles'
 import { useCursorState } from '@/hooks/useCursorState'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useLenisScroll } from '@/providers/SmoothScrollProvider'
@@ -70,9 +72,14 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
             <Link
               to="/"
               onClick={onClose}
-              className="font-display text-sm font-semibold tracking-[0.35em] text-grithq-offwhite md:text-base"
+              className="inline-flex shrink-0 items-center"
+              aria-label={STRINGS.brand.name}
             >
-              {STRINGS.brand.name}
+              <img
+                src={images.gritLogo}
+                alt={STRINGS.brand.name}
+                className={styles.navLogo}
+              />
             </Link>
             <button
               type="button"

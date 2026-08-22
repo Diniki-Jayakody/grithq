@@ -135,7 +135,7 @@ export function HeroOpening() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative bg-grithq-black"
+      className="relative bg-grithq-landing"
       aria-label="GRITHQ opening"
     >
       <div ref={pinRef} className="relative flex h-screen flex-col items-center justify-center overflow-hidden">

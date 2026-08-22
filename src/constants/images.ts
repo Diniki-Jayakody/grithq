@@ -12,9 +12,11 @@ import volunteer2 from '@/assets/volunteer/volunteer_2.jpg'
 import volunteer3 from '@/assets/volunteer/volunteer_3.jpg'
 import volunteer4 from '@/assets/volunteer/volunteer_4.jpg'
 import heroArchitecture from '@/assets/hero.png'
+import gritLogo from '@/assets/logo/gritlogo.png'
 
 export const images = {
   landing: landingBg,
+  gritLogo,
   founder: founderPhoto,
   heroArchitecture,
   projects: {

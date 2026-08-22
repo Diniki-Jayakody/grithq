@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { MenuOverlay } from './MenuOverlay'
+import { images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
+import { styles } from '@/styles/styles'
 import { useCursorState } from '@/hooks/useCursorState'
 
 export function Navbar() {
@@ -39,11 +41,16 @@ export function Navbar() {
         >
           <Link
             to={homeLink}
-            className="font-display text-sm font-semibold tracking-[0.35em] text-grithq-offwhite md:text-base"
+            className="inline-flex shrink-0 items-center"
             onMouseEnter={() => setCursorState('open')}
             onMouseLeave={() => setCursorState('default')}
+            aria-label={STRINGS.brand.name}
           >
-            {STRINGS.brand.name}
+            <img
+              src={images.gritLogo}
+              alt={STRINGS.brand.name}
+              className={styles.navLogo}
+            />
           </Link>
 
           <button

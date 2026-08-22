@@ -1,7 +1,6 @@
 import { HeroOpening } from '@/components/sections/HeroOpening'
 import { IdentitySection } from '@/components/sections/IdentitySection'
 import { PortfolioSection } from '@/components/sections/PortfolioSection'
-import { DevelopmentsSection } from '@/components/sections/DevelopmentsSection'
 import { PhilosophySection } from '@/components/sections/PhilosophySection'
 import { ImpactSection } from '@/components/sections/ImpactSection'
 import { FutureSection } from '@/components/sections/FutureSection'
@@ -13,7 +12,6 @@ export function Home() {
       <HeroOpening />
       <IdentitySection />
       <PortfolioSection />
-      <DevelopmentsSection />
       <PhilosophySection />
       <ImpactSection />
       <FutureSection />

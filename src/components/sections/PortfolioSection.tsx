@@ -128,7 +128,7 @@ export function PortfolioSection() {
     <section
       id="portfolio"
       ref={sectionRef}
-      className={`${styles.sectionLightAlt} border-t border-grithq-burgundy/5`}
+      className={`${styles.sectionPortfolio} border-t border-grithq-burgundy/5`}
       aria-labelledby="portfolio-heading"
     >
       <div className={styles.sectionContainer}>

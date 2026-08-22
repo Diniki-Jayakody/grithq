@@ -4,6 +4,7 @@ export const styles = {
   sectionContainer: 'mx-auto max-w-7xl section-padding',
   sectionLight: 'relative section-y bg-grithq-offwhite text-grithq-burgundy',
   sectionLightAlt: 'relative section-y bg-grithq-cream/30 text-grithq-burgundy',
+  sectionPortfolio: 'relative section-y bg-grithq-portfolio text-grithq-burgundy',
   sectionDark: 'relative section-y bg-grithq-black',
   sectionWarm: 'relative section-y bg-grithq-warm',
 
@@ -29,4 +30,14 @@ export const styles = {
     'border border-grithq-offwhite/20 bg-grithq-black/80 backdrop-blur-sm',
 
   imageCover: 'h-full w-full object-cover',
+
+  navLogo:
+    'h-7 w-auto max-w-[120px] object-contain brightness-0 invert md:h-8 md:max-w-[140px]',
+
+  identitySectionTitle:
+    'font-display text-[clamp(1.5rem,4vw,2.75rem)] font-light tracking-[0.35em] text-grithq-burgundy uppercase',
+  identityHeading:
+    'font-display text-[clamp(1.75rem,5vw,3.75rem)] font-light leading-[1.1] tracking-tight text-grithq-burgundy text-balance',
+  identitySubtext:
+    'mx-auto max-w-2xl text-[clamp(0.95rem,2.2vw,1.25rem)] leading-relaxed text-grithq-burgundy/65 text-balance',
 } as const

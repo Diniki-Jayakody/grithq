@@ -6,7 +6,6 @@ import { DisplayText } from '@/components/typography/DisplayText'
 import { RevealImage } from '@/components/animations/RevealImage'
 import {
   impactPillars,
-  impactStories,
   communityInitiatives,
   impactGallery,
 } from '@/constants/data'
@@ -138,7 +137,7 @@ export function ImpactSection() {
 
         <div className="impact-initiatives mt-12 md:mt-16">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.communityInitiatives}</h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="mt-4 grid gap-6 md:grid-cols-3 md:gap-8">
             {communityInitiatives.map((initiative) => (
               <article key={initiative.id} className="impact-initiative group">
                 <RevealImage
@@ -183,33 +182,6 @@ export function ImpactSection() {
                   {item.caption}
                 </figcaption>
               </figure>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-16 md:mt-20">
-          <h3 className={styles.eyebrow}>{STRINGS.sections.impact.stories}</h3>
-          <div className="mt-6 space-y-12 md:space-y-16">
-            {impactStories.map((story, i) => (
-              <article
-                key={story.id}
-                className={`grid items-center gap-8 md:grid-cols-2 md:gap-14 ${i % 2 === 1 ? 'md:[direction:rtl]' : ''}`}
-              >
-                <div className={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
-                  <RevealImage
-                    src={story.image}
-                    alt={story.title}
-                    containerClassName="aspect-[4/3] rounded-sm overflow-hidden"
-                  />
-                  <p className="mt-2 text-xs text-grithq-cream/30">{story.caption}</p>
-                </div>
-                <div className={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
-                  <h4 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-light text-grithq-offwhite">
-                    {story.title}
-                  </h4>
-                  <p className={`mt-4 ${styles.bodyTextMuted}`}>{story.description}</p>
-                </div>
-              </article>
             ))}
           </div>
         </div>

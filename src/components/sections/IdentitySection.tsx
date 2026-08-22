@@ -1,12 +1,10 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
 import { DisplayText } from '@/components/typography/DisplayText'
-import { RevealImage } from '@/components/animations/RevealImage'
 import { investmentFocusAreas, leadershipProfiles } from '@/constants/data'
-import { images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
 import { styles } from '@/styles/styles'
 import { ArchitecturalGrid } from '@/components/grid/ArchitecturalGrid'
@@ -18,36 +16,6 @@ gsap.registerPlugin(ScrollTrigger)
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className={`${styles.eyebrowLight} identity-reveal`}>{children}</p>
-  )
-}
-
-function IdentityPrinciple({
-  number,
-  title,
-  text,
-}: {
-  number: string
-  title: string
-  text: string
-}) {
-  return (
-    <motion.div
-      className="group identity-principle border-t border-grithq-burgundy/15 py-5 md:py-6"
-      whileHover={{ x: 6 }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="flex items-start gap-4 md:gap-6">
-        <span className="font-display text-[10px] tracking-[0.25em] text-grithq-mauve/70 md:text-xs">
-          {number}
-        </span>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-display text-xs tracking-[0.2em] text-grithq-burgundy transition-colors duration-300 group-hover:text-grithq-deepAccent md:text-sm">
-            {title}
-          </h3>
-          <p className={`mt-2 ${styles.bodyTextMutedLight}`}>{text}</p>
-        </div>
-      </div>
-    </motion.div>
   )
 }
 
@@ -138,21 +106,10 @@ function InvestmentAreaCell({
 
 export function IdentitySection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const identityImageRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
   const profile = leadershipProfiles[0]
   const [activeFocusIndex, setActiveFocusIndex] = useState<number | null>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: identityImageRef,
-    offset: ['start end', 'end start'],
-  })
-  const imageY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reducedMotion ? ['0%', '0%'] : ['-4%', '4%'],
-  )
 
   useEffect(() => {
     const section = sectionRef.current
@@ -168,29 +125,11 @@ export function IdentitySection() {
         ease: 'power3.out',
       })
 
-      gsap.from('.identity-principle', {
-        scrollTrigger: { trigger: '.identity-principles', start: 'top 88%' },
-        y: 24,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-      })
-
       gsap.from('.focus-area', {
         scrollTrigger: { trigger: '.investment-focus-grid', start: 'top 88%' },
         y: 32,
         opacity: 0,
         duration: 0.85,
-        stagger: 0.08,
-        ease: 'power3.out',
-      })
-
-      gsap.from('.approach-step', {
-        scrollTrigger: { trigger: '.investment-approach', start: 'top 90%' },
-        y: 20,
-        opacity: 0,
-        duration: 0.7,
         stagger: 0.08,
         ease: 'power3.out',
       })
@@ -209,6 +148,7 @@ export function IdentitySection() {
   }, [reducedMotion, isMobile])
 
   const focus = STRINGS.identity.investmentFocus
+  const identity = STRINGS.sections.identity
 
   return (
     <section
@@ -221,74 +161,32 @@ export function IdentitySection() {
 
       <div className={styles.sectionContainer}>
         {/* ─── OUR IDENTITY ─────────────────────────────────────────────── */}
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
-          {/* Image — first on mobile */}
-          <div
-            ref={identityImageRef}
-            className="identity-visual relative order-1 lg:order-none lg:col-span-7"
+        <div className="mx-auto max-w-4xl text-center">
+          <DisplayText
+            as="h2"
+            id="identity-heading"
+            className={`identity-reveal ${styles.identitySectionTitle}`}
           >
-            <div className="relative overflow-hidden">
-              <span
-                className="pointer-events-none absolute -right-4 top-8 z-0 select-none font-display text-[clamp(5rem,18vw,14rem)] font-black leading-none text-grithq-burgundy/[0.04]"
-                aria-hidden="true"
-              >
-                G
-              </span>
+            {identity.eyebrow}
+          </DisplayText>
 
-              <div className="absolute left-0 top-0 z-10 h-16 w-px bg-grithq-mauve/30 md:h-24" aria-hidden="true" />
-              <div className="absolute bottom-8 right-0 z-10 h-px w-16 bg-grithq-mauve/30 md:w-24" aria-hidden="true" />
-
-              <div className="relative overflow-hidden">
-                <motion.div style={{ y: imageY }} className="will-change-transform">
-                  <RevealImage
-                    src={images.projects.grithq}
-                    alt="GritHQ commercial architecture — investment and development"
-                    containerClassName="aspect-[4/5] md:aspect-[5/6] lg:aspect-[4/5] max-h-[70vh] lg:max-h-[85vh]"
-                  />
-                </motion.div>
-                <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-grithq-burgundy/20 via-transparent to-grithq-offwhite/10"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="order-2 flex flex-col justify-center lg:order-none lg:col-span-5">
-            <SectionEyebrow>{STRINGS.sections.identity.eyebrow}</SectionEyebrow>
-
-            <DisplayText
-              as="h2"
-              id="identity-heading"
-              className="identity-reveal mt-6 text-[clamp(1.75rem,4.5vw,3.25rem)] leading-[1.05] text-grithq-burgundy"
-            >
-              {STRINGS.sections.identity.heading.map((line, i) => (
+          <div className="identity-reveal mt-10 md:mt-14 lg:mt-16">
+            <DisplayText as="p" className={styles.identityHeading}>
+              {identity.heading.map((line, i) => (
                 <span key={line} className={i > 0 ? 'block' : undefined}>
                   {line}
                 </span>
               ))}
             </DisplayText>
-
-            <p className={`identity-reveal mt-6 ${styles.bodyTextMutedLight}`}>
-              {STRINGS.sections.identity.subtext}
-            </p>
-
-            <div className="identity-principles mt-10 md:mt-12">
-              {STRINGS.identity.principles.map((principle) => (
-                <IdentityPrinciple
-                  key={principle.number}
-                  number={principle.number}
-                  title={principle.title}
-                  text={principle.text}
-                />
-              ))}
-            </div>
           </div>
+
+          <p className={`identity-reveal mt-8 md:mt-10 lg:mt-12 ${styles.identitySubtext}`}>
+            {identity.subtext}
+          </p>
         </div>
 
         {/* ─── INVESTMENT FOCUS ─────────────────────────────────────────── */}
-        <div className="investment-focus mt-24 md:mt-32 lg:mt-40">
+        <div className="investment-focus mt-20 md:mt-28 lg:mt-36">
           <div className="max-w-3xl">
             <SectionEyebrow>{focus.eyebrow}</SectionEyebrow>
             <DisplayText
@@ -329,49 +227,6 @@ export function IdentitySection() {
             })}
           </div>
 
-          {/* Our Approach */}
-          <div className="investment-approach mt-16 md:mt-20 lg:mt-24">
-            <p className={`${styles.eyebrowLight} identity-reveal`}>{focus.approach.eyebrow}</p>
-
-            <div className="mt-8 hidden items-start gap-0 md:flex">
-              {focus.approach.steps.map((step, i) => (
-                <div key={step.title} className="approach-step group flex flex-1 items-start">
-                  <div className="flex-1 border-t border-grithq-burgundy/15 pt-6 pr-4">
-                    <h4 className="font-display text-xs tracking-[0.2em] text-grithq-burgundy transition-colors duration-300 group-hover:text-grithq-deepAccent">
-                      {step.title}
-                    </h4>
-                    <p className={`mt-3 ${styles.bodyTextMutedLight}`}>{step.description}</p>
-                  </div>
-                  {i < focus.approach.steps.length - 1 && (
-                    <div className="flex shrink-0 items-center pt-6" aria-hidden="true">
-                      <div className="h-px w-6 bg-grithq-burgundy/20" />
-                      <span className="mx-1 font-display text-[10px] text-grithq-mauve/60">→</span>
-                      <div className="h-px w-6 bg-grithq-burgundy/20" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-0 md:hidden">
-              {focus.approach.steps.map((step, i) => (
-                <div key={step.title} className="approach-step">
-                  <div className="border-t border-grithq-burgundy/15 py-5">
-                    <h4 className="font-display text-xs tracking-[0.2em] text-grithq-burgundy">
-                      {step.title}
-                    </h4>
-                    <p className={`mt-2 ${styles.bodyTextMutedLight}`}>{step.description}</p>
-                  </div>
-                  {i < focus.approach.steps.length - 1 && (
-                    <div className="flex justify-center py-1 text-grithq-mauve/50" aria-hidden="true">
-                      ↓
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Closing statement */}
           <div className="identity-reveal mt-16 border-t border-grithq-burgundy/10 pt-12 md:mt-20 md:pt-16 lg:mt-24">
             <blockquote className="max-w-3xl">
@@ -403,7 +258,6 @@ export function IdentitySection() {
         {profile && (
           <div className="leadership-section mt-24 md:mt-32 lg:mt-40">
             <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
-              {/* Portrait — first on mobile */}
               <div className="leadership-block order-1 lg:order-none lg:col-span-5 xl:col-span-6">
                 <div className="relative overflow-hidden">
                   <div className="absolute left-0 top-0 z-10 h-12 w-px bg-grithq-mauve/30" aria-hidden="true" />
@@ -423,13 +277,13 @@ export function IdentitySection() {
               </div>
 
               <div className="leadership-block order-2 flex flex-col justify-center lg:order-none lg:col-span-7 xl:col-span-6">
-                <SectionEyebrow>{STRINGS.sections.identity.leadershipEyebrow}</SectionEyebrow>
+                <SectionEyebrow>{identity.leadershipEyebrow}</SectionEyebrow>
 
                 <DisplayText
                   as="h3"
                   className="mt-6 text-[clamp(1.75rem,4vw,3rem)] text-grithq-burgundy"
                 >
-                  {STRINGS.sections.identity.leadershipHeading.map((line, i) => (
+                  {identity.leadershipHeading.map((line, i) => (
                     <span key={line} className={i > 0 ? 'block' : undefined}>
                       {line}
                     </span>

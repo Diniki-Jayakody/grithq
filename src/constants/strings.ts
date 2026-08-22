@@ -25,7 +25,7 @@ export const STRINGS = {
       eyebrow: 'OUR IDENTITY',
       heading: ['Built on conviction.', 'Driven by value.'],
       subtext:
-        'GritHQ is an investment holding company focused on identifying opportunities, building enduring businesses and creating long-term value across diverse sectors. We combine strategic thinking, disciplined decision-making and an entrepreneurial mindset to turn opportunities into meaningful, sustainable outcomes.',
+        'GritHQ is an investment holding company focused on identifying opportunities, building enduring businesses and creating long-term value across diverse sectors.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Leadership with experience.', 'Vision with purpose.'],
