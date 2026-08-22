@@ -3,10 +3,8 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
-import { RevealImage } from '@/components/animations/RevealImage'
 import {
   impactPillars,
-  communityInitiatives,
   impactGallery,
 } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
@@ -35,13 +33,15 @@ export function ImpactSection() {
         ease: 'power3.out',
       })
 
-      gsap.from('.impact-warm-block', {
-        scrollTrigger: { trigger: '.impact-warm-block', start: 'top 85%' },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-      })
+      if (section.querySelector('.impact-warm-block')) {
+        gsap.from('.impact-warm-block', {
+          scrollTrigger: { trigger: '.impact-warm-block', start: 'top 85%' },
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+        })
+      }
 
       gsap.from('.impact-pillar', {
         scrollTrigger: { trigger: '.impact-pillars', start: 'top 85%' },
@@ -52,14 +52,16 @@ export function ImpactSection() {
         ease: 'power3.out',
       })
 
-      gsap.from('.impact-initiative', {
-        scrollTrigger: { trigger: '.impact-initiatives', start: 'top 85%' },
-        y: 40,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.08,
-        ease: 'power3.out',
-      })
+      if (section.querySelector('.impact-initiatives')) {
+        gsap.from('.impact-initiative', {
+          scrollTrigger: { trigger: '.impact-initiatives', start: 'top 85%' },
+          y: 40,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.08,
+          ease: 'power3.out',
+        })
+      }
 
       gsap.from('.impact-gallery-item', {
         scrollTrigger: { trigger: '.impact-gallery', start: 'top 85%' },
@@ -102,7 +104,7 @@ export function ImpactSection() {
           </p>
         </div>
 
-        <div
+        {/* <div
           className="impact-warm-block mt-16 rounded-sm p-8 md:mt-20 md:p-14"
           style={{ backgroundColor: '#2d1522' }}
         >
@@ -112,7 +114,7 @@ export function ImpactSection() {
             communities — supporting education, nourishment and opportunity — is integral to who
             we are. This is not CSR. This is conviction.
           </p>
-        </div>
+        </div> */}
 
         <div className="mt-16 md:mt-20">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.feedingFutures}</h3>
@@ -121,7 +123,7 @@ export function ImpactSection() {
             and practical assistance. Nourishment enables education. Education enables futures.
           </p>
 
-          <div className="impact-pillars mt-8 grid grid-cols-1 gap-6 border-t border-grithq-cream/10 pt-8 sm:grid-cols-3">
+          <div className="impact-pillars mt-4 grid grid-cols-1 gap-6 border-t border-grithq-cream/10 pt-8 sm:grid-cols-3">
             {impactPillars.map((pillar) => (
               <div key={pillar.id} className="impact-pillar">
                 <span className="font-display text-xl font-light text-grithq-offwhite md:text-2xl">
@@ -135,9 +137,9 @@ export function ImpactSection() {
           </div>
         </div>
 
-        <div className="impact-initiatives mt-12 md:mt-16">
+        {/* <div className="impact-initiatives mt-12 md:mt-16">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.communityInitiatives}</h3>
-          <div className="mt-4 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid mt-3 gap-6 md:grid-cols-3 md:gap-8">
             {communityInitiatives.map((initiative) => (
               <article key={initiative.id} className="impact-initiative group">
                 <RevealImage
@@ -152,7 +154,7 @@ export function ImpactSection() {
               </article>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="impact-gallery mt-16 md:mt-20">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.impactGallery}</h3>

@@ -24,7 +24,9 @@ export const styles = {
     'rounded-sm border border-grithq-burgundy/10 bg-grithq-offwhite p-8 md:p-10',
 
   ctaButton:
-    'inline-flex items-center justify-center border border-grithq-cream/20 px-10 py-4 font-display text-xs tracking-[0.3em] uppercase transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10',
+    'inline-flex items-center justify-center border border-grithq-cream/20 px-10 py-4 font-display text-xs tracking-[0.3em] uppercase transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-black',
+  ctaButtonLight:
+    'inline-flex items-center justify-center border border-grithq-burgundy/20 px-8 py-3.5 font-display text-xs tracking-[0.3em] uppercase text-grithq-burgundy transition-colors hover:border-grithq-deepAccent hover:bg-grithq-burgundy/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite',
 
   glass:
     'border border-grithq-offwhite/20 bg-grithq-black/80 backdrop-blur-sm',
@@ -40,4 +42,15 @@ export const styles = {
     'font-display text-[clamp(1.75rem,5vw,3.75rem)] font-light leading-[1.1] tracking-tight text-grithq-burgundy text-balance',
   identitySubtext:
     'mx-auto max-w-2xl text-[clamp(0.95rem,2.2vw,1.25rem)] leading-relaxed text-grithq-burgundy/65 text-balance',
+  identityFocusHeading:
+    'mt-6 text-[clamp(1.75rem,4.5vw,3.5rem)] text-grithq-burgundy',
+
+  pageBackLink:
+    'inline-flex items-center gap-2 font-display text-xs tracking-[0.3em] uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2',
+  credentialBlock:
+    'border border-grithq-burgundy/20 bg-transparent px-6 py-5 md:px-8 md:py-6',
+  letterBody:
+    'max-w-2xl text-[0.95rem] leading-[1.85] text-grithq-burgundy/70 break-words md:text-base md:leading-[1.9]',
+  innerPage:
+    'relative min-h-screen overflow-x-hidden pt-28 pb-20 md:pt-32 md:pb-28 lg:pt-36 lg:pb-32',
 } as const

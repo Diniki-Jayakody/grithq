@@ -26,13 +26,15 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const homeLink = location.pathname === '/' ? '#hero' : '/'
+  const isHome = location.pathname === '/'
+  const homeLink = isHome ? '#hero' : '/'
+  const navSolid = scrolled || !isHome
 
   return (
     <>
       <header
         className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-grithq-black/80 backdrop-blur-md' : 'bg-transparent'
+          navSolid ? 'bg-grithq-landing/80 backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <nav

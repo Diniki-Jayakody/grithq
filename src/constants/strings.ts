@@ -29,6 +29,8 @@ export const STRINGS = {
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Leadership with experience.', 'Vision with purpose.'],
+      identityImageAlt:
+        'Editorial illustration: the money you make is a symbol of the value you create.',
     },
     portfolio: {
       number: '02',
@@ -138,11 +140,63 @@ export const STRINGS = {
       shortLabel: 'BOI Sri Lanka',
       title: 'Member',
     },
+    messageCta: 'A Message from Mangala Karunaratne',
+    credentials: [
+      {
+        id: 'short-circuit',
+        role: 'DIRECTOR',
+        organization: 'SHORT CIRCUIT',
+      },
+      {
+        id: 'boi',
+        role: 'MEMBER',
+        organization: 'BOARD OF INVESTMENT',
+        organizationLine2: 'OF SRI LANKA',
+      },
+    ],
   },
 
   portfolio: {
     exploreProject: 'Explore Project →',
     viewProject: 'VIEW PROJECT',
+    currentOpportunity: 'Current Opportunity',
+    availableSaleRent: 'Available — Sale / Rent',
+    exploreGritHQ: 'Explore GritHQ',
+    viewOpportunity: 'View Opportunity',
+  },
+
+  message: {
+    back: '← Back',
+    eyebrow: 'A Message From',
+    name: 'Mangala Karunaratne',
+    sampleNotice: 'Sample message — to be replaced with the confirmed letter.',
+    signOff: 'Regards,',
+    signature: 'Mangala Karunaratne',
+  },
+
+  opportunity: {
+    back: '← Back',
+    eyebrow: 'Current Opportunity',
+    availability: 'Available — Sale / Rent',
+    descriptionHeading: 'The Asset',
+    termsHeading: 'Commercial Terms',
+    saleLabel: 'Sale',
+    rentLabel: 'Rent',
+    buildingHeading: 'Building Information',
+    photosCta: 'View Building Photos ↗',
+    inquiryHeading: 'Interested in GritHQ?',
+    inquiryIntro:
+      'For sales, leasing and investment inquiries, contact our team.',
+    inquiryCta: 'Make an Inquiry',
+    contactPersonLabel: 'Contact',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
+    whatsappLabel: 'WhatsApp',
+    locationLabel: 'Location',
+  },
+
+  common: {
+    back: '← Back',
   },
 
   project: {

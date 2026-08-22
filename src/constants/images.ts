@@ -13,6 +13,11 @@ import volunteer3 from '@/assets/volunteer/volunteer_3.jpg'
 import volunteer4 from '@/assets/volunteer/volunteer_4.jpg'
 import heroArchitecture from '@/assets/hero.png'
 import gritLogo from '@/assets/logo/gritlogo.png'
+import identityQuoteImg from '@/assets/identity/quote-image.jpg'
+import focusRealEstateImg from '@/assets/investment-focus/real-estate.jpg'
+import focusHospitalityImg from '@/assets/investment-focus/hospitality.jpg'
+import focusBusinessesImg from '@/assets/investment-focus/businesses.jpg'
+import focusStrategicImg from '@/assets/investment-focus/strategic-investment.jpg'
 
 export const images = {
   landing: landingBg,
@@ -31,6 +36,15 @@ export const images = {
     two: volunteer2,
     three: volunteer3,
     four: volunteer4,
+  },
+  identity: {
+    editorial: identityQuoteImg,
+  },
+  investmentFocus: {
+    realEstate: focusRealEstateImg,
+    hospitality: focusHospitalityImg,
+    businesses: focusBusinessesImg,
+    selective: focusStrategicImg,
   },
 } as const
 

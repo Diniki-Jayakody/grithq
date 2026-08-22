@@ -7,6 +7,9 @@ import { Layout } from '@/components/layout/Layout'
 import { Loader } from '@/components/layout/Loader'
 import { Home } from '@/pages/Home'
 import { Project } from '@/pages/Project'
+import { MessageFromMangala } from '@/pages/MessageFromMangala'
+import { GrithqOpportunity } from '@/pages/GrithqOpportunity'
+import { ROUTES } from '@/constants/links'
 import { CursorProvider } from '@/hooks/useCursorState'
 import { SmoothScrollProvider } from '@/providers/SmoothScrollProvider'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -34,6 +37,8 @@ function AnimatedRoutes() {
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="portfolio/:slug" element={<Project />} />
+            <Route path={ROUTES.messageFromMangala.slice(1)} element={<MessageFromMangala />} />
+            <Route path={ROUTES.grithqOpportunity.slice(1)} element={<GrithqOpportunity />} />
           </Route>
         </Routes>
       </motion.div>

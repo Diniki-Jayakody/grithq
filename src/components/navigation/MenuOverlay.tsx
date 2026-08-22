@@ -59,7 +59,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
       {open && (
         <motion.div
           id="menu-overlay"
-          className="fixed inset-0 z-[100] flex flex-col bg-grithq-black"
+          className="fixed inset-0 z-[100] flex flex-col bg-grithq-landing"
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"

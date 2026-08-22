@@ -1,5 +1,6 @@
 import { portfolioImages, developmentImages, impactImages, images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
+import { ROUTES, EXTERNAL_LINKS } from '@/constants/links'
 
 // ─── Navigation ─────────────────────────────────────────────────────────────
 
@@ -32,6 +33,34 @@ export const leadershipProfiles: LeadershipProfile[] = [
   },
 ]
 
+export interface LeadershipCredential {
+  id: string
+  role: string
+  organization: string
+  organizationLine2?: string
+}
+
+export const leadershipCredentials: LeadershipCredential[] = STRINGS.leadership.credentials.map(
+  (item) => ({
+    id: item.id,
+    role: item.role,
+    organization: item.organization,
+    organizationLine2: 'organizationLine2' in item ? item.organizationLine2 : undefined,
+  })
+)
+
+export const leadershipMessage = {
+  route: ROUTES.messageFromMangala,
+  backHref: ROUTES.leadership,
+  year: '2026',
+  paragraphs: [
+    '[Sample] GritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
+    '[Sample] We look for opportunities where ownership is an act of stewardship — where buildings, businesses and partnerships can be strengthened rather than merely transacted. Long-term thinking is not a slogan for us. It is the standard by which every decision is weighed.',
+    '[Sample] Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present — and protected when they are not.',
+    '[Sample] The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped GritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
+  ],
+} as const
+
 // ─── Investment Focus ─────────────────────────────────────────────────────────
 
 export interface InvestmentFocusArea {
@@ -49,7 +78,7 @@ export const investmentFocusAreas: InvestmentFocusArea[] = [
     title: 'REAL ESTATE',
     description:
       'Strategic properties and developments positioned for long-term value creation.',
-    image: images.projects.southBeach,
+    image: images.investmentFocus.realEstate,
   },
   {
     id: 'hospitality',
@@ -57,7 +86,7 @@ export const investmentFocusAreas: InvestmentFocusArea[] = [
     title: 'HOSPITALITY & EXPERIENCES',
     description:
       'Destination-led investments focused on distinctive places and experiences.',
-    image: images.projects.asayaSands,
+    image: images.investmentFocus.hospitality,
   },
   {
     id: 'operating-businesses',
@@ -65,7 +94,7 @@ export const investmentFocusAreas: InvestmentFocusArea[] = [
     title: 'OPERATING BUSINESSES',
     description:
       'Businesses with strong fundamentals and potential for sustainable growth.',
-    image: images.projects.grithq,
+    image: images.investmentFocus.businesses,
   },
   {
     id: 'selective-opportunities',
@@ -73,11 +102,16 @@ export const investmentFocusAreas: InvestmentFocusArea[] = [
     title: 'SELECTIVE OPPORTUNITIES',
     description:
       'High-conviction opportunities where strong fundamentals and strategic potential align.',
-    image: images.projects.asayaSummit,
+    image: images.investmentFocus.selective,
   },
 ]
 
 // ─── Portfolio / Projects ───────────────────────────────────────────────────
+
+export interface ProjectDeal {
+  types: readonly ('Sale' | 'Rent')[]
+  route: string
+}
 
 export interface Project {
   id: string
@@ -95,6 +129,8 @@ export interface Project {
   gallery: readonly string[]
   featured: boolean
   year: string
+  emphasis?: 'primary' | 'standard'
+  deal?: ProjectDeal
 }
 
 export const projects: Project[] = [
@@ -169,6 +205,11 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.grithq.gallery],
     featured: true,
     year: '2023',
+    emphasis: 'primary',
+    deal: {
+      types: ['Sale', 'Rent'],
+      route: ROUTES.grithqOpportunity,
+    },
   },
   {
     id: 'south-beach',
@@ -206,6 +247,15 @@ export function getAdjacentProjects(slug: string): { prev: Project; next: Projec
   const prev = projects[(index - 1 + projects.length) % projects.length]
   const next = projects[(index + 1) % projects.length]
   return { prev, next }
+}
+
+export function getPrimaryPortfolioProject(): Project | undefined {
+  return projects.find((p) => p.emphasis === 'primary') ?? projects.find((p) => p.id === 'grithq')
+}
+
+export function getSecondaryPortfolioProjects(): Project[] {
+  const primary = getPrimaryPortfolioProject()
+  return projects.filter((p) => p.id !== primary?.id)
 }
 
 // ─── Developments ───────────────────────────────────────────────────────────
@@ -482,14 +532,72 @@ export const impactGallery: ImpactGalleryItem[] = [
 // ─── Contact ──────────────────────────────────────────────────────────────────
 
 export const contactInfo = {
-  email: 'enquiries@grithq.com',
+  email: 'hello@grithq.co',
   phone: 'Contact via email',
-  address: 'GRITHQ Holdings, Colombo, Sri Lanka',
+  address: 'GRITHQ, No 109, Main Road, Battaramulla',
+  contactPerson: 'GritHQ Team',
+  whatsapp: '#',
+  whatsappDisplay: '[SAMPLE] Link to be confirmed',
   social: {
-    linkedin: 'https://linkedin.com',
+    linkedin: 'https://www.linkedin.com/company/grithq/',
     instagram: 'https://instagram.com',
     twitter: 'https://twitter.com',
   },
 }
 
 export const enquiryTypes = STRINGS.contact.enquiryTypes
+
+export const identityVisual = {
+  image: images.identity.editorial,
+  alt: STRINGS.sections.identity.identityImageAlt,
+} as const
+
+export interface BuildingFact {
+  label: string
+  value: string
+}
+
+export const grithqOpportunity = {
+  id: 'grithq',
+  name: 'GritHQ',
+  route: ROUTES.grithqOpportunity,
+  backHref: ROUTES.portfolio,
+  heroImage: portfolioImages.grithq.hero,
+  gallery: [...portfolioImages.grithq.gallery],
+  category: 'Commercial Real Estate',
+  location: 'Colombo, Sri Lanka',
+  status: 'Operational',
+  developmentType: 'Commercial Office',
+  year: '2023',
+  description:
+    'GritHQ represents the holding company\'s commercial real estate capability — a modern workspace asset designed for connectivity, flexibility and enduring occupancy value.',
+  overview: [
+    'This commercial asset combines contemporary architecture with functional workspace design, supporting businesses that value location, quality and long-term stability.',
+    'The building emphasises natural light, flexible floor plates and premium common areas — attributes that sustain value across market cycles.',
+    'GritHQ demonstrates the holding company\'s approach to commercial assets with strategic positioning.',
+  ],
+  commercialTerms: {
+    sale: {
+      label: STRINGS.opportunity.saleLabel,
+      value: '[SAMPLE] Available on request',
+    },
+    rent: {
+      label: STRINGS.opportunity.rentLabel,
+      value: '[SAMPLE] Available on request',
+    },
+  },
+  buildingFacts: [
+    { label: 'Property Type', value: 'Commercial Office' },
+    { label: 'Location', value: 'Colombo, Sri Lanka' },
+    { label: 'Status', value: 'Operational' },
+    { label: 'Year', value: '2023' },
+    { label: 'Floor Information', value: '[SAMPLE] To be confirmed' },
+    { label: 'Approximate Area', value: '[SAMPLE] To be confirmed' },
+    { label: 'Facilities', value: 'Natural light, flexible floor plates, premium common areas' },
+    { label: 'Parking', value: '[SAMPLE] To be confirmed' },
+    { label: 'Development', value: 'Commercial workspace asset in Colombo' },
+    { label: 'Suitable Use', value: 'Modern business, connectivity and long-term occupancy' },
+  ] satisfies BuildingFact[],
+  driveLink: EXTERNAL_LINKS.grithqPhotoDrive,
+  inquiryHref: ROUTES.contact,
+} as const

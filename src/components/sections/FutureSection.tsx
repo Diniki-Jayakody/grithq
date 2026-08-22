@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import { ArchitecturalGrid } from '@/components/grid/ArchitecturalGrid'
-import { timelineItems } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
 import { styles } from '@/styles/styles'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -20,6 +19,8 @@ export function FutureSection() {
     if (!section || reducedMotion) return
 
     const ctx = gsap.context(() => {
+      if (!section.querySelector('.timeline-track')) return
+
       gsap.from('.timeline-item', {
         scrollTrigger: { trigger: '.timeline-track', start: 'top 75%' },
         x: -60,
@@ -59,7 +60,7 @@ export function FutureSection() {
           {STRINGS.sections.future.subtext}
         </p>
 
-        <div className="timeline-track mt-20 overflow-x-auto hide-scrollbar md:mt-28">
+        {/* <div className="timeline-track mt-20 overflow-x-auto hide-scrollbar md:mt-28">
           <div className="flex min-w-max gap-0 border-t border-grithq-cream/10">
             {timelineItems.map((item, i) => (
               <div
@@ -84,7 +85,7 @@ export function FutureSection() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
