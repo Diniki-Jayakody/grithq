@@ -54,9 +54,6 @@ export function DevelopmentsSection() {
       aria-labelledby="developments-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.developments.number}>
-          {STRINGS.sections.developments.label}
-        </SectionLabel>
         <DisplayText
           as="h2"
           id="developments-heading"

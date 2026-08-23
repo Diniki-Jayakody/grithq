@@ -7,7 +7,7 @@ interface DisplayTextProps extends React.HTMLAttributes<HTMLElement> {
 export function DisplayText({ children, as: Tag = 'h2', className = '', ...props }: DisplayTextProps) {
   return (
     <Tag
-      className={`font-display font-light leading-[0.95] tracking-tight text-grithq-offwhite ${className}`}
+      className={`font-display font-light leading-[0.95] tracking-tight ${className}`}
       {...props}
     >
       {children}

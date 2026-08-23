@@ -20,7 +20,6 @@ export const STRINGS = {
 
   sections: {
     identity: {
-      number: '01',
       label: 'Our Identity',
       eyebrow: 'OUR IDENTITY',
       heading: ['Built on conviction.', 'Driven by value.'],
@@ -28,26 +27,23 @@ export const STRINGS = {
         'GritHQ is an investment holding company focused on identifying opportunities, building enduring businesses and creating long-term value across diverse sectors.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
-      leadershipHeading: ['Leadership with experience.', 'Vision with purpose.'],
+      leadershipHeading: ['Vision with purpose.'],
       identityImageAlt:
         'Editorial illustration: the money you make is a symbol of the value you create.',
     },
     portfolio: {
-      number: '02',
       label: 'Portfolio',
       heading: 'Assets shaped by vision.',
       subtext:
         'A curated collection of hospitality, commercial and development assets — each selected for long-term potential and enduring value.',
     },
     developments: {
-      number: '03',
       label: 'Creation',
       heading: 'What we are building.',
       subtext:
         'Active developments and strategic investments across hospitality, real estate and commercial assets in Sri Lanka and beyond.',
     },
     impact: {
-      number: '04',
       label: 'Impact',
       heading: 'We build value.',
       subheading: 'But value is not measured only in assets.',
@@ -59,14 +55,12 @@ export const STRINGS = {
       stories: 'Stories',
     },
     future: {
-      number: '05',
       label: 'Future',
       heading: 'The portfolio is never finished.',
       subtext:
         'Continued growth. Continued development. Continued impact. The horizon is always expanding.',
     },
     contact: {
-      number: '06',
       label: 'Contact',
       heading: "Let's build",
       headingLine2: "what's next.",
