@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import { ArchitecturalGrid } from '@/components/grid/ArchitecturalGrid'
 import { STRINGS } from '@/constants/strings'

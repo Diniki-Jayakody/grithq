@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import {
   impactPillars,
@@ -84,9 +83,7 @@ export function ImpactSection() {
       aria-labelledby="impact-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.impact.number}>
-          {STRINGS.sections.impact.label}
-        </SectionLabel>
+     
 
         <div className="mt-12 lg:mt-16">
           <DisplayText
