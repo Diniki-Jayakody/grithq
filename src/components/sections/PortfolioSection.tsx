@@ -88,9 +88,6 @@ function FeaturedOpportunity({ project }: { project: Project }) {
             <h3 className="font-display text-[clamp(2rem,6vw,4.5rem)] font-light tracking-tight text-grithq-offwhite">
               {project.name}
             </h3>
-            <p className="mt-2 text-xs tracking-[0.25em] text-grithq-cream/70 uppercase">
-              {project.category}
-            </p>
           </div>
         </div>
       </Link>
@@ -143,9 +140,6 @@ function SecondaryProject({
         <h3 className="font-display text-[clamp(1.15rem,2.4vw,1.6rem)] font-light tracking-tight text-grithq-burgundy">
           {project.name}
         </h3>
-        <p className="mt-1 text-[10px] tracking-[0.22em] text-grithq-burgundy/45 uppercase">
-          {project.category}
-        </p>
         {project.status === 'Under Development' && (
           <p className="mt-2 font-display text-[10px] tracking-[0.28em] text-grithq-deepAccent uppercase">
             {project.status}
