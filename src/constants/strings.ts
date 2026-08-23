@@ -9,8 +9,8 @@ export const STRINGS = {
 
   hero: {
     eyebrow: 'Building Value',
-    headline: 'Through Strategic',
-    headlineLine2: 'Ownership.',
+    headline: 'INVESTING FOR',
+    headlineLine2: 'WHATS NEXT',
     scrollHint: 'SCROLL TO EXPLORE',
   },
 
@@ -200,7 +200,6 @@ export const STRINGS = {
       name: 'Name',
       email: 'Email',
       phone: 'Phone',
-      inquiryType: 'Inquiry Type',
       message: 'Message',
       messagePlaceholder: 'Please let us know how we can assist you regarding GritHQ.',
       submit: 'Send Inquiry →',
@@ -210,11 +209,11 @@ export const STRINGS = {
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
       retry: 'Try Again',
-      inquiryTypes: ['Sale', 'Rent', 'General Inquiry'] as const,
+      subject: 'GritHQ — Sale/Rent Opportunity Inquiry',
+      property: 'GritHQ — Sale / Rent Opportunity',
       validation: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',
-        inquiryType: 'Please select an inquiry type.',
         message: 'Please enter a message.',
       },
     },
@@ -239,9 +238,18 @@ export const STRINGS = {
       name: 'Name',
       email: 'Email',
       company: 'Company',
-      enquiryType: 'Enquiry Type',
       message: 'Message',
       submit: 'Start a Conversation',
+      sending: 'Sending...',
+      retry: 'Try Again',
+      error: 'Something Went Wrong',
+      errorMessage: 'Your inquiry could not be sent. Please try again.',
+      subject: 'GritHQ — General Contact Inquiry',
+      validation: {
+        name: 'Please enter your name.',
+        email: 'Please enter a valid email address.',
+        message: 'Please enter a message.',
+      },
     },
     enquiryTypes: [
       'Business Enquiries',
@@ -271,4 +279,3 @@ export const STRINGS = {
 } as const
 
 export type EnquiryType = (typeof STRINGS.contact.enquiryTypes)[number]
-export type OpportunityInquiryType = (typeof STRINGS.opportunity.form.inquiryTypes)[number]

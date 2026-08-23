@@ -7,6 +7,7 @@ import { DisplayText } from '@/components/typography/DisplayText'
 import {
   getPrimaryPortfolioProject,
   getSecondaryPortfolioProjects,
+  gritHQPropertyData,
   type Project,
 } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
@@ -99,6 +100,13 @@ function FeaturedOpportunity({ project }: { project: Project }) {
           <p className={styles.eyebrowLight}>{STRINGS.portfolio.availableFor}</p>
           <p className="mt-2 font-display text-[clamp(1.35rem,3vw,2rem)] font-light tracking-tight text-grithq-burgundy">
             {STRINGS.portfolio.saleRent}
+          </p>
+          <p className="mt-2 text-xs tracking-[0.12em] text-grithq-burgundy/55">
+            {gritHQPropertyData.commercialTerms.sale.label}: {gritHQPropertyData.commercialTerms.sale.value}
+            <span className="mx-2 text-grithq-burgundy/25" aria-hidden="true">
+              ·
+            </span>
+            {gritHQPropertyData.commercialTerms.rent.label}: {gritHQPropertyData.commercialTerms.rent.value}
           </p>
         </div>
         <Link
@@ -196,7 +204,7 @@ export function PortfolioSection() {
       aria-labelledby="portfolio-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.portfolio.number} variant="light">
+        <SectionLabel variant="light">
           {STRINGS.sections.portfolio.label}
         </SectionLabel>
         <DisplayText
