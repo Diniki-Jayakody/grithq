@@ -28,7 +28,7 @@ export function Home() {
       <PortfolioSection />
       <PhilosophySection />
       <ImpactSection />
-      <FutureSection />
+      {/* <FutureSection /> */}
       <ContactSection />
     </>
   )

@@ -11,6 +11,7 @@ import { MessageFromMangala } from '@/pages/MessageFromMangala'
 import { GrithqOpportunity } from '@/pages/GrithqOpportunity'
 import { ROUTES } from '@/constants/links'
 import { CursorProvider } from '@/hooks/useCursorState'
+import { HeroScrollProvider } from '@/hooks/useHeroScrollState'
 import { SmoothScrollProvider } from '@/providers/SmoothScrollProvider'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
@@ -74,11 +75,13 @@ function AppContent() {
 export default function App() {
   return (
     <CursorProvider>
-      <SmoothScrollProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </SmoothScrollProvider>
+      <HeroScrollProvider>
+        <SmoothScrollProvider>
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+        </SmoothScrollProvider>
+      </HeroScrollProvider>
     </CursorProvider>
   )
 }
