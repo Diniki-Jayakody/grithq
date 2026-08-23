@@ -5,6 +5,7 @@ import { images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useIsMobile } from '@/hooks/useMediaQuery'
+import { HERO_BACKGROUND_PROGRESS, useHeroScrollState } from '@/hooks/useHeroScrollState'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,6 +24,7 @@ export function HeroOpening() {
   const scrollHintRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
+  const { setHeroBackgroundProgress, resetHeroBackground } = useHeroScrollState()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -40,7 +42,8 @@ export function HeroOpening() {
       gsap.set(bg, { opacity: 0.35 })
       gsap.set(statement, { opacity: 1, y: 0 })
       gsap.set(scrollHint, { opacity: 1 })
-      return
+      setHeroBackgroundProgress(HERO_BACKGROUND_PROGRESS)
+      return () => resetHeroBackground()
     }
 
     const offsetsX = isMobile ? MOBILE_OFFSETS_X : DESKTOP_OFFSETS
@@ -68,6 +71,9 @@ export function HeroOpening() {
           pin: pin,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            setHeroBackgroundProgress(self.progress)
+          },
         },
       })
 
@@ -128,8 +134,11 @@ export function HeroOpening() {
       )
     }, section)
 
-    return () => ctx.revert()
-  }, [reducedMotion, isMobile])
+    return () => {
+      resetHeroBackground()
+      ctx.revert()
+    }
+  }, [reducedMotion, isMobile, setHeroBackgroundProgress, resetHeroBackground])
 
   return (
     <section
