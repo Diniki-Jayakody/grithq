@@ -9,8 +9,8 @@ export const STRINGS = {
 
   hero: {
     eyebrow: 'Building Value',
-    headline: 'INVESTING FOR',
-    headlineLine2: 'WHATS NEXT',
+    headline: 'Investing For',
+    headlineLine2: "What's Next",
     scrollHint: 'SCROLL TO EXPLORE',
   },
 
@@ -156,7 +156,7 @@ export const STRINGS = {
     currentOpportunity: 'Current Opportunity',
     availableFor: 'Available For',
     saleRent: 'Sale / Rent',
-    availableSaleRent: 'Available — Sale / Rent',
+    availableSaleRent: 'Available - Sale / Rent',
     exploreGritHQ: 'Explore GritHQ',
     viewOpportunity: 'View Opportunity →',
   },
@@ -165,7 +165,7 @@ export const STRINGS = {
     back: '← Back',
     eyebrow: 'A Message From',
     name: 'Mangala Karunaratne',
-    sampleNotice: 'Sample message — to be replaced with the confirmed letter.',
+    sampleNotice: 'Sample message - to be replaced with the confirmed letter.',
     signOff: 'Regards,',
     signature: 'Mangala Karunaratne',
   },
@@ -209,8 +209,9 @@ export const STRINGS = {
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
       retry: 'Try Again',
-      subject: 'GritHQ — Sale/Rent Opportunity Inquiry',
-      property: 'GritHQ — Sale / Rent Opportunity',
+      subject: 'GritHQ — Sale Or Rent Opportunity Inquiry',
+      formType: 'GritHQ Sale Or Rent Opportunity',
+      property: 'GritHQ',
       validation: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',
@@ -245,6 +246,8 @@ export const STRINGS = {
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
       subject: 'GritHQ — General Contact Inquiry',
+      formType: 'General Contact',
+      property: 'GritHQ',
       validation: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',

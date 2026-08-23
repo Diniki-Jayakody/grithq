@@ -4,16 +4,78 @@ import { DisplayText } from '@/components/typography/DisplayText'
 import { MagneticButton } from '@/components/animations/MagneticButton'
 import { contactInfo, enquiryTypes } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
+import { sendSiteEmail } from '@/constants/emailjs'
+import { isValidEmail } from '@/utils/validation'
 import { styles } from '@/styles/styles'
 import { useCursorState } from '@/hooks/useCursorState'
 
-export function ContactSection() {
-  const [submitted, setSubmitted] = useState(false)
-  const { setCursorState } = useCursorState()
+type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+interface FormValues {
+  name: string
+  email: string
+  company: string
+  message: string
+}
+
+interface FormErrors {
+  name?: string
+  email?: string
+  message?: string
+}
+
+const INITIAL_VALUES: FormValues = {
+  name: '',
+  email: '',
+  company: '',
+  message: '',
+}
+
+function validate(values: FormValues): FormErrors {
+  const copy = STRINGS.contact.form.validation
+  const errors: FormErrors = {}
+
+  if (!values.name.trim()) errors.name = copy.name
+  if (!isValidEmail(values.email)) errors.email = copy.email
+  if (!values.message.trim()) errors.message = copy.message
+
+  return errors
+}
+
+export function ContactSection() {
+  const [values, setValues] = useState<FormValues>(INITIAL_VALUES)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const { setCursorState } = useCursorState()
+  const copy = STRINGS.contact.form
+  const isSending = status === 'sending'
+  const submitLabel =
+    status === 'sending' ? copy.sending : status === 'error' ? copy.retry : copy.submit
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
+    if (isSending) return
+
+    const nextErrors = validate(values)
+    setErrors(nextErrors)
+    if (Object.keys(nextErrors).length > 0) return
+
+    setStatus('sending')
+
+    try {
+      await sendSiteEmail({
+        subject: copy.subject,
+        formType: copy.formType,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        message: values.message.trim(),
+        property: copy.property,
+      })
+      setStatus('success')
+      setValues(INITIAL_VALUES)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -23,7 +85,7 @@ export function ContactSection() {
       aria-labelledby="contact-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.contact.number}>
+        <SectionLabel>
           {STRINGS.sections.contact.label}
         </SectionLabel>
 
@@ -67,8 +129,8 @@ export function ContactSection() {
           </div>
 
           <div>
-            {submitted ? (
-              <div className="flex h-full items-center">
+            {status === 'success' ? (
+              <div role="status" className="flex h-full items-center">
                 <p className="font-display text-xl font-light text-grithq-offwhite">
                   {STRINGS.sections.contact.submitSuccess}
                 </p>
@@ -77,83 +139,112 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="sr-only">
-                    {STRINGS.contact.form.name}
+                    {copy.name}
                   </label>
                   <input
                     id="name"
                     name="name"
                     type="text"
+                    autoComplete="name"
                     required
-                    placeholder={STRINGS.contact.form.name}
+                    value={values.name}
+                    onChange={(event) =>
+                      setValues((current) => ({ ...current, name: event.target.value }))
+                    }
+                    placeholder={copy.name}
                     className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? 'contact-name-error' : undefined}
                   />
+                  {errors.name && (
+                    <p id="contact-name-error" className={styles.formError}>
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className="sr-only">
-                    {STRINGS.contact.form.email}
+                    {copy.email}
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
                     required
-                    placeholder={STRINGS.contact.form.email}
+                    value={values.email}
+                    onChange={(event) =>
+                      setValues((current) => ({ ...current, email: event.target.value }))
+                    }
+                    placeholder={copy.email}
                     className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? 'contact-email-error' : undefined}
                   />
+                  {errors.email && (
+                    <p id="contact-email-error" className={styles.formError}>
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="company" className="sr-only">
-                    {STRINGS.contact.form.company}
+                    {copy.company}
                   </label>
                   <input
                     id="company"
                     name="company"
                     type="text"
-                    placeholder={STRINGS.contact.form.company}
+                    autoComplete="organization"
+                    value={values.company}
+                    onChange={(event) =>
+                      setValues((current) => ({ ...current, company: event.target.value }))
+                    }
+                    placeholder={copy.company}
                     className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="enquiry" className="sr-only">
-                    {STRINGS.contact.form.enquiryType}
-                  </label>
-                  <select
-                    id="enquiry"
-                    name="enquiry"
-                    required
-                    defaultValue=""
-                    className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
-                  >
-                    <option value="" disabled>
-                      {STRINGS.contact.form.enquiryType}
-                    </option>
-                    {enquiryTypes.map((type) => (
-                      <option key={type} value={type} className="bg-grithq-black text-grithq-offwhite">
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
                   <label htmlFor="message" className="sr-only">
-                    {STRINGS.contact.form.message}
+                    {copy.message}
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     rows={4}
-                    placeholder={STRINGS.contact.form.message}
+                    value={values.message}
+                    onChange={(event) =>
+                      setValues((current) => ({ ...current, message: event.target.value }))
+                    }
+                    placeholder={copy.message}
                     className="w-full resize-none border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? 'contact-message-error' : undefined}
                   />
+                  {errors.message && (
+                    <p id="contact-message-error" className={styles.formError}>
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
+
+                {status === 'error' && (
+                  <div role="alert" className="border border-grithq-cream/15 px-5 py-4">
+                    <p className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
+                      {copy.error}
+                    </p>
+                    <p className={`mt-2 ${styles.formError}`}>{copy.errorMessage}</p>
+                  </div>
+                )}
 
                 <MagneticButton
                   type="submit"
-                  className="group mt-4 border border-grithq-cream/20 px-10 py-4 transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10"
+                  disabled={isSending}
+                  className="group mt-4 border border-grithq-cream/20 px-10 py-4 transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <span className="font-display text-xs tracking-[0.3em] text-grithq-offwhite uppercase">
-                    {STRINGS.contact.form.submit}
+                    {submitLabel}
                   </span>
                 </MagneticButton>
               </form>
