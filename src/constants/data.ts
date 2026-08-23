@@ -54,10 +54,10 @@ export const leadershipMessage = {
   backHref: ROUTES.leadership,
   year: '2026',
   paragraphs: [
-    '[Sample] GritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
-    '[Sample] We look for opportunities where ownership is an act of stewardship — where buildings, businesses and partnerships can be strengthened rather than merely transacted. Long-term thinking is not a slogan for us. It is the standard by which every decision is weighed.',
-    '[Sample] Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present — and protected when they are not.',
-    '[Sample] The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped GritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
+    'GritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
+    'We look for opportunities where ownership is an act of stewardship — where buildings, businesses and partnerships can be strengthened rather than merely transacted. Long-term thinking is not a slogan for us. It is the standard by which every decision is weighed.',
+    'Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present — and protected when they are not.',
+    'The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped GritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
   ],
 } as const
 
