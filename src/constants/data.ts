@@ -572,7 +572,7 @@ export const gritHQPropertyData = {
   commercialTerms: {
     sale: {
       label: STRINGS.opportunity.saleLabel,
-      value: 'USD 3.7',
+      value: 'USD 3.7 Mn',
     },
     rent: {
       label: STRINGS.opportunity.rentLabel,

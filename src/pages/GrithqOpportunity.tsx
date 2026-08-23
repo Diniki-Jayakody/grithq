@@ -234,17 +234,32 @@ export function GrithqOpportunity() {
 
           <div className="mt-12 border-t border-grithq-cream/10 pt-10">
             <OpportunityHeading>{STRINGS.opportunity.photosHeading}</OpportunityHeading>
+
+            {/* Property Location */}
             <a
-              href={property.driveLink}
+              href="https://maps.app.goo.gl/rn2m3xMSUspSxbqA9"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.ctaButton} mt-6 w-full px-6 sm:w-auto sm:px-10`}
               onMouseEnter={() => setCursorState('open')}
               onMouseLeave={() => setCursorState('default')}
             >
+              View on Map
+            </a>
+
+            {/* Building Photos */}
+            <a
+              href={property.driveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.ctaButton} mt-3 w-full px-6 sm:w-auto sm:px-10`}
+              onMouseEnter={() => setCursorState('open')}
+              onMouseLeave={() => setCursorState('default')}
+            >
               {STRINGS.opportunity.photosCta}
             </a>
           </div>
+
         </div>
       </section>
 
