@@ -548,7 +548,7 @@ export const contactInfo = {
   social: {
     linkedin: 'https://www.linkedin.com/company/grithq/',
     instagram: 'https://instagram.com',
-    twitter: 'https://twitter.com',
+    // twitter: 'https://twitter.com',
   },
 }
 
