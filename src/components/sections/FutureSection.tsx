@@ -44,9 +44,6 @@ export function FutureSection() {
       <ArchitecturalGrid />
 
       <div className="relative mx-auto max-w-7xl section-padding">
-        <SectionLabel number={STRINGS.sections.future.number}>
-          {STRINGS.sections.future.label}
-        </SectionLabel>
 
         <DisplayText
           as="h2"
