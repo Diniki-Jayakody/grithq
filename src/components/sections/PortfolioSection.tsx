@@ -19,8 +19,6 @@ import { useIsMobile } from '@/hooks/useMediaQuery'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const secondaryOffsets = ['lg:mt-0', 'lg:mt-16', 'lg:mt-12']
-
 function FeaturedOpportunity({ project }: { project: Project }) {
   const cardRef = useRef<HTMLElement>(null)
   const { setCursorState } = useCursorState()
@@ -67,15 +65,15 @@ function FeaturedOpportunity({ project }: { project: Project }) {
         className="group block"
         onMouseEnter={() => !isMobile && setCursorState('view-project')}
         onMouseLeave={() => !isMobile && setCursorState('default')}
-        aria-label={`${project.name} — ${STRINGS.portfolio.viewOpportunity}`}
+        aria-label={`${project.name}: ${STRINGS.portfolio.viewOpportunity}`}
       >
         <div className="relative overflow-hidden">
-          <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/10] lg:max-h-[58vh]">
+          <div className="aspect-[16/10] sm:aspect-[16/9] lg:aspect-[2/1] lg:max-h-[56vh]">
             <img
               src={project.heroImage}
               alt={`${project.name} commercial building`}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+              className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.03]"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/85 via-grithq-burgundy/25 to-transparent" />
@@ -108,7 +106,7 @@ function FeaturedOpportunity({ project }: { project: Project }) {
         </div>
         <Link
           to={href}
-          className={`${styles.ctaButtonLight} w-full min-h-11 px-6 sm:w-auto`}
+          className={`${styles.ctaButtonLight} min-h-11 w-full px-6 sm:w-auto`}
           onMouseEnter={() => !isMobile && setCursorState('open')}
           onMouseLeave={() => !isMobile && setCursorState('default')}
         >
@@ -121,46 +119,59 @@ function FeaturedOpportunity({ project }: { project: Project }) {
 
 function SecondaryProject({
   project,
-  offsetClass,
+  imageClassName,
+  fill = false,
 }: {
   project: Project
-  offsetClass: string
+  imageClassName: string
+  fill?: boolean
 }) {
   const { setCursorState } = useCursorState()
   const isMobile = useIsMobile()
 
   return (
-    <article className={`portfolio-secondary min-w-0 ${offsetClass}`}>
+    <article className={`portfolio-secondary min-w-0 ${fill ? 'lg:h-full' : ''}`}>
       <Link
         to={ROUTES.project(project.slug)}
-        className="group block"
+        className={`group block ${fill ? 'lg:flex lg:h-full lg:flex-col' : ''}`}
         onMouseEnter={() => !isMobile && setCursorState('view-project')}
         onMouseLeave={() => !isMobile && setCursorState('default')}
       >
-        <h3 className="font-display text-[clamp(1.15rem,2.4vw,1.6rem)] font-light tracking-tight text-grithq-burgundy">
-          {project.name}
-        </h3>
-        {project.status === 'Under Development' && (
-          <p className="mt-2 font-display text-[10px] tracking-[0.28em] text-grithq-deepAccent uppercase">
-            {project.status}
-          </p>
-        )}
-        <div className="relative mt-3 overflow-hidden">
-          <div className="aspect-[4/5] sm:aspect-[3/4]">
-            <img
-              src={project.heroImage}
-              alt={project.name}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/40 via-transparent to-transparent" />
+        <div
+          className={`relative overflow-hidden ${
+            fill
+              ? `${imageClassName} lg:min-h-0 lg:flex-1 lg:aspect-auto`
+              : imageClassName
+          }`}
+        >
+          <img
+            src={project.heroImage}
+            alt={project.name}
+            loading="lazy"
+            className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.04]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/45 via-transparent to-transparent" />
         </div>
-        {project.valueStatement && (
-          <p className="mt-3 font-display text-sm font-light leading-snug text-grithq-burgundy/70">
-            {project.valueStatement}
-          </p>
-        )}
+        <div className="mt-4 flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h3 className="font-display text-[clamp(1.2rem,2.4vw,1.75rem)] font-light tracking-tight text-grithq-burgundy">
+              {project.name}
+            </h3>
+            {project.status === 'Under Development' && (
+              <p className="mt-2 font-display text-[10px] tracking-[0.28em] text-grithq-deepAccent uppercase">
+                {project.status}
+              </p>
+            )}
+            {project.valueStatement && (
+              <p className="mt-2 max-w-sm font-display text-sm font-light leading-snug text-grithq-burgundy/70">
+                {project.valueStatement}
+              </p>
+            )}
+          </div>
+          <span className="mt-1 hidden shrink-0 font-display text-[10px] tracking-[0.28em] text-grithq-mauve uppercase lg:inline">
+            {STRINGS.portfolio.viewProject}
+          </span>
+        </div>
       </Link>
     </article>
   )
@@ -171,6 +182,9 @@ export function PortfolioSection() {
   const reducedMotion = useReducedMotion()
   const featured = getPrimaryPortfolioProject()
   const secondary = getSecondaryPortfolioProjects()
+  const asayaSands = secondary[0]
+  const asayaSummit = secondary[1]
+  const southBeach = secondary[2]
 
   useEffect(() => {
     const section = sectionRef.current
@@ -178,11 +192,11 @@ export function PortfolioSection() {
 
     const ctx = gsap.context(() => {
       gsap.from('.portfolio-secondary', {
-        scrollTrigger: { trigger: '.portfolio-secondary-grid', start: 'top 85%' },
+        scrollTrigger: { trigger: '.portfolio-secondary-flow', start: 'top 85%' },
         y: 36,
         opacity: 0,
         duration: 0.9,
-        stagger: 0.1,
+        stagger: 0.12,
         ease: 'power3.out',
       })
     }, section)
@@ -215,15 +229,34 @@ export function PortfolioSection() {
         <div className="mt-10 md:mt-12">
           {featured && <FeaturedOpportunity project={featured} />}
 
-          <div className="portfolio-secondary-grid mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-12 lg:grid-cols-12 lg:items-start lg:gap-8">
-            {secondary.map((project, index) => (
-              <div key={project.id} className="lg:col-span-4">
-                <SecondaryProject
-                  project={project}
-                  offsetClass={secondaryOffsets[index] ?? ''}
-                />
-              </div>
-            ))}
+          <div className="portfolio-secondary-flow mt-12 md:mt-16 lg:mt-20">
+            <div className="grid items-start gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
+              {asayaSands && (
+                <div className="lg:col-span-7">
+                  <SecondaryProject
+                    project={asayaSands}
+                    imageClassName="aspect-[16/10]"
+                  />
+                </div>
+              )}
+              {asayaSummit && (
+                <div className="lg:col-span-5 lg:row-span-2">
+                  <SecondaryProject
+                    project={asayaSummit}
+                    imageClassName="aspect-[16/11]"
+                    fill
+                  />
+                </div>
+              )}
+              {southBeach && (
+                <div className="md:col-span-2 lg:col-span-7">
+                  <SecondaryProject
+                    project={southBeach}
+                    imageClassName="aspect-[16/10] sm:aspect-[2/1] lg:aspect-[16/10]"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser'
 
-/** EmailJS configuration — values come from environment variables only */
+/** EmailJS configuration. Values come from environment variables only. */
 
 export const EMAILJS_CONFIG = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '',

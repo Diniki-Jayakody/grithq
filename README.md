@@ -1,6 +1,6 @@
 # GRITHQ
 
-Premium immersive website for GRITHQ — a private holding and investment company.
+Premium immersive website for GRITHQ, a private holding and investment company.
 
 ## Stack
 
@@ -42,11 +42,11 @@ public/
 
 All content is data-driven. Edit files in `src/data/`:
 
-- `portfolio.ts` — Project details and gallery images
-- `impact.ts` — Impact metrics, stories, initiatives
-- `developments.ts` — Development projects, philosophy, timeline
-- `contact.ts` — Contact information
-- `images.ts` — Image path configuration
+- `portfolio.ts`: Project details and gallery images
+- `impact.ts`: Impact metrics, stories, initiatives
+- `developments.ts`: Development projects, philosophy, timeline
+- `contact.ts`: Contact information
+- `images.ts`: Image path configuration
 
 Replace `[PLACEHOLDER]` values with verified content only.
 

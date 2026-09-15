@@ -63,4 +63,6 @@ export const styles = {
   formField:
     'w-full border-b border-grithq-cream/20 bg-transparent py-3 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none',
   formError: 'mt-2 text-xs leading-relaxed text-grithq-cream/65',
+  inlineLinkDark:
+    'underline decoration-grithq-mauve/45 underline-offset-[5px] transition-colors hover:text-grithq-offwhite hover:decoration-grithq-mauve focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-black',
 } as const

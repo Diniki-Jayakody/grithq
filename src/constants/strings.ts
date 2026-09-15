@@ -1,4 +1,4 @@
-/** Centralized UI copy — navigation, sections, buttons, footer */
+/** Centralized UI copy: navigation, sections, buttons, footer */
 
 export const STRINGS = {
   brand: {
@@ -31,11 +31,18 @@ export const STRINGS = {
       identityImageAlt:
         'Editorial illustration: the money you make is a symbol of the value you create.',
     },
+    investorFor: {
+      label: 'Investor For',
+      eyebrow: 'Startup Investments',
+      heading: 'Investor For',
+      subtext:
+        'Businesses GritHQ has invested in, distinct from the property portfolio.',
+    },
     portfolio: {
       label: 'Portfolio',
-      heading: 'Assets shaped by vision.',
+      heading: 'Properties we hold and develop.',
       subtext:
-        'A curated collection of hospitality, commercial and development assets — each selected for long-term potential and enduring value.',
+        'Hospitality, commercial and development assets chosen for long-term value.',
     },
     developments: {
       label: 'Creation',
@@ -53,6 +60,7 @@ export const STRINGS = {
       communityInitiatives: 'Community Initiatives',
       impactGallery: 'Impact Gallery',
       stories: 'Stories',
+      galleryImageAlt: 'Community programme supported by GritHQ',
     },
     future: {
       label: 'Future',
@@ -150,6 +158,16 @@ export const STRINGS = {
     ],
   },
 
+  investorFor: {
+    visit: 'Visit',
+    projects: {
+      flashHealth: 'Flash Health',
+      dossiers: 'Dossiers',
+      rootstone: 'Rootstone',
+      magicUnbound: 'Magic Unbound',
+    },
+  },
+
   portfolio: {
     exploreProject: 'Explore Project →',
     viewProject: 'VIEW PROJECT',
@@ -173,7 +191,7 @@ export const STRINGS = {
   opportunity: {
     back: '← Back',
     eyebrow: 'Current Opportunity',
-    availability: 'Available — Sale / Rent',
+    availability: 'Available: Sale / Rent',
     available: 'Available',
     termsHeading: 'Sale / Rent Opportunity',
     saleLabel: 'Sale',
@@ -209,7 +227,7 @@ export const STRINGS = {
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
       retry: 'Try Again',
-      subject: 'GritHQ — Sale Or Rent Opportunity Inquiry',
+      subject: 'GritHQ: Sale Or Rent Opportunity Inquiry',
       formType: 'GritHQ Sale Or Rent Opportunity',
       property: 'GritHQ',
       validation: {
@@ -232,6 +250,11 @@ export const STRINGS = {
     nextProject: 'Next Project',
     viewAllPortfolio: 'View All Portfolio',
     continue: 'Continue →',
+    websiteLink: {
+      before: 'More about the property, including rooms and workspace, is on the ',
+      linkLabel: 'Asaya Sands website',
+      after: '.',
+    },
   },
 
   contact: {
@@ -245,7 +268,7 @@ export const STRINGS = {
       retry: 'Try Again',
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
-      subject: 'GritHQ — General Contact Inquiry',
+      subject: 'GritHQ: General Contact Inquiry',
       formType: 'General Contact',
       property: 'GritHQ',
       validation: {

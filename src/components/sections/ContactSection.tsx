@@ -1,8 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { SectionLabel } from '@/components/typography/SectionLabel'
-import { DisplayText } from '@/components/typography/DisplayText'
 import { MagneticButton } from '@/components/animations/MagneticButton'
-import { contactInfo, enquiryTypes } from '@/constants/data'
+import { contactInfo } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
 import { sendSiteEmail } from '@/constants/emailjs'
 import { isValidEmail } from '@/utils/validation'
@@ -32,7 +31,7 @@ const INITIAL_VALUES: FormValues = {
 }
 
 function validate(values: FormValues): FormErrors {
-  const copy = STRINGS.contact.form.validation
+  const copy = STRINGS.contact.form
   const errors: FormErrors = {}
 
   if (!values.name.trim()) errors.name = copy.name
@@ -89,53 +88,15 @@ export function ContactSection() {
           {STRINGS.sections.contact.label}
         </SectionLabel>
 
-        <div className="mt-12 grid gap-16 lg:grid-cols-2 lg:gap-24">
-          <div>
-            <DisplayText
-              as="h2"
-              id="contact-heading"
-              className="text-[clamp(2.5rem,7vw,6rem)] font-black leading-[0.9] uppercase"
-            >
-              {STRINGS.sections.contact.heading}
-              <br />
-              {STRINGS.sections.contact.headingLine2}
-            </DisplayText>
-
-            <div className="mt-12 space-y-6">
-              {enquiryTypes.map((type) => (
-                <p
-                  key={type}
-                  className="font-display text-sm tracking-widest text-grithq-cream/40 uppercase"
-                >
-                  {type}
-                </p>
-              ))}
-            </div>
-
-            <div className="mt-12 space-y-3 text-sm text-grithq-cream/50">
-              <p>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="transition-colors hover:text-grithq-offwhite"
-                  onMouseEnter={() => setCursorState('open')}
-                  onMouseLeave={() => setCursorState('default')}
-                >
-                  {contactInfo.email}
-                </a>
+        <div className="mx-auto mt-12 w-full max-w-2xl">
+          {status === 'success' ? (
+            <div role="status" className="flex min-h-[400px] items-center justify-center">
+              <p className="font-display text-xl font-light text-grithq-offwhite">
+                {STRINGS.sections.contact.submitSuccess}
               </p>
-              <p>{contactInfo.phone}</p>
-              <p>{contactInfo.address}</p>
             </div>
-          </div>
-
-          <div>
-            {status === 'success' ? (
-              <div role="status" className="flex h-full items-center">
-                <p className="font-display text-xl font-light text-grithq-offwhite">
-                  {STRINGS.sections.contact.submitSuccess}
-                </p>
-              </div>
-            ) : (
+          ) : (
+            <>
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="sr-only">
@@ -162,6 +123,7 @@ export function ContactSection() {
                     </p>
                   )}
                 </div>
+
                 <div>
                   <label htmlFor="email" className="sr-only">
                     {copy.email}
@@ -187,6 +149,7 @@ export function ContactSection() {
                     </p>
                   )}
                 </div>
+
                 <div>
                   <label htmlFor="company" className="sr-only">
                     {copy.company}
@@ -204,6 +167,7 @@ export function ContactSection() {
                     className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="message" className="sr-only">
                     {copy.message}
@@ -238,18 +202,29 @@ export function ContactSection() {
                   </div>
                 )}
 
-                <MagneticButton
-                  type="submit"
-                  disabled={isSending}
-                  className="group mt-4 border border-grithq-cream/20 px-10 py-4 transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  <span className="font-display text-xs tracking-[0.3em] text-grithq-offwhite uppercase">
-                    {submitLabel}
-                  </span>
-                </MagneticButton>
+                <div className="flex justify-center">
+                  <MagneticButton
+                    type="submit"
+                    disabled={isSending}
+                    className="group mt-4 border border-grithq-cream/20 px-10 py-4 transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <span className="font-display text-xs tracking-[0.3em] text-grithq-offwhite uppercase">
+                      {submitLabel}
+                    </span>
+                  </MagneticButton>
+                </div>
               </form>
-            )}
-          </div>
+
+              <div className="mt-16 border-t border-grithq-cream/10 pt-8 text-center">
+                <div className="space-y-3 text-sm text-grithq-cream/50">
+                  <p>
+                    {contactInfo.email}
+                  </p>
+                  <p>{contactInfo.address}</p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

@@ -54,7 +54,7 @@ function InvestmentAreaCell({
       <div className="absolute inset-0">
         <motion.img
           src={area.image}
-          alt={`${area.title} — investment focus`}
+          alt={`${area.title} investment focus`}
           className="h-full w-full object-cover"
           animate={{
             scale: isActive ? 1.06 : 1,

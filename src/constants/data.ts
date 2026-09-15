@@ -55,8 +55,8 @@ export const leadershipMessage = {
   year: '2026',
   paragraphs: [
     'GritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
-    'We look for opportunities where ownership is an act of stewardship — where buildings, businesses and partnerships can be strengthened rather than merely transacted. Long-term thinking is not a slogan for us. It is the standard by which every decision is weighed.',
-    'Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present — and protected when they are not.',
+    'We look for opportunities where ownership is an act of stewardship, where buildings, businesses and partnerships can be strengthened rather than merely transacted. Long-term thinking is not a slogan for us. It is the standard by which every decision is weighed.',
+    'Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present, and protected when they are not.',
     'The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped GritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
   ],
 } as const
@@ -132,6 +132,7 @@ export interface Project {
   emphasis?: 'primary' | 'standard'
   deal?: ProjectDeal
   valueStatement?: string
+  websiteHref?: string
 }
 
 export const projects: Project[] = [
@@ -144,21 +145,21 @@ export const projects: Project[] = [
     status: 'In Development',
     developmentType: 'Destination Resort',
     shortDescription:
-      'A destination-led asset shaped around landscape, hospitality and long-term value creation.',
+      'A coastal hospitality property with guest rooms, shared workspace and a setting shaped by the landscape.',
     description:
-      'Asaya Sands represents a vision for destination-led hospitality — where natural landscape, architectural restraint and guest experience converge into a lasting asset.',
+      'Asaya Sands is a coastal hospitality property in southern Sri Lanka. It brings together guest stays, shared workspace and a setting that stays close to the land.',
     overview: [
-      'Conceived as a premium coastal destination, Asaya Sands integrates resort hospitality with thoughtfully scaled development across a dramatic natural setting.',
-      'The project prioritises landscape preservation, local materiality and experiential design — creating a place that feels both luxurious and grounded.',
-      'As a portfolio asset, Asaya Sands reflects GRITHQ\'s approach to hospitality investments with long-term ownership horizons.',
+      'The architecture is kept simple and open, so the buildings sit within the landscape rather than overpowering it.',
+      'Alongside rooms for guests, Asaya Sands includes shared workspace. The aim is a place that works for both rest and focused work.',
     ],
     vision:
-      'To create a destination that outlasts trends — where every architectural decision serves both guest experience and generational asset value.',
+      'To build a coastal property with a clear identity and a long ownership view.',
     heroImage: portfolioImages.asayaSands.hero,
     gallery: [...portfolioImages.asayaSands.gallery],
     featured: true,
     year: '2024',
     valueStatement: 'The Best Aesthetic Coworking Space',
+    websiteHref: EXTERNAL_LINKS.asayaSands,
   },
   {
     id: 'asaya-summit',
@@ -169,16 +170,15 @@ export const projects: Project[] = [
     status: 'Under Development',
     developmentType: 'Destination Concept',
     shortDescription:
-      'A distinctive destination concept positioned around experience, place and long-term potential.',
+      'A mountain destination concept planned around the highland setting and a quieter pace.',
     description:
-      'Asaya Summit explores elevated destination living — architecture that responds to terrain, climate and the rhythms of place rather than imposing upon them.',
+      'Asaya Summit is a destination concept in the central highlands of Sri Lanka. The project is still under development.',
     overview: [
-      'Positioned at the intersection of hospitality and residential development, Asaya Summit is designed as an experience-led asset with enduring appeal.',
-      'The concept emphasises panoramic views, natural materials and spaces that encourage contemplation and connection with environment.',
-      'This project illustrates GRITHQ\'s interest in distinctive destinations with strong identity and long-term positioning.',
+      'It is planned around the mountain setting, with views, local materials and a slower pace of stay.',
+      'The concept sits between hospitality and residential use, with a long-term view rather than a short-stay product.',
     ],
     vision:
-      'To establish a summit destination defined by place, not formula — where architecture and landscape create an irreplaceable sense of arrival.',
+      'To create a mountain destination that feels specific to its place.',
     heroImage: portfolioImages.asayaSummit.hero,
     gallery: [...portfolioImages.asayaSummit.gallery],
     featured: true,
@@ -194,16 +194,15 @@ export const projects: Project[] = [
     status: 'Operational',
     developmentType: 'Commercial Office',
     shortDescription:
-      'A strategic commercial asset designed to support modern business, connectivity and long-term ownership.',
+      'A commercial building in Colombo, designed as a modern workspace for long-term use.',
     description:
-      'GritHQ represents the holding company\'s commercial real estate capability — a modern workspace asset designed for connectivity, flexibility and enduring occupancy value.',
+      'GritHQ is a commercial building in Colombo. It is designed as a modern workspace for businesses that want a strong location and a long-term home.',
     overview: [
-      'This commercial asset combines contemporary architecture with functional workspace design, supporting businesses that value location, quality and long-term stability.',
-      'The building emphasises natural light, flexible floor plates and premium common areas — attributes that sustain value across market cycles.',
-      'GritHQ demonstrates the holding company\'s approach to commercial assets with strategic positioning.',
+      'The building offers natural light, flexible floors and shared areas made for daily work.',
+      'It is the holding company’s own commercial property and is now available for sale or rent.',
     ],
     vision:
-      'To own and steward commercial spaces that businesses choose not just for today, but for the decade ahead.',
+      'To own commercial space that businesses want to stay in over time.',
     heroImage: portfolioImages.grithq.hero,
     gallery: [...portfolioImages.grithq.gallery],
     featured: true,
@@ -223,16 +222,15 @@ export const projects: Project[] = [
     status: 'Active Development',
     developmentType: 'Mixed-Use Coastal',
     shortDescription:
-      'A coastal development opportunity shaped around location, lifestyle and future value.',
+      'A coastal development on Sri Lanka’s southern coast, shaped by location and lifestyle.',
     description:
-      'South Beach captures the energy of coastal urban living — a development shaped by proximity to water, cultural vibrancy and the enduring appeal of place.',
+      'South Beach is a coastal development on Sri Lanka’s southern coast. The project is a luxury penthouse by the sea.',
     overview: [
-      'This mixed-use coastal development combines residential, hospitality and retail elements within a walkable, lifestyle-oriented framework.',
-      'Architecture responds to the coastal context with generous terraces, natural ventilation and materials that weather beautifully over time.',
-      'South Beach illustrates GRITHQ\'s development philosophy: location first, design with intent, value over time.',
+      'The design looks to the coast, with outdoor space and a setting defined by the water.',
+      'It is planned as a long-term residential asset, not a generic seaside template.',
     ],
     vision:
-      'To create a coastal address that becomes synonymous with its place — not replicable, not generic, but definitively South Beach.',
+      'To create a coastal address that belongs to this place.',
     heroImage: portfolioImages.southBeach.hero,
     gallery: [...portfolioImages.southBeach.gallery],
     featured: true,
@@ -264,6 +262,42 @@ export function getSecondaryPortfolioProjects(): Project[] {
     (project): project is Project => project !== undefined
   )
 }
+
+// ─── Invested Businesses ────────────────────────────────────────────────────
+
+export interface InvestedBusiness {
+  id: string
+  name: string
+  image: string
+  href: string
+}
+
+export const investedBusinesses: InvestedBusiness[] = [
+  {
+    id: 'flash-health',
+    name: STRINGS.investorFor.projects.flashHealth,
+    image: images.invested.flashHealth,
+    href: EXTERNAL_LINKS.investedProjects.FlashHealth,
+  },
+  {
+    id: 'dossiers',
+    name: STRINGS.investorFor.projects.dossiers,
+    image: images.invested.dossiers,
+    href: EXTERNAL_LINKS.investedProjects.Dossiers,
+  },
+  {
+    id: 'rootstone',
+    name: STRINGS.investorFor.projects.rootstone,
+    image: images.invested.rootstone,
+    href: EXTERNAL_LINKS.investedProjects.Rootstone,
+  },
+  {
+    id: 'magic-unbound',
+    name: STRINGS.investorFor.projects.magicUnbound,
+    image: images.invested.magicUnbound,
+    href: EXTERNAL_LINKS.investedProjects.MagicUnbound,
+  },
+]
 
 // ─── Developments ───────────────────────────────────────────────────────────
 
@@ -309,7 +343,7 @@ export const developments: DevelopmentItem[] = [
     title: 'Asaya Summit Destination',
     category: 'upcoming',
     description:
-      'An upcoming highland destination concept — architecture that responds to terrain, climate and the rhythms of place. Experience-led hospitality with enduring appeal.',
+      'An upcoming highland destination concept. Architecture that responds to terrain, climate and the rhythms of place. Experience-led hospitality with enduring appeal.',
     location: 'Central Highlands, Sri Lanka',
     status: 'Concept Phase',
     image: developmentImages.hospitality,
@@ -329,7 +363,7 @@ export const developments: DevelopmentItem[] = [
     title: 'Landscape Integration Initiative',
     category: 'completed',
     description:
-      'A completed development phase demonstrating GRITHQ\'s commitment to landscape-first design — where built form defers to terrain, vegetation and natural light.',
+      'A completed development phase demonstrating GRITHQ\'s commitment to landscape-first design, where built form defers to terrain, vegetation and natural light.',
     location: 'Southern Region, Sri Lanka',
     status: 'Completed',
     image: developmentImages.landscape,
@@ -359,7 +393,7 @@ export const investmentHighlights = [
     id: 'stewardship',
     label: 'Stewardship',
     value: 'Active',
-    description: 'Hands-on ownership — building, refining and holding assets with intent.',
+    description: 'Hands-on ownership: building, refining and holding assets with intent.',
   },
 ]
 
@@ -368,14 +402,14 @@ export const philosophyPrinciples = [
     number: '01',
     title: 'LONG-TERM THINKING',
     description:
-      'Value is not created overnight. We invest in horizons measured in decades, not quarters. Every asset is evaluated through the lens of what it becomes — not what it earns today.',
+      'Value is not created overnight. We invest in horizons measured in decades, not quarters. Every asset is evaluated through the lens of what it becomes, not what it earns today.',
     image: images.projects.southBeach2,
   },
   {
     number: '02',
     title: 'STRATEGIC OWNERSHIP',
     description:
-      'Ownership is not passive. It is active stewardship of assets with purpose and potential. We do not acquire to flip — we acquire to build, refine and hold.',
+      'Ownership is not passive. It is active stewardship of assets with purpose and potential. We do not acquire to flip. We acquire to build, refine and hold.',
     image: images.projects.grithq,
   },
   {
@@ -389,7 +423,7 @@ export const philosophyPrinciples = [
     number: '04',
     title: 'DISCIPLINED GROWTH',
     description:
-      'Growth without discipline is noise. We expand with intent, measure, and resolve — selecting opportunities that strengthen the portfolio rather than dilute it.',
+      'Growth without discipline is noise. We expand with intent, measure, and resolve, selecting opportunities that strengthen the portfolio rather than dilute it.',
     image: images.projects.asayaSands,
   },
 ]
@@ -417,7 +451,7 @@ export const timelineItems: TimelineItem[] = [
     year: '2028',
     label: 'EXPANDING',
     description:
-      'Portfolio growth across selected markets and asset classes — always with discipline, never with haste.',
+      'Portfolio growth across selected markets and asset classes, always with discipline, never with haste.',
   },
   {
     year: '2030+',
@@ -453,11 +487,18 @@ export interface CommunityInitiative {
 export interface ImpactGalleryItem {
   id: string
   src: string
-  caption: string
-  aspect: 'landscape' | 'portrait' | 'square'
+  alt: string
 }
 
-/** Qualitative impact pillars — no unverified numeric claims */
+export const impactGallery: ImpactGalleryItem[] = [
+  { id: 'g1', src: images.volunteer.one, alt: STRINGS.sections.impact.galleryImageAlt },
+  { id: 'g2', src: images.volunteer.two, alt: STRINGS.sections.impact.galleryImageAlt },
+  { id: 'g3', src: images.volunteer.three, alt: STRINGS.sections.impact.galleryImageAlt },
+  { id: 'g4', src: images.volunteer.four, alt: STRINGS.sections.impact.galleryImageAlt },
+  { id: 'g5', src: images.volunteer.five, alt: STRINGS.sections.impact.galleryImageAlt },
+]
+
+/** Qualitative impact pillars. No unverified numeric claims. */
 export const impactPillars: ImpactPillar[] = [
   {
     id: 'nourishment',
@@ -489,7 +530,7 @@ export const impactStories: ImpactStory[] = [
     id: 'story-community',
     title: 'Community in Action',
     description:
-      'Volunteers, teachers and local partners come together to ensure no child is left behind. The initiative extends beyond food — it builds connection, trust and a shared belief in what communities can achieve.',
+      'Volunteers, teachers and local partners come together to ensure no child is left behind. The initiative extends beyond food. It builds connection, trust and a shared belief in what communities can achieve.',
     caption: 'Community partnership',
     image: impactImages.community,
   },
@@ -515,7 +556,7 @@ export const communityInitiatives: CommunityInitiative[] = [
     id: 'initiative-volunteers',
     title: 'Community Volunteers',
     description:
-      'Local volunteers form the backbone of GRITHQ\'s social initiatives — distributing meals, supporting schools and building lasting relationships with the communities we serve.',
+      'Local volunteers form the backbone of GRITHQ\'s social initiatives, distributing meals, supporting schools and building lasting relationships with the communities we serve.',
     image: impactImages.volunteers,
   },
   {
@@ -525,15 +566,6 @@ export const communityInitiatives: CommunityInitiative[] = [
       'Working directly with schools to identify needs, deliver support and measure impact. A partnership model built on trust, consistency and long-term commitment.',
     image: impactImages.school,
   },
-]
-
-export const impactGallery: ImpactGalleryItem[] = [
-  { id: 'g1', src: images.volunteer.one, caption: 'School meal distribution', aspect: 'landscape' },
-  { id: 'g2', src: images.volunteer.three, caption: 'Community gathering', aspect: 'portrait' },
-  { id: 'g3', src: images.volunteer.two, caption: 'Nutritious meals prepared daily', aspect: 'landscape' },
-  { id: 'g4', src: images.volunteer.four, caption: 'Volunteers in action', aspect: 'square' },
-  { id: 'g5', src: images.volunteer.one, caption: 'School environment', aspect: 'landscape' },
-  { id: 'g6', src: images.volunteer.two, caption: 'Lives touched', aspect: 'portrait' },
 ]
 
 // ─── Contact ──────────────────────────────────────────────────────────────────
@@ -665,7 +697,7 @@ export const gritHQPropertyData = {
   locationBenefits: [
     {
       title: 'Location',
-      text: 'Heart of Battaramulla — premium commercial district location',
+      text: 'Heart of Battaramulla, a premium commercial district location',
     },
     {
       title: 'Strategic Position',
