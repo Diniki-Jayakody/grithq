@@ -169,7 +169,7 @@ export function IdentitySection() {
             <DisplayText
               as="h2"
               id="identity-heading"
-              className="identity-reveal mt-6 text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.2] text-grithq-burgundy"
+              className="identity-reveal mt-6 text-[clamp(1.7rem,3.4vw,2.5rem)] leading-[1.2] text-grithq-burgundy"
             >
               {identity.heading.map((line) => (
                 <span key={line} className="block md:whitespace-nowrap">
@@ -177,8 +177,7 @@ export function IdentitySection() {
                 </span>
               ))}
             </DisplayText>
-            <p className={`identity-reveal mt-6 ${styles.bodyTextMutedLight}`}>
-              <EmphasizedWeText text={identity.subtext} />
+            <p className={`identity-reveal mt-6 ${styles.bodyTextMutedLight}`}> {identity.subtext} 
             </p>
           </div>
 
