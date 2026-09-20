@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import { RevealImage } from '@/components/animations/RevealImage'
 import {
@@ -54,9 +53,6 @@ export function DevelopmentsSection() {
       aria-labelledby="developments-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.developments.number}>
-          {STRINGS.sections.developments.label}
-        </SectionLabel>
         <DisplayText
           as="h2"
           id="developments-heading"

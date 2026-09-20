@@ -11,7 +11,8 @@ import { MessageFromMangala } from '@/pages/MessageFromMangala'
 import { GrithqOpportunity } from '@/pages/GrithqOpportunity'
 import { ROUTES } from '@/constants/links'
 import { CursorProvider } from '@/hooks/useCursorState'
-import { SmoothScrollProvider } from '@/providers/SmoothScrollProvider'
+import { HeroScrollProvider } from '@/hooks/useHeroScrollState'
+import { SmoothScrollProvider, useLenisScroll } from '@/providers/SmoothScrollProvider'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -19,10 +20,22 @@ gsap.registerPlugin(ScrollTrigger)
 function AnimatedRoutes() {
   const location = useLocation()
   const reducedMotion = useReducedMotion()
+  const { scrollTo } = useLenisScroll()
 
   useEffect(() => {
     ScrollTrigger.refresh()
   }, [location.pathname])
+
+  useEffect(() => {
+    const resetScroll = () => {
+      window.scrollTo(0, 0)
+      scrollTo(0, { offset: 0, immediate: true })
+    }
+
+    resetScroll()
+    const frame = requestAnimationFrame(resetScroll)
+    return () => cancelAnimationFrame(frame)
+  }, [location.pathname, scrollTo])
 
   return (
     <AnimatePresence mode="wait">
@@ -74,11 +87,13 @@ function AppContent() {
 export default function App() {
   return (
     <CursorProvider>
-      <SmoothScrollProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </SmoothScrollProvider>
+      <HeroScrollProvider>
+        <SmoothScrollProvider>
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+        </SmoothScrollProvider>
+      </HeroScrollProvider>
     </CursorProvider>
   )
 }

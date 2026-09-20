@@ -5,36 +5,27 @@ import { images } from '@/constants/images'
 import { STRINGS } from '@/constants/strings'
 import { styles } from '@/styles/styles'
 import { useCursorState } from '@/hooks/useCursorState'
+import { useHeroScrollState } from '@/hooks/useHeroScrollState'
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const { setCursorState } = useCursorState()
+  const { heroBackgroundActive } = useHeroScrollState()
   const location = useLocation()
 
   useEffect(() => {
     setMenuOpen(false)
   }, [location.pathname])
 
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop
-      setScrolled(y > 50)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   const isHome = location.pathname === '/'
   const homeLink = isHome ? '#hero' : '/'
-  const navSolid = scrolled || !isHome
+  const navTranslucent = !isHome || heroBackgroundActive
 
   return (
     <>
       <header
         className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
-          navSolid ? 'bg-grithq-landing/80 backdrop-blur-md' : 'bg-transparent'
+          navTranslucent ? 'bg-grithq-landing/80 backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <nav

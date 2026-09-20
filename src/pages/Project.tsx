@@ -4,11 +4,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { getProjectBySlug, getAdjacentProjects } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
-import { RevealImage } from '@/components/animations/RevealImage'
+import { ROUTES } from '@/constants/links'
+import { styles } from '@/styles/styles'
 import { DisplayText } from '@/components/typography/DisplayText'
+import { PageBackLink } from '@/components/navigation/PageBackLink'
 import { useCursorState } from '@/hooks/useCursorState'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useLenisScroll } from '@/providers/SmoothScrollProvider'
+import { useIsMobile } from '@/hooks/useMediaQuery'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,11 +21,13 @@ export function Project() {
   const adjacent = slug ? getAdjacentProjects(slug) : null
   const { setCursorState } = useCursorState()
   const reducedMotion = useReducedMotion()
+  const isMobile = useIsMobile()
   const { scrollTo } = useLenisScroll()
   const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    scrollTo(0, { offset: 0 })
+    window.scrollTo(0, 0)
+    scrollTo(0, { offset: 0, immediate: true })
     ScrollTrigger.refresh()
   }, [slug, scrollTo])
 
@@ -62,18 +67,21 @@ export function Project() {
     return <Navigate to="/" replace />
   }
 
+  const websiteCopy = STRINGS.project.websiteLink
+
   return (
     <article>
-      <section ref={heroRef} className="relative flex h-[85vh] min-h-[500px] items-end overflow-hidden md:h-screen">
+      <section ref={heroRef} className="relative flex min-h-[70vh] items-end overflow-hidden md:min-h-[85vh]">
         <img
           src={project.heroImage}
           alt={project.name}
-          className="project-hero-img absolute inset-0 h-full w-full object-cover"
+          className="project-hero-img absolute inset-0 h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-grithq-black via-grithq-black/50 to-grithq-black/20" />
 
-        <div className="project-hero-content relative z-10 w-full section-padding pb-12 md:pb-24">
-          <span className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve">
+        <div className="project-hero-content relative z-10 w-full section-padding pb-12 pt-28 md:pb-24">
+          <PageBackLink fallback={ROUTES.portfolio} variant="dark" />
+          <span className="mt-8 block font-display text-[10px] tracking-[0.3em] text-grithq-mauve">
             {project.category}
           </span>
           <DisplayText as="h1" className="mt-4 text-[clamp(2.5rem,8vw,6rem)]">
@@ -100,12 +108,28 @@ export function Project() {
                 {project.description}
               </p>
               <div className="mt-8 space-y-4">
-                {project.overview.map((para, i) => (
-                  <p key={i} className="text-sm leading-relaxed text-grithq-cream/50 md:text-base">
+                {project.overview.map((para) => (
+                  <p key={para} className="text-sm leading-relaxed text-grithq-cream/50 md:text-base">
                     {para}
                   </p>
                 ))}
               </div>
+              {project.websiteHref && (
+                <p className="mt-8 text-sm leading-relaxed text-grithq-cream/50 md:text-base">
+                  {websiteCopy.before}
+                  <a
+                    href={project.websiteHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.inlineLinkDark}
+                    onMouseEnter={() => !isMobile && setCursorState('open')}
+                    onMouseLeave={() => !isMobile && setCursorState('default')}
+                  >
+                    {websiteCopy.linkLabel}
+                  </a>
+                  {websiteCopy.after}
+                </p>
+              )}
             </div>
 
             <div className="lg:col-span-5">
@@ -136,33 +160,41 @@ export function Project() {
             </div>
           </div>
 
-          <div className="mt-20 lg:mt-28">
-            <h2 className="font-display text-xs tracking-[0.4em] text-grithq-mauve uppercase">
-              {STRINGS.project.gallery}
-            </h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-6">
-              {project.gallery.map((image, i) => (
-                <RevealImage
-                  key={i}
-                  src={image}
-                  alt={`${project.name} — ${i + 1}`}
-                  containerClassName={`overflow-hidden ${i === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/3]'}`}
-                />
-              ))}
+          {project.gallery.length > 0 && (
+            <div className="mt-20 lg:mt-28">
+              <h2 className="font-display text-xs tracking-[0.4em] text-grithq-mauve uppercase">
+                {STRINGS.project.gallery}
+              </h2>
+              <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:gap-6">
+                {project.gallery.map((image, i) => (
+                  <img
+                    key={`${project.id}-${i}`}
+                    src={image}
+                    alt={`${project.name} ${i + 1}`}
+                    loading="lazy"
+                    className="mb-4 w-full lg:mb-6"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
       {adjacent && (
         <section className="border-t border-grithq-cream/10 bg-grithq-warm">
           <div className="mx-auto max-w-7xl section-padding py-16 md:py-24">
-            <div className="flex items-end justify-between gap-4">
-              <p className="font-display text-xs tracking-[0.3em] text-grithq-mauve">
-                {STRINGS.project.nextProject}
-              </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+              <div>
+                <p className="font-display text-[10px] tracking-[0.3em] text-grithq-cream/35 uppercase">
+                  {STRINGS.project.viewing} {project.name}
+                </p>
+                <p className="mt-3 font-display text-xs tracking-[0.3em] text-grithq-mauve">
+                  {STRINGS.project.nextProject}
+                </p>
+              </div>
               <Link
-                to={`/portfolio/${adjacent.next.slug}`}
+                to={ROUTES.portfolio}
                 className="font-display text-[10px] tracking-[0.3em] text-grithq-cream/30 uppercase transition-colors hover:text-grithq-offwhite"
               >
                 {STRINGS.project.viewAllPortfolio}
@@ -170,30 +202,30 @@ export function Project() {
             </div>
 
             <Link
-              to={`/portfolio/${adjacent.next.slug}`}
-              className="group mt-8 block overflow-hidden"
+              to={adjacent.next.deal?.route ?? ROUTES.project(adjacent.next.slug)}
+              className="group mt-8 grid overflow-hidden border border-grithq-cream/10 md:grid-cols-12"
+              aria-label={`${STRINGS.project.nextProject}: ${adjacent.next.name}`}
               onMouseEnter={() => setCursorState('view-project')}
               onMouseLeave={() => setCursorState('default')}
             >
-              <div className="relative aspect-[21/9] max-h-[50vh] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden md:col-span-5 md:aspect-auto md:min-h-[220px]">
                 <img
                   src={adjacent.next.heroImage}
-                  alt={adjacent.next.name}
+                  alt=""
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-grithq-black/80 to-transparent" />
-                <div className="absolute right-0 bottom-0 left-0 p-8 md:p-12">
-                  <span className="text-xs tracking-widest text-grithq-cream/40 uppercase">
-                    {adjacent.next.category}
-                  </span>
-                  <h3 className="mt-2 font-display text-[clamp(1.75rem,4vw,3rem)] font-light text-grithq-offwhite">
-                    {adjacent.next.name}
-                  </h3>
-                  <span className="mt-4 inline-block font-display text-[10px] tracking-[0.35em] text-grithq-mauve uppercase">
-                    {STRINGS.project.continue}
-                  </span>
-                </div>
+              </div>
+              <div className="flex flex-col justify-center px-6 py-8 md:col-span-7 md:px-10 md:py-12">
+                <span className="text-xs tracking-widest text-grithq-cream/40 uppercase">
+                  {adjacent.next.category}
+                </span>
+                <h3 className="mt-3 font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-light text-grithq-offwhite">
+                  {adjacent.next.name}
+                </h3>
+                <span className="mt-5 inline-block font-display text-[10px] tracking-[0.35em] text-grithq-mauve uppercase">
+                  {STRINGS.project.continue}
+                </span>
               </div>
             </Link>
           </div>

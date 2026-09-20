@@ -1,4 +1,4 @@
-/** GritHQ brand palette — single source of truth */
+/** GritHQ brand palette. Single source of truth. */
 export const COLORS = {
   burgundy: '#4D1730',
   deepWine: '#48132B',
@@ -11,6 +11,7 @@ export const COLORS = {
   impact: '#2d1522',
   landingBackground: '#30051E',
   portfolioBackground: '#FFF5F9',
+  linkedin: '#0A66C2',
 } as const
 
 export type BrandColor = keyof typeof COLORS

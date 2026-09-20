@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SectionLabel } from '@/components/typography/SectionLabel'
 import { DisplayText } from '@/components/typography/DisplayText'
 import {
   impactPillars,
@@ -84,10 +83,6 @@ export function ImpactSection() {
       aria-labelledby="impact-heading"
     >
       <div className={styles.sectionContainer}>
-        <SectionLabel number={STRINGS.sections.impact.number}>
-          {STRINGS.sections.impact.label}
-        </SectionLabel>
-
         <div className="mt-12 lg:mt-16">
           <DisplayText
             as="h2"
@@ -104,24 +99,8 @@ export function ImpactSection() {
           </p>
         </div>
 
-        {/* <div
-          className="impact-warm-block mt-16 rounded-sm p-8 md:mt-20 md:p-14"
-          style={{ backgroundColor: '#2d1522' }}
-        >
-          <h3 className={styles.eyebrow}>{STRINGS.sections.impact.whyWeGive}</h3>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-grithq-cream/70 md:text-lg">
-            GRITHQ believes that building value extends beyond balance sheets. Contributing to
-            communities — supporting education, nourishment and opportunity — is integral to who
-            we are. This is not CSR. This is conviction.
-          </p>
-        </div> */}
-
         <div className="mt-16 md:mt-20">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.feedingFutures}</h3>
-          <p className={`mt-4 max-w-2xl ${styles.bodyTextMuted}`}>
-            A community initiative supporting school children through access to nutritious meals
-            and practical assistance. Nourishment enables education. Education enables futures.
-          </p>
 
           <div className="impact-pillars mt-4 grid grid-cols-1 gap-6 border-t border-grithq-cream/10 pt-8 sm:grid-cols-3">
             {impactPillars.map((pillar) => (
@@ -137,52 +116,20 @@ export function ImpactSection() {
           </div>
         </div>
 
-        {/* <div className="impact-initiatives mt-12 md:mt-16">
-          <h3 className={styles.eyebrow}>{STRINGS.sections.impact.communityInitiatives}</h3>
-          <div className="grid mt-3 gap-6 md:grid-cols-3 md:gap-8">
-            {communityInitiatives.map((initiative) => (
-              <article key={initiative.id} className="impact-initiative group">
-                <RevealImage
-                  src={initiative.image}
-                  alt={initiative.title}
-                  containerClassName="aspect-[4/5] md:aspect-[3/4] rounded-sm overflow-hidden"
-                />
-                <h4 className="mt-4 font-display text-lg font-light text-grithq-offwhite">
-                  {initiative.title}
-                </h4>
-                <p className={`mt-2 ${styles.bodyTextMuted}`}>{initiative.description}</p>
-              </article>
-            ))}
-          </div>
-        </div> */}
-
         <div className="impact-gallery mt-16 md:mt-20">
           <h3 className={styles.eyebrow}>{STRINGS.sections.impact.impactGallery}</h3>
           <div className="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3 lg:gap-6">
             {impactGallery.map((item) => (
               <figure
                 key={item.id}
-                className="impact-gallery-item group mb-4 break-inside-avoid overflow-hidden lg:mb-6"
+                className="impact-gallery-item mb-4 break-inside-avoid overflow-hidden lg:mb-6"
               >
-                <div className="overflow-hidden rounded-sm">
-                  <img
-                    src={item.src}
-                    alt={item.caption}
-                    loading="lazy"
-                    className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      aspectRatio:
-                        item.aspect === 'portrait'
-                          ? '3/4'
-                          : item.aspect === 'square'
-                            ? '1/1'
-                            : '16/10',
-                    }}
-                  />
-                </div>
-                <figcaption className="mt-2 text-xs tracking-wide text-grithq-cream/35">
-                  {item.caption}
-                </figcaption>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="w-full"
+                />
               </figure>
             ))}
           </div>

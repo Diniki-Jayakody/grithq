@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from 'react'
-import emailjs from '@emailjs/browser'
 import { MagneticButton } from '@/components/animations/MagneticButton'
-import { STRINGS, type OpportunityInquiryType } from '@/constants/strings'
-import { EMAILJS_CONFIG, EMAILJS_TEMPLATE_FIELDS, isEmailJsConfigured } from '@/constants/emailjs'
+import { STRINGS } from '@/constants/strings'
+import { sendSiteEmail } from '@/constants/emailjs'
+import { isValidEmail } from '@/utils/validation'
 import { styles } from '@/styles/styles'
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
@@ -11,24 +11,19 @@ interface FormValues {
   name: string
   email: string
   phone: string
-  inquiryType: OpportunityInquiryType | ''
   message: string
 }
 
 interface FormErrors {
   name?: string
   email?: string
-  inquiryType?: string
   message?: string
 }
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const INITIAL_VALUES: FormValues = {
   name: '',
   email: '',
   phone: '',
-  inquiryType: '',
   message: '',
 }
 
@@ -37,8 +32,7 @@ function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {}
 
   if (!values.name.trim()) errors.name = copy.name
-  if (!EMAIL_PATTERN.test(values.email.trim())) errors.email = copy.email
-  if (!values.inquiryType) errors.inquiryType = copy.inquiryType
+  if (!isValidEmail(values.email)) errors.email = copy.email
   if (!values.message.trim()) errors.message = copy.message
 
   return errors
@@ -56,32 +50,24 @@ export function OpportunityInquiryForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (isSending) return
+
     const nextErrors = validate(values)
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
 
     setStatus('sending')
 
-    if (!isEmailJsConfigured()) {
-      setStatus('error')
-      return
-    }
-
     try {
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        {
-          [EMAILJS_TEMPLATE_FIELDS.name]: values.name.trim(),
-          [EMAILJS_TEMPLATE_FIELDS.email]: values.email.trim(),
-          [EMAILJS_TEMPLATE_FIELDS.phone]: values.phone.trim() || 'Not provided',
-          [EMAILJS_TEMPLATE_FIELDS.inquiryType]: values.inquiryType,
-          [EMAILJS_TEMPLATE_FIELDS.message]: values.message.trim(),
-          [EMAILJS_TEMPLATE_FIELDS.property]: EMAILJS_CONFIG.propertyName,
-          [EMAILJS_TEMPLATE_FIELDS.submittedAt]: new Date().toISOString(),
-        },
-        EMAILJS_CONFIG.publicKey
-      )
+      await sendSiteEmail({
+        subject: copy.subject,
+        formType: copy.formType,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim(),
+        message: values.message.trim(),
+        property: copy.property,
+      })
       setStatus('success')
       setValues(INITIAL_VALUES)
     } catch {
@@ -161,41 +147,6 @@ export function OpportunityInquiryForm() {
           onChange={(event) => setValues((current) => ({ ...current, phone: event.target.value }))}
           className={styles.formField}
         />
-      </div>
-
-      <div>
-        <label htmlFor="opportunity-inquiry-type" className={styles.formLabel}>
-          {copy.inquiryType}
-        </label>
-        <select
-          id="opportunity-inquiry-type"
-          name="inquiryType"
-          required
-          value={values.inquiryType}
-          onChange={(event) =>
-            setValues((current) => ({
-              ...current,
-              inquiryType: event.target.value as OpportunityInquiryType | '',
-            }))
-          }
-          className={`${styles.formField} ${values.inquiryType ? 'text-grithq-offwhite' : 'text-grithq-cream/30'}`}
-          aria-invalid={Boolean(errors.inquiryType)}
-          aria-describedby={errors.inquiryType ? 'opportunity-inquiry-type-error' : undefined}
-        >
-          <option value="" disabled>
-            {copy.inquiryType}
-          </option>
-          {copy.inquiryTypes.map((type) => (
-            <option key={type} value={type} className="bg-grithq-black text-grithq-offwhite">
-              {type}
-            </option>
-          ))}
-        </select>
-        {errors.inquiryType && (
-          <p id="opportunity-inquiry-type-error" className={styles.formError}>
-            {errors.inquiryType}
-          </p>
-        )}
       </div>
 
       <div>

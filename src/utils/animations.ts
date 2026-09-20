@@ -5,6 +5,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 export { gsap, ScrollTrigger }
 
+export const INVESTMENT_FOCUS_REVEAL = {
+  y: 24,
+  opacity: 0,
+  duration: 0.55,
+  stagger: 0.5,
+  ease: 'power3.out',
+} as const
+
 export function fadeUp(
   element: HTMLElement | string,
   options?: { delay?: number; duration?: number; y?: number }

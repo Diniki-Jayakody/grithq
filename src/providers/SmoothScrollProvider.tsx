@@ -13,8 +13,13 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
 
+interface ScrollToOptions {
+  offset?: number
+  immediate?: boolean
+}
+
 interface SmoothScrollContextValue {
-  scrollTo: (target: string | number | HTMLElement, options?: { offset?: number }) => void
+  scrollTo: (target: string | number | HTMLElement, options?: ScrollToOptions) => void
   lenis: Lenis | null
 }
 
@@ -32,17 +37,32 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const reducedMotion = useReducedMotion()
 
   const scrollTo = useCallback(
-    (target: string | number | HTMLElement, options?: { offset?: number }) => {
+    (target: string | number | HTMLElement, options?: ScrollToOptions) => {
+      const immediate = options?.immediate ?? false
+      const offset = options?.offset ?? 0
+
       if (lenisRef.current) {
-        lenisRef.current.scrollTo(target, { offset: options?.offset ?? 0 })
-      } else if (typeof target === 'string') {
-        document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' })
+        lenisRef.current.scrollTo(target, { offset, immediate })
+        return
+      }
+
+      if (typeof target === 'number') {
+        window.scrollTo({ top: target + offset, left: 0, behavior: immediate ? 'auto' : 'smooth' })
+        return
+      }
+
+      if (typeof target === 'string') {
+        document.querySelector(target)?.scrollIntoView({ behavior: immediate ? 'auto' : 'smooth' })
       }
     },
     []
   )
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+
     if (reducedMotion) {
       ScrollTrigger.refresh()
       return
