@@ -11,6 +11,7 @@ export const COLORS = {
   impact: '#2d1522',
   landingBackground: '#30051E',
   portfolioBackground: '#FFF5F9',
+  linkedin: '#0A66C2',
 } as const
 
 export type BrandColor = keyof typeof COLORS

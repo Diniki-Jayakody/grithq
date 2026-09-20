@@ -26,7 +26,8 @@ export function Project() {
   const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    scrollTo(0, { offset: 0 })
+    window.scrollTo(0, 0)
+    scrollTo(0, { offset: 0, immediate: true })
     ScrollTrigger.refresh()
   }, [slug, scrollTo])
 
@@ -183,10 +184,15 @@ export function Project() {
       {adjacent && (
         <section className="border-t border-grithq-cream/10 bg-grithq-warm">
           <div className="mx-auto max-w-7xl section-padding py-16 md:py-24">
-            <div className="flex items-end justify-between gap-4">
-              <p className="font-display text-xs tracking-[0.3em] text-grithq-mauve">
-                {STRINGS.project.nextProject}
-              </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+              <div>
+                <p className="font-display text-[10px] tracking-[0.3em] text-grithq-cream/35 uppercase">
+                  {STRINGS.project.viewing} {project.name}
+                </p>
+                <p className="mt-3 font-display text-xs tracking-[0.3em] text-grithq-mauve">
+                  {STRINGS.project.nextProject}
+                </p>
+              </div>
               <Link
                 to={ROUTES.portfolio}
                 className="font-display text-[10px] tracking-[0.3em] text-grithq-cream/30 uppercase transition-colors hover:text-grithq-offwhite"
@@ -196,30 +202,30 @@ export function Project() {
             </div>
 
             <Link
-              to={ROUTES.project(adjacent.next.slug)}
-              className="group mt-8 block overflow-hidden"
+              to={adjacent.next.deal?.route ?? ROUTES.project(adjacent.next.slug)}
+              className="group mt-8 grid overflow-hidden border border-grithq-cream/10 md:grid-cols-12"
+              aria-label={`${STRINGS.project.nextProject}: ${adjacent.next.name}`}
               onMouseEnter={() => setCursorState('view-project')}
               onMouseLeave={() => setCursorState('default')}
             >
-              <div className="relative aspect-[16/9] max-h-[50vh] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden md:col-span-5 md:aspect-auto md:min-h-[220px]">
                 <img
                   src={adjacent.next.heroImage}
-                  alt={adjacent.next.name}
+                  alt=""
                   loading="lazy"
                   className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-grithq-black/80 to-transparent" />
-                <div className="absolute right-0 bottom-0 left-0 p-8 md:p-12">
-                  <span className="text-xs tracking-widest text-grithq-cream/40 uppercase">
-                    {adjacent.next.category}
-                  </span>
-                  <h3 className="mt-2 font-display text-[clamp(1.75rem,4vw,3rem)] font-light text-grithq-offwhite">
-                    {adjacent.next.name}
-                  </h3>
-                  <span className="mt-4 inline-block font-display text-[10px] tracking-[0.35em] text-grithq-mauve uppercase">
-                    {STRINGS.project.continue}
-                  </span>
-                </div>
+              </div>
+              <div className="flex flex-col justify-center px-6 py-8 md:col-span-7 md:px-10 md:py-12">
+                <span className="text-xs tracking-widest text-grithq-cream/40 uppercase">
+                  {adjacent.next.category}
+                </span>
+                <h3 className="mt-3 font-display text-[clamp(1.5rem,3.5vw,2.5rem)] font-light text-grithq-offwhite">
+                  {adjacent.next.name}
+                </h3>
+                <span className="mt-5 inline-block font-display text-[10px] tracking-[0.35em] text-grithq-mauve uppercase">
+                  {STRINGS.project.continue}
+                </span>
               </div>
             </Link>
           </div>

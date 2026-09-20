@@ -3,6 +3,11 @@
 export const styles = {
   sectionContainer: 'mx-auto max-w-7xl section-padding',
   sectionLight: 'relative section-y bg-grithq-offwhite text-grithq-burgundy',
+  sectionLightBase: 'relative bg-grithq-offwhite text-grithq-burgundy',
+  sectionPadTop: 'pt-16 md:pt-24 lg:pt-32',
+  sectionPadBottom: 'pb-16 md:pb-24 lg:pb-32',
+  sectionPadTopCompact: 'pt-8 md:pt-12 lg:pt-16',
+  sectionPadBottomCompact: 'pb-8 md:pb-12 lg:pb-16',
   sectionLightAlt: 'relative section-y bg-grithq-cream/30 text-grithq-burgundy',
   sectionPortfolio: 'relative section-y bg-grithq-portfolio text-grithq-burgundy',
   sectionDark: 'relative section-y bg-grithq-black',
@@ -48,7 +53,13 @@ export const styles = {
   pageBackLink:
     'inline-flex items-center gap-2 font-display text-xs tracking-[0.3em] uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2',
   credentialBlock:
-    'border border-grithq-burgundy/20 bg-transparent px-6 py-5 md:px-8 md:py-6',
+    'border border-grithq-burgundy/20 bg-transparent px-6 py-4 md:px-8 md:py-5',
+  credentialRole:
+    'font-display text-[10px] tracking-[0.35em] text-grithq-deepAccent',
+  credentialOrg:
+    'font-display text-xs tracking-[0.18em] text-grithq-burgundy md:text-sm',
+  credentialOrgLine2:
+    'mt-1 font-display text-[10px] tracking-[0.28em] text-grithq-burgundy/70',
   letterBody:
     'max-w-2xl text-[0.95rem] leading-[1.85] text-grithq-burgundy/70 break-words md:text-base md:leading-[1.9]',
   innerPage:
@@ -65,4 +76,14 @@ export const styles = {
   formError: 'mt-2 text-xs leading-relaxed text-grithq-cream/65',
   inlineLinkDark:
     'underline decoration-grithq-mauve/45 underline-offset-[5px] transition-colors hover:text-grithq-offwhite hover:decoration-grithq-mauve focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-black',
+  gritLetter:
+    'font-display text-[clamp(2.25rem,5vw,4rem)] font-light leading-none tracking-tight text-grithq-burgundy',
+  gritWord:
+    'font-display text-[10px] tracking-[0.28em] text-grithq-mauve uppercase md:text-xs',
+  socialIconButton:
+    'inline-flex h-11 w-11 items-center justify-center text-grithq-burgundy/65 transition-colors hover:text-grithq-deepAccent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite',
+  linkedinIconButton:
+    'inline-flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite',
+  investmentFocusTitle:
+    'mt-3 font-display text-lg leading-tight tracking-tight text-grithq-burgundy md:text-xl lg:text-2xl',
 } as const

@@ -222,9 +222,9 @@ export function PortfolioSection() {
         >
           {STRINGS.sections.portfolio.heading}
         </DisplayText>
-        <p className={`mt-4 max-w-lg ${styles.bodyTextMutedLight}`}>
+        {/* <p className={`mt-4 max-w-lg ${styles.bodyTextMutedLight}`}>
           {STRINGS.sections.portfolio.subtext}
-        </p>
+        </p> */}
 
         <div className="mt-10 md:mt-12">
           {featured && <FeaturedOpportunity project={featured} />}

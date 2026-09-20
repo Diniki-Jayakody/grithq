@@ -23,4 +23,5 @@ export const EXTERNAL_LINKS = {
   },
 
   asayaSands: 'https://asaya.lk/',
+  mangalaLinkedIn: 'https://www.linkedin.com/in/mangala',
 } as const

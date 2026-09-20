@@ -13,87 +13,6 @@ import { useIsMobile } from '@/hooks/useMediaQuery'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function FlowArrow({
-  variant,
-  className = '',
-}: {
-  variant: 'right' | 'down' | 'down-left'
-  className?: string
-}) {
-  if (variant === 'down') {
-    return (
-      <svg
-        viewBox="0 0 40 56"
-        fill="none"
-        aria-hidden="true"
-        className={`h-10 w-8 text-grithq-mauve/45 ${className}`}
-      >
-        <path
-          d="M20 3 C 14 18, 28 28, 18 40"
-          stroke="currentColor"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-        />
-        <path
-          d="M12 36 L 18 46 L 26 35"
-          stroke="currentColor"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    )
-  }
-
-  if (variant === 'down-left') {
-    return (
-      <svg
-        viewBox="0 0 180 48"
-        fill="none"
-        aria-hidden="true"
-        className={`h-10 w-40 text-grithq-mauve/40 ${className}`}
-      >
-        <path
-          d="M168 8 C 130 6, 96 36, 28 28"
-          stroke="currentColor"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-        />
-        <path
-          d="M38 20 L 22 29 L 40 36"
-          stroke="currentColor"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    )
-  }
-
-  return (
-    <svg
-      viewBox="0 0 120 36"
-      fill="none"
-      aria-hidden="true"
-      className={`h-8 w-20 text-grithq-mauve/45 md:h-9 md:w-24 ${className}`}
-    >
-      <path
-        d="M4 22 C 28 8, 58 30, 96 16"
-        stroke="currentColor"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-      />
-      <path
-        d="M86 10 L 108 16 L 88 26"
-        stroke="currentColor"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 function InvestedProject({
   business,
   imageClassName = 'aspect-[16/10]',
@@ -171,7 +90,7 @@ export function InvestorForSection() {
     <section
       id="investor-for"
       ref={sectionRef}
-      className={`${styles.sectionLight} border-t border-grithq-burgundy/5`}
+      className={`${styles.sectionLightBase} ${styles.sectionPadTopCompact} ${styles.sectionPadBottom} border-t border-grithq-burgundy/5`}
       aria-labelledby="investor-for-heading"
     >
       <div className={styles.sectionContainer}>
@@ -189,35 +108,17 @@ export function InvestorForSection() {
           {STRINGS.sections.investorFor.subtext}
         </p>
 
-        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start md:mt-12 md:grid-cols-12 md:gap-x-5 lg:gap-x-8">
+        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-8 md:mt-12 md:grid-cols-12 md:gap-x-8 md:gap-y-4 lg:gap-x-10">
           <div className="md:col-span-5 md:col-start-1">
             <InvestedProject business={flashHealth} imageClassName="aspect-[16/10]" />
           </div>
-
-          <div className="flex justify-center py-3 md:col-span-2 md:col-start-6 md:h-full md:items-center md:py-0">
-            <FlowArrow variant="right" className="hidden md:block" />
-            <FlowArrow variant="down" className="md:hidden" />
-          </div>
-
-          <div className="md:col-span-5 md:col-start-8 md:mt-14 lg:mt-16">
+          <div className="md:col-span-5 md:col-start-8 md:mt-16 lg:mt-20">
             <InvestedProject business={dossiers} imageClassName="aspect-[5/3]" />
           </div>
-
-          <div className="flex justify-center py-3 md:col-span-12 md:py-1 lg:py-2">
-            <FlowArrow variant="down-left" className="hidden md:block" />
-            <FlowArrow variant="down" className="md:hidden" />
-          </div>
-
-          <div className="md:col-span-5 md:col-start-2">
+          <div className="md:col-span-5 md:col-start-2 md:mt-8">
             <InvestedProject business={rootstone} imageClassName="aspect-[16/11]" />
           </div>
-
-          <div className="flex justify-center py-3 md:col-span-2 md:col-start-7 md:h-full md:items-center md:py-0">
-            <FlowArrow variant="right" className="hidden md:block" />
-            <FlowArrow variant="down" className="md:hidden" />
-          </div>
-
-          <div className="md:col-span-4 md:col-start-9 md:mt-8 lg:mt-10">
+          <div className="md:col-span-4 md:col-start-9 md:mt-4 lg:mt-6">
             <InvestedProject business={magicUnbound} imageClassName="aspect-[4/3]" />
           </div>
         </div>

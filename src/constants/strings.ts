@@ -4,7 +4,7 @@ export const STRINGS = {
   brand: {
     name: 'GRITHQ',
     tagline:
-      'Building value through strategic ownership, development and long-term vision.',
+      'Building value through strategic ownership, development and lasting vision.',
   },
 
   hero: {
@@ -24,7 +24,7 @@ export const STRINGS = {
       eyebrow: 'OUR IDENTITY',
       heading: ['Built on conviction.', 'Driven by value.'],
       subtext:
-        'GritHQ is an investment holding company focused on identifying opportunities, building enduring businesses and creating long-term value across diverse sectors.',
+        'GritHQ is an investment holding company. We find opportunities, build businesses and hold them with a long view.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Vision with purpose.'],
@@ -42,7 +42,7 @@ export const STRINGS = {
       label: 'Portfolio',
       heading: 'Properties we hold and develop.',
       subtext:
-        'Hospitality, commercial and development assets chosen for long-term value.',
+        'Hospitality, commercial and development assets chosen for lasting value.',
     },
     developments: {
       label: 'Creation',
@@ -81,12 +81,12 @@ export const STRINGS = {
       {
         number: '01',
         title: 'CONVICTION',
-        text: 'We pursue opportunities with clarity, purpose and a long-term perspective.',
+        text: 'We pursue opportunities with clarity, purpose and a long view.',
       },
       {
         number: '02',
         title: 'VALUE CREATION',
-        text: 'We look beyond short-term returns to build lasting value across our investments.',
+        text: 'We look beyond quick returns to build lasting value across our investments.',
       },
       {
         number: '03',
@@ -96,9 +96,9 @@ export const STRINGS = {
     ],
     investmentFocus: {
       eyebrow: 'INVESTMENT FOCUS',
-      heading: ['Capital with a', 'long-term perspective.'],
+      heading: ['Capital with a', 'long view.'],
       subtext:
-        'GritHQ invests with a long-term view, seeking opportunities where strategic insight, disciplined capital and active stewardship can create enduring value.',
+        'GritHQ invests for the years ahead. We look for places where careful capital and steady work can build lasting value.',
       approach: {
         eyebrow: 'OUR APPROACH',
         steps: [
@@ -108,7 +108,7 @@ export const STRINGS = {
           },
           {
             title: 'ASSESS',
-            description: 'Fundamentals, market dynamics and long-term potential.',
+            description: 'Fundamentals, market dynamics and lasting potential.',
           },
           {
             title: 'INVEST',
@@ -116,26 +116,35 @@ export const STRINGS = {
           },
           {
             title: 'BUILD',
-            description: 'Long-term value through active stewardship.',
+            description: 'Lasting value through active stewardship.',
           },
         ],
       },
       closing: {
         statement: ['We don\'t simply allocate capital.', 'We build what comes next.'],
         supporting:
-          'From identifying opportunities to actively supporting their growth, GritHQ takes a long-term approach to creating value.',
+          'From finding opportunities to supporting their growth, GritHQ takes a patient approach to creating value.',
         cta: 'EXPLORE OUR PORTFOLIO →',
         ctaHref: '#portfolio',
       },
+    },
+    grit: {
+      letters: [
+        { letter: 'G', word: 'Gratitude' },
+        { letter: 'R', word: 'Resilience' },
+        { letter: 'I', word: 'Integrity' },
+        { letter: 'T', word: 'Tenacity' },
+      ],
     },
   },
 
   leadership: {
     name: 'Mr. Mangala Karunaratne',
     nameDisplay: 'MR. MANGALA KARUNARATNE',
-    role: 'Founder & Chairman',
+    role: 'Director, GritHQ',
     description:
-      'Mr. Mangala Karunaratne provides the strategic direction behind GritHQ, bringing an entrepreneurial approach and a long-term perspective to investment and value creation.',
+      'Mangala Karunaratne sets the direction for GritHQ, with a practical view of investment and a focus on lasting value.',
+    linkedinLabel: 'LinkedIn',
     boi: {
       organization: 'Board of Investment',
       organizationLine2: 'of Sri Lanka',
@@ -144,6 +153,11 @@ export const STRINGS = {
     },
     messageCta: 'A Message from Mangala Karunaratne',
     credentials: [
+      {
+        id: 'grithq',
+        role: 'DIRECTOR',
+        organization: 'GRITHQ',
+      },
       {
         id: 'short-circuit',
         role: 'DIRECTOR',
@@ -154,6 +168,10 @@ export const STRINGS = {
         role: 'MEMBER',
         organization: 'BOARD OF INVESTMENT',
         organizationLine2: 'OF SRI LANKA',
+      },
+      {
+        id: 'angel-investor',
+        role: 'ANGEL INVESTOR',
       },
     ],
   },
@@ -174,7 +192,7 @@ export const STRINGS = {
     currentOpportunity: 'Current Opportunity',
     availableFor: 'Available For',
     saleRent: 'Sale / Rent',
-    availableSaleRent: 'Available - Sale / Rent',
+    availableSaleRent: 'Available: Sale / Rent',
     exploreGritHQ: 'Explore GritHQ',
     viewOpportunity: 'View Opportunity →',
   },
@@ -183,7 +201,7 @@ export const STRINGS = {
     back: '← Back',
     eyebrow: 'A Message From',
     name: 'Mangala Karunaratne',
-    sampleNotice: 'Sample message - to be replaced with the confirmed letter.',
+    sampleNotice: 'Sample message, to be replaced with the confirmed letter.',
     signOff: 'Regards,',
     signature: 'Mangala Karunaratne',
   },
@@ -204,7 +222,7 @@ export const STRINGS = {
     featuresHeading: 'Specialized Features',
     locationHeading: 'Location Benefits',
     photosCta: 'View Building Photos →',
-    photosHeading: 'Building Photographs',
+    photosHeading: 'Building Information',
     inquiryHeading: 'Interested in GritHQ?',
     inquiryIntro:
       'For sales, leasing and investment inquiries, contact our team.',
@@ -248,6 +266,7 @@ export const STRINGS = {
     vision: 'Vision',
     gallery: 'Gallery',
     nextProject: 'Next Project',
+    viewing: 'Now viewing',
     viewAllPortfolio: 'View All Portfolio',
     continue: 'Continue →',
     websiteLink: {

@@ -25,7 +25,8 @@ export function GrithqOpportunity() {
   const property = gritHQPropertyData
 
   useEffect(() => {
-    scrollTo(0, { offset: 0 })
+    window.scrollTo(0, 0)
+    scrollTo(0, { offset: 0, immediate: true })
   }, [scrollTo])
 
   useEffect(() => {

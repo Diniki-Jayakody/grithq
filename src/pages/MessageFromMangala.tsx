@@ -10,7 +10,8 @@ export function MessageFromMangala() {
   const { scrollTo } = useLenisScroll()
 
   useEffect(() => {
-    scrollTo(0, { offset: 0 })
+    window.scrollTo(0, 0)
+    scrollTo(0, { offset: 0, immediate: true })
   }, [scrollTo])
 
   return (
