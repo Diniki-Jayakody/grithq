@@ -6,7 +6,7 @@ import { STRINGS } from '@/constants/strings'
 import { sendSiteEmail } from '@/constants/emailjs'
 import { isValidEmail } from '@/utils/validation'
 import { styles } from '@/styles/styles'
-import { useCursorState } from '@/hooks/useCursorState'
+
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
