@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
 import { DisplayText } from '@/components/typography/DisplayText'
+import { SectionLabel } from '@/components/typography/SectionLabel'
 import {
   investmentFocusAreas,
   leadershipProfiles,
@@ -25,6 +26,18 @@ gsap.registerPlugin(ScrollTrigger)
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className={`${styles.eyebrowLight} identity-reveal`}>{children}</p>
+  )
+}
+
+function EmphasizedWeText({ text }: { text: string }) {
+  return text.split(/\b(We)\b/).map((part, index) =>
+    part === 'We' ? (
+      <span key={index} className="font-medium text-grithq-deepAccent">
+        {part}
+      </span>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
   )
 }
 
@@ -150,26 +163,26 @@ export function IdentitySection() {
 
       <div className={styles.sectionContainer}>
         {/* ─── OUR IDENTITY ─────────────────────────────────────────────── */}
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
-          <div className="min-w-0 lg:col-span-7">
+        <div className="grid items-start gap-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-x-8 lg:gap-x-10">
+          <div className="min-w-0">
             <SectionEyebrow>{identity.eyebrow}</SectionEyebrow>
             <DisplayText
               as="h2"
               id="identity-heading"
-              className={`identity-reveal ${styles.identityFocusHeading}`}
+              className="identity-reveal mt-6 text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.2] text-grithq-burgundy"
             >
-              {identity.heading.map((line, i) => (
-                <span key={line} className={i > 0 ? 'block' : undefined}>
-                  {line}
+              {identity.heading.map((line) => (
+                <span key={line} className="block md:whitespace-nowrap">
+                  <EmphasizedWeText text={line} />
                 </span>
               ))}
             </DisplayText>
-            <p className={`identity-reveal mt-6 max-w-2xl ${styles.bodyTextMutedLight}`}>
-              {identity.subtext}
+            <p className={`identity-reveal mt-6 ${styles.bodyTextMutedLight}`}>
+              <EmphasizedWeText text={identity.subtext} />
             </p>
           </div>
 
-          <div className="identity-reveal min-w-0 lg:col-span-5 lg:pt-10">
+          <div className="identity-reveal min-w-0 md:justify-self-end lg:pt-10">
             <ul className="grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-1 lg:gap-y-5">
               {STRINGS.identity.grit.letters.map((item) => (
                 <li key={item.letter} className="flex flex-col gap-2 lg:flex-row lg:items-baseline lg:gap-5">
@@ -183,8 +196,8 @@ export function IdentitySection() {
 
         {/* ─── INVESTMENT FOCUS ─────────────────────────────────────────── */}
         <div className="investment-focus mt-16 md:mt-24 lg:mt-28">
+          <SectionLabel variant="light">{focus.eyebrow}</SectionLabel>
           <div className="max-w-3xl">
-            <SectionEyebrow>{focus.eyebrow}</SectionEyebrow>
             {/* <DisplayText
               as="h3"
               className={`identity-reveal ${styles.identityFocusHeading}`}
@@ -222,7 +235,7 @@ export function IdentitySection() {
             })}
           </div>
 
-          <div className="identity-reveal mt-14 border-t border-grithq-burgundy/10 pt-10 md:mt-16 md:pt-14">
+          <div className="identity-reveal mt-14 md:mt-16">
             <blockquote className="max-w-3xl">
               <p className="font-display text-[clamp(1.25rem,3vw,2rem)] font-light leading-snug text-grithq-burgundy">
                 {focus.closing.statement.map((line, i) => (
@@ -265,16 +278,6 @@ export function IdentitySection() {
                     />
                   </div>
                 </div>
-                <Link
-                  to={ROUTES.messageFromMangala}
-                  className="group mt-5 inline-flex min-h-11 items-center gap-3 font-display text-xs tracking-[0.22em] text-grithq-deepAccent transition-colors duration-300 hover:text-grithq-burgundy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite md:mt-6"
-                >
-                  {STRINGS.leadership.messageCta}
-                  <ArrowUpRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    strokeWidth={1.5}
-                  />
-                </Link>
               </div>
 
               <div className="leadership-block order-2 flex flex-col justify-start lg:order-none lg:col-span-7 xl:col-span-7">
@@ -331,24 +334,39 @@ export function IdentitySection() {
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-3 md:mt-10">
-                  {leadershipCredentials.map((credential) => (
-                    <div key={credential.id} className={styles.credentialBlock}>
-                      {credential.organization ? (
-                        <>
-                          <p className={styles.credentialRole}>{credential.role}</p>
-                          <div className="my-2.5 h-px w-full bg-grithq-burgundy/15" aria-hidden="true" />
-                          <p className={styles.credentialOrg}>{credential.organization}</p>
-                          {credential.organizationLine2 && (
-                            <p className={styles.credentialOrgLine2}>{credential.organizationLine2}</p>
+                <div className="mt-8 grid grid-cols-1 gap-3 md:mt-10 md:grid-cols-2 md:gap-x-6 md:gap-y-3">
+                  {[leadershipCredentials.slice(0, 2), leadershipCredentials.slice(2, 4)].map((column, columnIndex) => (
+                    <div key={columnIndex} className="flex flex-col gap-3">
+                      {column.map((credential) => (
+                        <div key={credential.id} className={styles.credentialBlock}>
+                          {credential.organization ? (
+                            <>
+                              <p className={styles.credentialRole}>{credential.role}</p>
+                              <div className="my-2.5 h-px w-full bg-grithq-burgundy/15" aria-hidden="true" />
+                              <p className={styles.credentialOrg}>{credential.organization}</p>
+                              {credential.organizationLine2 && (
+                                <p className={styles.credentialOrgLine2}>{credential.organizationLine2}</p>
+                              )}
+                            </>
+                          ) : (
+                            <p className={styles.credentialOrg}>{credential.role}</p>
                           )}
-                        </>
-                      ) : (
-                        <p className={styles.credentialOrg}>{credential.role}</p>
-                      )}
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>
+
+                <Link
+                  to={ROUTES.messageFromMangala}
+                  className="group mt-8 inline-flex min-h-11 items-center gap-3 font-display text-xs tracking-[0.22em] text-grithq-deepAccent transition-colors duration-300 hover:text-grithq-burgundy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite md:mt-10"
+                >
+                  {STRINGS.leadership.messageCta}
+                  <ArrowUpRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.5}
+                  />
+                </Link>
               </div>
             </div>
           </div>

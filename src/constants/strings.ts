@@ -22,9 +22,14 @@ export const STRINGS = {
     identity: {
       label: 'Our Identity',
       eyebrow: 'OUR IDENTITY',
-      heading: ['Built on conviction.', 'Driven by value.'],
+      heading: [
+        'We built businesses.',
+        'We invest our own capital.',
+        'We think long term.',
+        'We like entrepreneurs.',
+      ],
       subtext:
-        'GritHQ is an investment holding company. We find opportunities, build businesses and hold them with a long view.',
+        'GritHQ is a privately held family investment office based in Sri Lanka. We invest our own capital in technology, hospitality, real estate and selected private companies.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Vision with purpose.'],
