@@ -45,7 +45,7 @@ export function ContactSection() {
   const [values, setValues] = useState<FormValues>(INITIAL_VALUES)
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<FormStatus>('idle')
-  const { setCursorState } = useCursorState()
+  // const { setCursorState } = useCursorState()
   const copy = STRINGS.contact.form
   const isSending = status === 'sending'
   const submitLabel =
