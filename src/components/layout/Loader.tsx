@@ -8,6 +8,24 @@ interface LoaderProps {
 }
 
 export function Loader({ onComplete }: LoaderProps) {
+  // ============================================================
+  // LOADER DISABLED
+  // The landing page will appear without the opening progress bar.
+  // ============================================================
+
+  useEffect(() => {
+    onComplete()
+  }, [onComplete])
+
+  return null
+
+  /*
+  // ============================================================
+  // ORIGINAL LOADER CODE
+  // Uncomment this section and remove the disabled section above
+  // to restore the original loading screen.
+  // ============================================================
+
   const [progress, setProgress] = useState(0)
   const reducedMotion = useReducedMotion()
 
@@ -61,4 +79,5 @@ export function Loader({ onComplete }: LoaderProps) {
       </span>
     </div>
   )
+  */
 }

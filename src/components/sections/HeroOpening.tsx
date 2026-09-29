@@ -15,6 +15,11 @@ const DESKTOP_OFFSETS = [-2.8, -1.7, -0.85, 0.85, 1.7, 2.8]
 const MOBILE_OFFSETS_X = [-0.6, 0.6, -0.6, 0.6, -0.6, 0.6]
 const MOBILE_OFFSETS_Y = [-1.1, -1.1, 0, 0, 1.1, 1.1]
 
+// FEATURE FLAG
+// false = Static landing page (current mode)
+// true  = Original animated landing page
+const ENABLE_HERO_ANIMATION = false
+
 export function HeroOpening() {
   const sectionRef = useRef<HTMLElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
@@ -22,8 +27,10 @@ export function HeroOpening() {
   const bgRef = useRef<HTMLDivElement>(null)
   const statementRef = useRef<HTMLDivElement>(null)
   const scrollHintRef = useRef<HTMLDivElement>(null)
+
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
+
   const { setHeroBackgroundProgress, resetHeroBackground } = useHeroScrollState()
 
   useEffect(() => {
@@ -33,18 +40,55 @@ export function HeroOpening() {
     const bg = bgRef.current
     const statement = statementRef.current
     const scrollHint = scrollHintRef.current
+
     if (!section || !pin || !lettersWrap || !bg || !statement) return
 
     const letterEls = gsap.utils.toArray<HTMLElement>('.hero-letter')
 
-    if (reducedMotion) {
-      gsap.set(letterEls, { clearProps: 'all', opacity: 1, rotation: 0 })
-      gsap.set(bg, { opacity: 0.35 })
-      gsap.set(statement, { opacity: 1, y: 0 })
-      gsap.set(scrollHint, { opacity: 1 })
+    // ============================================================
+    // STATIC MODE
+    // Original animation is preserved below.
+    // ============================================================
+
+    if (!ENABLE_HERO_ANIMATION || reducedMotion) {
+      gsap.set(letterEls, {
+        clearProps: 'transform,opacity',
+        opacity: 1,
+        rotation: 0,
+        x: 0,
+        y: 0,
+        scale: 1,
+      })
+
+      gsap.set(bg, {
+        opacity: 0.35,
+        scale: 1,
+      })
+
+      gsap.set(lettersWrap, {
+        clearProps: 'transform',
+      })
+
+      gsap.set(statement, {
+        opacity: 1,
+        y: 0,
+      })
+
+      gsap.set(scrollHint, {
+        opacity: 1,
+      })
+
       setHeroBackgroundProgress(HERO_BACKGROUND_PROGRESS)
-      return () => resetHeroBackground()
+
+      return () => {
+        resetHeroBackground()
+      }
     }
+
+    // ============================================================
+    // ORIGINAL ANIMATION MODE
+    // Set ENABLE_HERO_ANIMATION = true to enable this section.
+    // ============================================================
 
     const offsetsX = isMobile ? MOBILE_OFFSETS_X : DESKTOP_OFFSETS
     const offsetsY = isMobile ? MOBILE_OFFSETS_Y : LETTERS.map(() => 0)
@@ -57,9 +101,20 @@ export function HeroOpening() {
       rotation: 0,
       scale: 1,
     })
-    gsap.set(bg, { opacity: 0, scale: 1.08 })
-    gsap.set(statement, { opacity: 0, y: 40 })
-    gsap.set(scrollHint, { opacity: 1 })
+
+    gsap.set(bg, {
+      opacity: 0,
+      scale: 1.08,
+    })
+
+    gsap.set(statement, {
+      opacity: 0,
+      y: 40,
+    })
+
+    gsap.set(scrollHint, {
+      opacity: 1,
+    })
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -138,7 +193,12 @@ export function HeroOpening() {
       resetHeroBackground()
       ctx.revert()
     }
-  }, [reducedMotion, isMobile, setHeroBackgroundProgress, resetHeroBackground])
+  }, [
+    reducedMotion,
+    isMobile,
+    setHeroBackgroundProgress,
+    resetHeroBackground,
+  ])
 
   return (
     <section
@@ -147,7 +207,11 @@ export function HeroOpening() {
       className="relative bg-grithq-landing"
       aria-label="GRITHQ opening"
     >
-      <div ref={pinRef} className="relative flex h-screen flex-col items-center justify-center overflow-hidden">
+      <div
+        ref={pinRef}
+        className="relative flex h-screen flex-col items-center justify-center overflow-hidden"
+      >
+        {/* Background image */}
         <div
           ref={bgRef}
           className="pointer-events-none absolute inset-0 z-0 opacity-0"
@@ -159,7 +223,9 @@ export function HeroOpening() {
             className="h-full w-full object-cover"
             loading="eager"
           />
+
           <div className="absolute inset-0 bg-grithq-black/65" />
+
           <div
             className="absolute inset-0"
             style={{
@@ -169,19 +235,26 @@ export function HeroOpening() {
           />
         </div>
 
+        {/* GRITHQ letters */}
         <div
           ref={lettersWrapRef}
-          className={`relative z-10 px-4 ${isMobile ? 'grid grid-cols-2 gap-x-6 gap-y-1 place-items-center' : 'flex items-center justify-center'}`}
+          className={`relative z-10 px-4 ${
+            isMobile
+              ? 'grid grid-cols-2 gap-x-6 gap-y-1 place-items-center'
+              : 'flex items-center justify-center'
+          }`}
           aria-label="GRITHQ"
         >
           {LETTERS.map((letter, i) => (
             <span
               key={i}
-              className={`hero-letter font-display leading-none font-black text-grithq-offwhite ${isMobile ? 'text-center' : 'inline-block'}`}
+              className={`hero-letter font-display leading-none font-black text-grithq-offwhite ${
+                isMobile ? 'text-center' : 'inline-block'
+              }`}
               style={{
                 fontSize: isMobile
-                  ? 'clamp(3rem, 16vw, 4.5rem)'
-                  : 'clamp(4rem, 12vw, 10rem)',
+                ? 'clamp(3rem, 16vw, 4.5rem)'
+                : 'clamp(6rem, 12vw, 12rem)',
                 textShadow: '0 0 80px rgba(247, 243, 244, 0.12)',
                 transform: 'rotate(0deg)',
               }}
@@ -191,6 +264,7 @@ export function HeroOpening() {
           ))}
         </div>
 
+        {/* Headline and supporting text */}
         <div
           ref={statementRef}
           className="relative z-10 mt-6 px-6 text-center opacity-0 md:mt-8"
@@ -198,6 +272,7 @@ export function HeroOpening() {
           <p className="font-display text-[clamp(0.65rem,2vw,0.85rem)] tracking-[0.45em] text-grithq-cream/50 uppercase">
             {STRINGS.hero.eyebrow}
           </p>
+
           <p className="mt-3 font-display text-[clamp(1rem,3vw,1.35rem)] font-light leading-snug tracking-wide text-grithq-offwhite">
             {STRINGS.hero.headline}
             <br />
@@ -205,6 +280,7 @@ export function HeroOpening() {
           </p>
         </div>
 
+        {/* Scroll hint */}
         <div
           ref={scrollHintRef}
           className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 md:bottom-12"
@@ -214,6 +290,7 @@ export function HeroOpening() {
             <span className="font-display text-[10px] tracking-[0.45em] text-grithq-cream/40">
               {STRINGS.hero.scrollHint}
             </span>
+
             <div className="h-10 w-px bg-gradient-to-b from-grithq-cream/50 to-transparent" />
           </div>
         </div>
