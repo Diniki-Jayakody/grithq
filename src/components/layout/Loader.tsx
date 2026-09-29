@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import gsap from 'gsap'
-import { STRINGS } from '@/constants/strings'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { useEffect } from 'react'
+// import { useState } from 'react'
+// import gsap from 'gsap'
+// import { STRINGS } from '@/constants/strings'
+// import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 interface LoaderProps {
   onComplete: () => void
