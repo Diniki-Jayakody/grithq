@@ -26,10 +26,10 @@ export const STRINGS = {
         'We built businesses.',
         'We invest our own capital.',
         'We think long term.',
-        'We like entrepreneurs.',
+        'We back entrepreneurs.',
       ],
       subtext:
-        'GritHQ is a privately held family investment office based in Sri Lanka. We invest our own capital in technology, hospitality, real estate and selected private companies.',
+        'gritHQ is a privately held family investment office based in Sri Lanka. We invest our own capital in technology, hospitality, real estate and selected private companies.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Vision with purpose.'],
@@ -41,7 +41,7 @@ export const STRINGS = {
       eyebrow: 'Startup Investments',
       heading: 'Investor For',
       subtext:
-        'Businesses GritHQ has invested in, distinct from the property portfolio.',
+        'Businesses gritHQ has invested in, seperate from the property portfolio.',
     },
     portfolio: {
       label: 'Portfolio',
@@ -65,7 +65,7 @@ export const STRINGS = {
       communityInitiatives: 'Community Initiatives',
       impactGallery: 'Impact Gallery',
       stories: 'Stories',
-      galleryImageAlt: 'Community programme supported by GritHQ',
+      galleryImageAlt: 'Community programme supported by gritHQ',
     },
     future: {
       label: 'Future',
@@ -103,7 +103,7 @@ export const STRINGS = {
       eyebrow: 'INVESTMENT FOCUS',
       heading: ['Capital with a', 'long view.'],
       subtext:
-        'GritHQ invests for the years ahead. We look for places where careful capital and steady work can build lasting value.',
+        'gritHQ invests for the years ahead. We look for places where careful capital and steady work can build lasting value.',
       approach: {
         eyebrow: 'OUR APPROACH',
         steps: [
@@ -128,7 +128,7 @@ export const STRINGS = {
       closing: {
         statement: ['We don\'t simply allocate capital.', 'We build what comes next.'],
         supporting:
-          'From finding opportunities to supporting their growth, GritHQ takes a patient approach to creating value.',
+          'From finding opportunities to supporting their growth, gritHQ takes a patient approach to creating value.',
         cta: 'EXPLORE OUR PORTFOLIO →',
         ctaHref: '#portfolio',
       },
@@ -146,9 +146,9 @@ export const STRINGS = {
   leadership: {
     name: 'Mr. Mangala Karunaratne',
     nameDisplay: 'MR. MANGALA KARUNARATNE',
-    role: 'Director, GritHQ',
+    role: 'Director, gritHQ',
     description:
-      'Mangala Karunaratne sets the direction for GritHQ, with a practical view of investment and a focus on lasting value.',
+      'Mangala Karunaratne sets the direction for gritHQ, with a practical view of investment and a focus on lasting value.',
     linkedinLabel: 'LinkedIn',
     boi: {
       organization: 'Board of Investment',
@@ -161,7 +161,7 @@ export const STRINGS = {
       {
         id: 'grithq',
         role: 'DIRECTOR',
-        organization: 'GRITHQ',
+        organization: 'gritHQ',
       },
       {
         id: 'short-circuit',
@@ -198,7 +198,7 @@ export const STRINGS = {
     availableFor: 'Available For',
     saleRent: 'Sale / Rent',
     availableSaleRent: 'Available: Sale / Rent',
-    exploreGritHQ: 'Explore GritHQ',
+    exploreGritHQ: 'Explore gritHQ',
     viewOpportunity: 'View Opportunity →',
   },
 
@@ -228,7 +228,7 @@ export const STRINGS = {
     locationHeading: 'Location Benefits',
     photosCta: 'View Building Photos →',
     photosHeading: 'Building Information',
-    inquiryHeading: 'Interested in GritHQ?',
+    inquiryHeading: 'Interested in gritHQ?',
     inquiryIntro:
       'For sales, leasing and investment inquiries, contact our team.',
     inquiryCta: 'Make an Inquiry',
@@ -242,7 +242,7 @@ export const STRINGS = {
       email: 'Email',
       phone: 'Phone',
       message: 'Message',
-      messagePlaceholder: 'Please let us know how we can assist you regarding GritHQ.',
+      messagePlaceholder: 'Please let us know how we can assist you regarding gritHQ.',
       submit: 'Send Inquiry →',
       sending: 'Sending...',
       success: 'Inquiry Sent',
@@ -250,9 +250,9 @@ export const STRINGS = {
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
       retry: 'Try Again',
-      subject: 'GritHQ: Sale Or Rent Opportunity Inquiry',
-      formType: 'GritHQ Sale Or Rent Opportunity',
-      property: 'GritHQ',
+      subject: 'gritHQ: Sale Or Rent Opportunity Inquiry',
+      formType: 'gritHQ Sale Or Rent Opportunity',
+      property: 'gritHQ',
       validation: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',
@@ -292,9 +292,9 @@ export const STRINGS = {
       retry: 'Try Again',
       error: 'Something Went Wrong',
       errorMessage: 'Your inquiry could not be sent. Please try again.',
-      subject: 'GritHQ: General Contact Inquiry',
+      subject: 'gritHQ: General Contact Inquiry',
       formType: 'General Contact',
-      property: 'GritHQ',
+      property: 'gritHQ',
       validation: {
         name: 'Please enter your name.',
         email: 'Please enter a valid email address.',

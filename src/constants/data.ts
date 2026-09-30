@@ -56,10 +56,10 @@ export const leadershipMessage = {
   backHref: ROUTES.leadership,
   year: '2026',
   paragraphs: [
-    'GritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
+    'gritHQ was formed around a simple conviction: capital is most useful when it is patient, responsible and directed toward assets that can compound in value over time.',
     'We look for opportunities where ownership is an act of stewardship, where buildings, businesses and partnerships can be strengthened rather than merely transacted. Patient thinking is not a slogan for us. It is the standard by which every decision is weighed.',
     'Responsible investment, in our view, means aligning capital with people and places that can endure. We prefer partnerships built on clarity, discipline and shared ambition. Sustainable value is created when those conditions are present, and protected when they are not.',
-    'The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped GritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
+    'The years ahead will ask us to remain selective. Opportunity will continue to appear. Our task is to meet it with the same composure that has shaped gritHQ thus far: vision without haste, growth without dilution, and a future that is built rather than assumed.',
   ],
 } as const
 
@@ -149,10 +149,10 @@ export const projects: Project[] = [
     shortDescription:
       'A coastal hospitality property with guest rooms, shared workspace and a setting shaped by the landscape.',
     description:
-      'Asaya Sands is a coastal hospitality property in southern Sri Lanka. It brings together guest stays, shared workspace and a setting that stays close to the land.',
+      'Asaya Sands is a coastal hospitality property in southern Sri Lanka. It brings together guest stays, shared workspace, and a setting that remains closely connected to the surrounding landscape.',
     overview: [
       'The architecture is kept simple and open, so the buildings sit within the landscape rather than overpowering it.',
-      'Alongside rooms for guests, Asaya Sands includes shared workspace. The aim is a place that works for both rest and focused work.',
+      'Alongside guest accommodations, Asaya Sands offers shared workspace. The idea is to create a place that works equally well for rest and focused work.',
     ],
     vision:
       'To build a coastal property with a clear identity and a long ownership view.',
@@ -190,7 +190,7 @@ export const projects: Project[] = [
   {
     id: 'grithq',
     slug: 'grithq',
-    name: 'GritHQ',
+    name: 'gritHQ',
     category: 'Commercial Real Estate',
     location: 'Colombo, Sri Lanka',
     status: 'Operational',
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     shortDescription:
       'A commercial building in Colombo, designed as a modern workspace for lasting use.',
     description:
-      'GritHQ is a commercial building in Colombo. It is designed as a modern workspace for businesses that want a strong location and a lasting home.',
+      'gritHQ is a commercial building in Colombo. It is designed as a modern workspace for businesses that want a strong location and a lasting home.',
     overview: [
       'The building offers natural light, flexible floors and shared areas made for daily work.',
       'It is the holding company’s own commercial property and is now available for sale or rent.',
@@ -338,7 +338,7 @@ export const developments: DevelopmentItem[] = [
   },
   {
     id: 'dev-urban',
-    title: 'GritHQ Commercial Campus',
+    title: 'gritHQ Commercial Campus',
     category: 'current',
     description:
       'A modern commercial workspace asset in Colombo, designed for connectivity, flexibility and lasting occupancy. Premium common areas and flexible floor plates sustain value across market cycles.',
@@ -371,7 +371,7 @@ export const developments: DevelopmentItem[] = [
     title: 'Landscape Integration Initiative',
     category: 'completed',
     description:
-      'A completed development phase demonstrating GRITHQ\'s commitment to landscape first design, where built form defers to terrain, vegetation and natural light.',
+      'A completed development phase demonstrating gritHQ\'s commitment to landscape first design, where built form defers to terrain, vegetation and natural light.',
     location: 'Southern Region, Sri Lanka',
     status: 'Completed',
     image: developmentImages.landscape,
@@ -511,17 +511,17 @@ export const impactPillars: ImpactPillar[] = [
   {
     id: 'nourishment',
     title: 'Nourishment',
-    description: 'Providing access to nutritious meals for school children across partner communities.',
+    description: 'Helping provide nutritious meals to school children across the communities we work with.',
   },
   {
     id: 'education',
     title: 'Education',
-    description: 'Supporting schools and learning environments so children can focus on their futures.',
+    description: 'Supporting schools and learning environments where children can learn, grow, and focus on their futures.',
   },
   {
     id: 'community',
     title: 'Community',
-    description: 'Building lasting partnerships with local volunteers, teachers and community leaders.',
+    description: 'Building lasting partnerships with local volunteers, teachers, and community leaders.',
   },
 ]
 
@@ -546,7 +546,7 @@ export const impactStories: ImpactStory[] = [
     id: 'story-education',
     title: 'Education Starts with Nourishment',
     description:
-      'When children are nourished, they learn. When they learn, futures open. GRITHQ\'s commitment to school meal programmes reflects a belief that investment in people is the most enduring investment of all.',
+      'When children are nourished, they learn. When they learn, futures open. gritHQ\'s commitment to school meal programmes reflects a belief that investment in people is the most enduring investment of all.',
     caption: 'Education and nourishment',
     image: impactImages.school,
   },
@@ -564,7 +564,7 @@ export const communityInitiatives: CommunityInitiative[] = [
     id: 'initiative-volunteers',
     title: 'Community Volunteers',
     description:
-      'Local volunteers form the backbone of GRITHQ\'s social initiatives, distributing meals, supporting schools and building lasting relationships with the communities we serve.',
+      'Local volunteers form the backbone of gritHQ\'s social initiatives, distributing meals, supporting schools and building lasting relationships with the communities we serve.',
     image: impactImages.volunteers,
   },
   {
@@ -581,8 +581,8 @@ export const communityInitiatives: CommunityInitiative[] = [
 export const contactInfo = {
   email: 'hello@grithq.co',
   phone: 'Contact via email',
-  address: 'GRITHQ, No 109, Main Road, Battaramulla',
-  contactPerson: 'GritHQ Team',
+  address: 'gritHQ, No 109, Main Road, Battaramulla',
+  contactPerson: 'gritHQ Team',
   whatsapp: '#',
   whatsappDisplay: '[SAMPLE] Link to be confirmed',
   social: {
@@ -601,7 +601,7 @@ export const identityVisual = {
 
 export const gritHQPropertyData = {
   id: 'grithq',
-  name: 'GritHQ',
+  name: 'gritHQ',
   route: ROUTES.grithqOpportunity,
   backHref: ROUTES.portfolio,
   inquiryHref: '#inquiry',

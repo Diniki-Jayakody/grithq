@@ -273,11 +273,11 @@ export function HeroOpening() {
             {STRINGS.hero.eyebrow}
           </p>
 
-          <p className="mt-3 font-display text-[clamp(1rem,3vw,1.35rem)] font-light leading-snug tracking-wide text-grithq-offwhite">
+          {/* <p className="mt-3 font-display text-[clamp(1rem,3vw,1.35rem)] font-light leading-snug tracking-wide text-grithq-offwhite">
             {STRINGS.hero.headline}
             <br />
             {STRINGS.hero.headlineLine2}
-          </p>
+          </p> */}
         </div>
 
         {/* Scroll hint */}
