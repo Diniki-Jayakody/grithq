@@ -144,8 +144,8 @@ export const STRINGS = {
   },
 
   leadership: {
-    name: 'Mr. Mangala Karunaratne',
-    nameDisplay: 'MR. MANGALA KARUNARATNE',
+    name: 'Mangala Karunaratne',
+    nameDisplay: 'MANGALA KARUNARATNE',
     role: 'Director, gritHQ',
     description:
       'Mangala Karunaratne sets the direction for gritHQ, with a practical view of investment and a focus on lasting value.',

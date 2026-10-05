@@ -9,7 +9,7 @@ import { HERO_BACKGROUND_PROGRESS, useHeroScrollState } from '@/hooks/useHeroScr
 
 gsap.registerPlugin(ScrollTrigger)
 
-const LETTERS = ['G', 'R', 'I', 'T', 'H', 'Q']
+const LETTERS = ['g', 'r', 'i', 't', 'H', 'Q']
 
 const DESKTOP_OFFSETS = [-2.8, -1.7, -0.85, 0.85, 1.7, 2.8]
 const MOBILE_OFFSETS_X = [-0.6, 0.6, -0.6, 0.6, -0.6, 0.6]
@@ -269,9 +269,9 @@ export function HeroOpening() {
           ref={statementRef}
           className="relative z-10 mt-6 px-6 text-center opacity-0 md:mt-8"
         >
-          <p className="font-display text-[clamp(0.65rem,2vw,0.85rem)] tracking-[0.45em] text-grithq-cream/50 uppercase">
+          {/* <p className="font-display text-[clamp(0.65rem,2vw,0.85rem)] tracking-[0.45em] text-grithq-cream/50 uppercase">
             {STRINGS.hero.eyebrow}
-          </p>
+          </p> */}
 
           {/* <p className="mt-3 font-display text-[clamp(1rem,3vw,1.35rem)] font-light leading-snug tracking-wide text-grithq-offwhite">
             {STRINGS.hero.headline}

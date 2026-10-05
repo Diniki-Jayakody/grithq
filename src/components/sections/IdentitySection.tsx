@@ -282,7 +282,7 @@ export function IdentitySection() {
               <div className="leadership-block order-2 flex flex-col justify-start lg:order-none lg:col-span-7 xl:col-span-7">
                 <p className={styles.eyebrowLight}>{identity.leadershipEyebrow}</p>
 
-                <DisplayText
+                {/* <DisplayText
                   as="h3"
                   className={styles.identityFocusHeading}
                 >
@@ -291,7 +291,7 @@ export function IdentitySection() {
                       {line}
                     </span>
                   ))}
-                </DisplayText>
+                </DisplayText> */}
 
                 <div className="mt-10 md:mt-12">
                   <div className="flex flex-wrap items-center gap-3">
@@ -356,7 +356,7 @@ export function IdentitySection() {
                   ))}
                 </div>
 
-                <Link
+                {/* <Link
                   to={ROUTES.messageFromMangala}
                   className="group mt-8 inline-flex min-h-11 items-center gap-3 font-display text-xs tracking-[0.22em] text-grithq-deepAccent transition-colors duration-300 hover:text-grithq-burgundy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite md:mt-10"
                 >
@@ -365,7 +365,7 @@ export function IdentitySection() {
                     className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.5}
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

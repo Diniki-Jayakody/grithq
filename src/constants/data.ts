@@ -215,30 +215,30 @@ export const projects: Project[] = [
       route: ROUTES.grithqOpportunity,
     },
   },
-  {
-    id: 'south-beach',
-    slug: 'south-beach',
-    name: 'South Beach',
-    category: 'Development / Real Estate',
-    location: 'Southern Coast, Sri Lanka',
-    status: 'Active Development',
-    developmentType: 'Mixed Use Coastal',
-    shortDescription:
-      'A coastal development on Sri Lanka’s southern coast, shaped by location and lifestyle.',
-    description:
-      'South Beach is a coastal development on Sri Lanka’s southern coast. The project is a luxury penthouse by the sea.',
-    overview: [
-      'The design looks to the coast, with outdoor space and a setting defined by the water.',
-      'It is planned as a lasting residential asset, not a generic seaside template.',
-    ],
-    vision:
-      'To create a coastal address that belongs to this place.',
-    heroImage: portfolioImages.southBeach.hero,
-    gallery: [...portfolioImages.southBeach.gallery],
-    featured: true,
-    year: '2024',
-    valueStatement: 'The Luxury Penthouse by Sea',
-  },
+  // {
+  //   id: 'south-beach',
+  //   slug: 'south-beach',
+  //   name: 'South Beach',
+  //   category: 'Development / Real Estate',
+  //   location: 'Southern Coast, Sri Lanka',
+  //   status: 'Active Development',
+  //   developmentType: 'Mixed Use Coastal',
+  //   shortDescription:
+  //     'A coastal development on Sri Lanka’s southern coast, shaped by location and lifestyle.',
+  //   description:
+  //     'South Beach is a coastal development on Sri Lanka’s southern coast. The project is a luxury penthouse by the sea.',
+  //   overview: [
+  //     'The design looks to the coast, with outdoor space and a setting defined by the water.',
+  //     'It is planned as a lasting residential asset, not a generic seaside template.',
+  //   ],
+  //   vision:
+  //     'To create a coastal address that belongs to this place.',
+  //   heroImage: portfolioImages.southBeach.hero,
+  //   gallery: [...portfolioImages.southBeach.gallery],
+  //   featured: true,
+  //   year: '2024',
+  //   valueStatement: 'The Luxury Penthouse by Sea',
+  // },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -616,7 +616,7 @@ export const gritHQPropertyData = {
     },
     rent: {
       label: STRINGS.opportunity.rentLabel,
-      value: 'LKR 8 Million + VAT',
+      value: 'LKR 8.5 Million + VAT',
     },
   },
   executiveSummary: [
