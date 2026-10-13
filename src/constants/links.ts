@@ -4,8 +4,8 @@ export const ROUTES = {
   home: '/',
   identity: '/#identity',
   leadership: '/#leadership',
+  investorFor: '/#investor-for',
   portfolio: '/#portfolio',
-  contact: '/#contact',
   project: (slug: string) => `/portfolio/${slug}`,
   messageFromMangala: '/message-from-mangala',
   grithqOpportunity: '/grithq-opportunity',
@@ -20,6 +20,12 @@ export const EXTERNAL_LINKS = {
     FlashHealth: 'https://flash.health',
     MagicUnbound: 'https://www.magicunbound.co',
     Rootstone: 'https://rootstone.io',
+    Viridian: 'https://viridian.fund/',
+  },
+
+  satkara: {
+    calcey: 'https://calcey.com/satkara/',
+    karu: 'https://karu.com/satkara/',
   },
 
   asayaSands: 'https://asaya.lk/',

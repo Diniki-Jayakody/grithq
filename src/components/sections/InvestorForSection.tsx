@@ -97,7 +97,7 @@ export function InvestorForSection() {
         <SectionLabel variant="light">
           {STRINGS.sections.investorFor.eyebrow}
         </SectionLabel>
-        <DisplayText
+        {/* <DisplayText
           as="h2"
           id="investor-for-heading"
           className={styles.identityFocusHeading}
@@ -106,7 +106,7 @@ export function InvestorForSection() {
         </DisplayText>
         <p className={`mt-4 max-w-lg ${styles.bodyTextMutedLight}`}>
           {STRINGS.sections.investorFor.subtext}
-        </p>
+        </p> */}
 
         <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-8 md:mt-12 md:grid-cols-12 md:gap-x-8 md:gap-y-4 lg:gap-x-10">
           <div className="md:col-span-5 md:col-start-1">

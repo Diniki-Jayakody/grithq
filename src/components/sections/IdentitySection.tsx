@@ -1,15 +1,13 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { DisplayText } from '@/components/typography/DisplayText'
 import { SectionLabel } from '@/components/typography/SectionLabel'
 import {
   investmentFocusAreas,
   leadershipProfiles,
-  leadershipCredentials,
 } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
 import { ROUTES } from '@/constants/links'
@@ -43,65 +41,47 @@ function EmphasizedWeText({ text }: { text: string }) {
 
 function InvestmentAreaCell({
   area,
-  layoutClass,
-  isActive,
-  isDimmed,
-  onActivate,
-  onDeactivate,
 }: {
   area: (typeof investmentFocusAreas)[0]
-  layoutClass: string
-  isActive: boolean
-  isDimmed: boolean
-  onActivate: () => void
-  onDeactivate: () => void
 }) {
+  const { setCursorState } = useCursorState()
+  const isMobile = useIsMobile()
+
   return (
-    <div className={`focus-area ${layoutClass}`}>
-      <motion.article
-        className="relative h-full overflow-hidden border border-grithq-burgundy/10"
-        onMouseEnter={onActivate}
-        onMouseLeave={onDeactivate}
-        animate={{
-          opacity: isDimmed ? 0.72 : 1,
-        }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="absolute inset-0">
-          <motion.img
+    <article className="focus-area min-w-0">
+      <div className="overflow-hidden">
+        <div className="aspect-[4/3]">
+          <img
             src={area.image}
             alt={`${area.title} investment focus`}
-            className="h-full w-full object-cover"
-            animate={{
-              scale: isActive ? 1.06 : 1,
-            }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            loading="lazy"
+            className={`h-full w-full ${area.imageClassName}`}
           />
-          <motion.div
-            className="absolute inset-0 bg-grithq-offwhite"
-            animate={{ opacity: isActive ? 0.52 : 0.68 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/25 via-transparent to-grithq-burgundy/10" aria-hidden="true" />
         </div>
-
-        <div className="relative z-10 flex h-full min-h-[180px] flex-col justify-between p-6 md:min-h-[220px] md:p-8 lg:min-h-[250px] lg:p-10">
-          <div>
-            <span className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve/80 md:text-xs">
-              {area.number}
-            </span>
-            <motion.h4
-              className={styles.investmentFocusTitle}
-              animate={{ x: isActive ? 4 : 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {area.title}
-            </motion.h4>
-          </div>
-        </div>
-      </motion.article>
-    </div>
+      </div>
+      <div className="mt-5 h-px w-full bg-grithq-burgundy/20" aria-hidden="true" />
+      <p className="mt-5 font-display text-[10px] tracking-[0.3em] text-grithq-burgundy md:text-xs">
+        {area.number}
+      </p>
+      <h4 className={`${styles.investmentFocusTitle} mt-3`}>
+        {area.title}
+      </h4>
+      <p className={`mt-3 max-w-sm ${styles.bodyTextMutedLight}`}>
+        {area.description}
+      </p>
+      <Link
+        to={area.href}
+        className="group mt-5 inline-flex min-h-11 items-center gap-2 font-display text-sm text-grithq-burgundy transition-colors duration-300 hover:text-grithq-deepAccent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite"
+        onMouseEnter={() => !isMobile && setCursorState('open')}
+        onMouseLeave={() => !isMobile && setCursorState('default')}
+      >
+        {STRINGS.identity.investmentFocus.explore}
+        <ArrowRight
+          className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+          strokeWidth={1.5}
+        />
+      </Link>
+    </article>
   )
 }
 
@@ -110,7 +90,6 @@ export function IdentitySection() {
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
   const profile = leadershipProfiles[0]
-  const [activeFocusIndex, setActiveFocusIndex] = useState<number | null>(null)
   const { setCursorState } = useCursorState()
 
   useEffect(() => {
@@ -212,26 +191,10 @@ export function IdentitySection() {
             </p>
           </div>
 
-          <div className="investment-focus-grid mt-10 grid gap-1 md:mt-14 md:grid-cols-12">
-            {investmentFocusAreas.map((area, index) => {
-              const layoutClasses = [
-                'md:col-span-5 md:row-span-1',
-                'md:col-span-7',
-                'md:col-span-7',
-                'md:col-span-5',
-              ]
-              return (
-                <InvestmentAreaCell
-                  key={area.id}
-                  area={area}
-                  layoutClass={layoutClasses[index] ?? ''}
-                  isActive={activeFocusIndex === index}
-                  isDimmed={activeFocusIndex !== null && activeFocusIndex !== index}
-                  onActivate={() => setActiveFocusIndex(index)}
-                  onDeactivate={() => setActiveFocusIndex(null)}
-                />
-              )
-            })}
+          <div className="investment-focus-grid mt-10 grid grid-cols-1 gap-10 md:mt-14 md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3 lg:gap-x-10">
+            {investmentFocusAreas.map((area) => (
+              <InvestmentAreaCell key={area.id} area={area} />
+            ))}
           </div>
 
           <div className="identity-reveal mt-14 md:mt-16">
@@ -333,26 +296,9 @@ export function IdentitySection() {
                   </div>
                 </div>
 
-                <div className="mt-8 grid grid-cols-1 gap-3 md:mt-10 md:grid-cols-2 md:gap-x-6 md:gap-y-3">
-                  {[leadershipCredentials.slice(0, 2), leadershipCredentials.slice(2, 4)].map((column, columnIndex) => (
-                    <div key={columnIndex} className="flex flex-col gap-3">
-                      {column.map((credential) => (
-                        <div key={credential.id} className={styles.credentialBlock}>
-                          {credential.organization ? (
-                            <>
-                              <p className={styles.credentialRole}>{credential.role}</p>
-                              <div className="my-2.5 h-px w-full bg-grithq-burgundy/15" aria-hidden="true" />
-                              <p className={styles.credentialOrg}>{credential.organization}</p>
-                              {credential.organizationLine2 && (
-                                <p className={styles.credentialOrgLine2}>{credential.organizationLine2}</p>
-                              )}
-                            </>
-                          ) : (
-                            <p className={styles.credentialOrg}>{credential.role}</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                <div className={`mt-8 max-w-xl space-y-5 md:mt-10 ${styles.letterBody}`}>
+                  {STRINGS.leadership.biography.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
 

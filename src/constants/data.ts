@@ -71,40 +71,37 @@ export interface InvestmentFocusArea {
   title: string
   description: string
   image: string
+  href: string
+  imageClassName: string
 }
 
 export const investmentFocusAreas: InvestmentFocusArea[] = [
   {
     id: 'real-estate',
     number: '01',
-    title: 'REAL ESTATE',
-    description:
-      'Properties and developments we hold for lasting value.',
+    title: STRINGS.identity.investmentFocus.areas.realEstate.title,
+    description: STRINGS.identity.investmentFocus.areas.realEstate.description,
     image: images.investmentFocus.realEstate,
+    href: ROUTES.portfolio,
+    imageClassName: 'object-cover object-[center_20%]',
   },
   {
     id: 'hospitality',
     number: '02',
-    title: 'HOSPITALITY AND EXPERIENCES',
-    description:
-      'Places to stay and experiences shaped by the setting.',
+    title: STRINGS.identity.investmentFocus.areas.hospitality.title,
+    description: STRINGS.identity.investmentFocus.areas.hospitality.description,
     image: images.investmentFocus.hospitality,
+    href: ROUTES.portfolio,
+    imageClassName: 'object-cover object-center',
   },
   {
-    id: 'technological-investments',
+    id: 'technology',
     number: '03',
-    title: 'TECHNOLOGICAL INVESTMENTS',
-    description:
-      'Technology businesses with a clear product and room to grow.',
+    title: STRINGS.identity.investmentFocus.areas.technology.title,
+    description: STRINGS.identity.investmentFocus.areas.technology.description,
     image: images.investmentFocus.businesses,
-  },
-  {
-    id: 'selective-opportunities',
-    number: '04',
-    title: 'SELECTIVE OPPORTUNITIES',
-    description:
-      'A small number of other investments we take on with care.',
-    image: images.investmentFocus.selective,
+    href: ROUTES.investorFor,
+    imageClassName: 'object-cover object-[center_30%]',
   },
 ]
 
@@ -276,7 +273,7 @@ export function getSecondaryPortfolioProjects(): Project[] {
 export interface InvestedBusiness {
   id: string
   name: string
-  image: string
+  image?: string
   href: string
 }
 
@@ -304,6 +301,11 @@ export const investedBusinesses: InvestedBusiness[] = [
     name: STRINGS.investorFor.projects.magicUnbound,
     image: images.invested.magicUnbound,
     href: EXTERNAL_LINKS.investedProjects.MagicUnbound,
+  },
+  {
+    id: 'viridian',
+    name: STRINGS.investorFor.projects.viridian,
+    href: EXTERNAL_LINKS.investedProjects.Viridian,
   },
 ]
 
@@ -502,8 +504,8 @@ export const impactGallery: ImpactGalleryItem[] = [
   { id: 'g1', src: images.volunteer.one, alt: STRINGS.sections.impact.galleryImageAlt },
   { id: 'g2', src: images.volunteer.two, alt: STRINGS.sections.impact.galleryImageAlt },
   { id: 'g3', src: images.volunteer.three, alt: STRINGS.sections.impact.galleryImageAlt },
-  { id: 'g4', src: images.volunteer.four, alt: STRINGS.sections.impact.galleryImageAlt },
-  { id: 'g5', src: images.volunteer.five, alt: STRINGS.sections.impact.galleryImageAlt },
+  // { id: 'g4', src: images.volunteer.four, alt: STRINGS.sections.impact.galleryImageAlt },
+  // { id: 'g5', src: images.volunteer.five, alt: STRINGS.sections.impact.galleryImageAlt },
 ]
 
 /** Qualitative impact pillars. No unverified numeric claims. */
