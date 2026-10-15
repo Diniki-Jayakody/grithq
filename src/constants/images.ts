@@ -39,6 +39,7 @@ import flashHealthImg from '@/assets/projects/invested-projects/flashHealth.png'
 import dossiersImg from '@/assets/projects/invested-projects/Dossiers.png'
 import rootstoneImg from '@/assets/projects/invested-projects/Rootstone.png'
 import magicUnboundImg from '@/assets/projects/invested-projects/MagicUnbound.png'
+import viridianImg from '@/assets/projects/invested-projects/Viridian.png'
 
 export const images = {
   landing: landingBg,
@@ -73,6 +74,7 @@ export const images = {
     dossiers: dossiersImg,
     rootstone: rootstoneImg,
     magicUnbound: magicUnboundImg,
+    viridian: viridianImg
   },
 } as const
 
