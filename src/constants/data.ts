@@ -157,7 +157,7 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.asayaSands.gallery],
     featured: true,
     year: '2024',
-    valueStatement: 'The Best Aesthetic Coworking Space',
+    valueStatement: 'Work. Play. Stay.',
     websiteHref: EXTERNAL_LINKS.asayaSands,
   },
   {
@@ -182,7 +182,7 @@ export const projects: Project[] = [
     gallery: [...portfolioImages.asayaSummit.gallery],
     featured: true,
     year: '2025',
-    valueStatement: 'Hidden Secret in a Mountain',
+    valueStatement: 'A Sanctuary for Mind, Body & Renewal',
   },
   {
     id: 'grithq',
@@ -305,6 +305,7 @@ export const investedBusinesses: InvestedBusiness[] = [
   {
     id: 'viridian',
     name: STRINGS.investorFor.projects.viridian,
+    image: images.invested.viridian,
     href: EXTERNAL_LINKS.investedProjects.Viridian,
   },
 ]
@@ -589,7 +590,7 @@ export const contactInfo = {
   whatsappDisplay: '[SAMPLE] Link to be confirmed',
   social: {
     linkedin: 'https://www.linkedin.com/company/grithq/',
-    instagram: 'https://instagram.com',
+    // instagram: 'https://instagram.com',
     // twitter: 'https://twitter.com',
   },
 }
@@ -603,7 +604,7 @@ export const identityVisual = {
 
 export const gritHQPropertyData = {
   id: 'grithq',
-  name: 'gritHQ',
+  name: 'Commercial Building',
   route: ROUTES.grithqOpportunity,
   backHref: ROUTES.portfolio,
   inquiryHref: '#inquiry',

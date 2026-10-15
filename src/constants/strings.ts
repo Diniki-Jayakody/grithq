@@ -44,8 +44,8 @@ export const STRINGS = {
         'Businesses gritHQ has invested in, seperate from the property portfolio.',
     },
     portfolio: {
-      label: 'Portfolio',
-      heading: 'Properties we hold and develop.',
+      label: 'Properties',
+      heading: 'Properties we hold and develop',
       subtext:
         'Hospitality, commercial and development assets chosen for lasting value.',
     },
@@ -114,17 +114,17 @@ export const STRINGS = {
         realEstate: {
           title: 'Real Estate',
           description:
-            'Properties and developments we hold for lasting value.',
+            'Commercial developments designed to hold value.',
         },
         hospitality: {
           title: 'Hospitality and Experiences',
           description:
-            'Places to stay and experiences shaped by the setting.',
+            'Hotel stays and destinations built around memorable guest experiences.',
         },
         technology: {
           title: 'Technology',
           description:
-            'Technology businesses with a clear product and room to grow.',
+            'Backing teams and platforms that build softwares for growing markets.',
         },
       },
       approach: {
