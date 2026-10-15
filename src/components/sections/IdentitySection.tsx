@@ -59,7 +59,6 @@ function InvestmentAreaCell({
           />
         </div>
       </div>
-      <div className="mt-5 h-px w-full bg-grithq-burgundy/20" aria-hidden="true" />
       <p className="mt-5 font-display text-[10px] tracking-[0.3em] text-grithq-burgundy md:text-xs">
         {area.number}
       </p>
@@ -162,9 +161,12 @@ export function IdentitySection() {
 
           <div className="identity-reveal min-w-0 md:justify-self-end lg:pt-10">
             <ul className="grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-1 lg:gap-y-5">
-              {STRINGS.identity.grit.letters.map((item) => (
+            {STRINGS.identity.grit.letters.map((item, index) => (
                 <li key={item.letter} className="flex flex-col gap-2 lg:flex-row lg:items-baseline lg:gap-5">
-                  <span className={styles.gritLetter}>{item.letter}</span>
+                  <span className={`${styles.gritLetter} inline-block w-[0.8em] shrink-0 text-center ${
+                      index === 0 ? 'bg-grithq-burgundy py-[0.08em] !text-grithq-offwhite' : ''}`}>
+                    {item.letter}
+                  </span>                 
                   <span className={styles.gritWord}>{item.word}</span>
                 </li>
               ))}
@@ -176,16 +178,6 @@ export function IdentitySection() {
         <div className="investment-focus mt-16 md:mt-24 lg:mt-28">
           <SectionLabel variant="light">{focus.eyebrow}</SectionLabel>
           <div className="max-w-3xl">
-            {/* <DisplayText
-              as="h3"
-              className={`identity-reveal ${styles.identityFocusHeading}`}
-            >
-              {focus.heading.map((line, i) => (
-                <span key={line} className={i > 0 ? 'block' : undefined}>
-                  {line}
-                </span>
-              ))}
-            </DisplayText> */}
             <p className={`identity-reveal mt-6 max-w-2xl ${styles.bodyTextMutedLight}`}>
               {focus.subtext}
             </p>
@@ -196,34 +188,13 @@ export function IdentitySection() {
               <InvestmentAreaCell key={area.id} area={area} />
             ))}
           </div>
-
-          <div className="identity-reveal mt-14 md:mt-16">
-            <blockquote className="max-w-3xl">
-              <p className="font-display text-[clamp(1.25rem,3vw,2rem)] font-light leading-snug text-grithq-burgundy">
-                {focus.closing.statement.map((line, i) => (
-                  <span key={line} className={i > 0 ? 'block' : undefined}>
-                    {line}
-                  </span>
-                ))}
-              </p>
-            </blockquote>
-            <a
-              href={focus.closing.ctaHref}
-              className="group mt-8 inline-flex items-center gap-3 font-display text-xs tracking-[0.25em] text-grithq-deepAccent transition-colors duration-300 hover:text-grithq-burgundy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite"
-            >
-              {focus.closing.cta}
-              <ArrowUpRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                strokeWidth={1.5}
-              />
-            </a>
-          </div>
         </div>
 
         {/* ─── LEADERSHIP ───────────────────────────────────────────────── */}
         {profile && (
-          <div id="leadership" className="leadership-section mt-16 md:mt-24 lg:mt-28">
-            <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
+         <div id="leadership" className="leadership-section mt-16 md:mt-24 lg:mt-28">
+          <SectionLabel variant="light">{identity.leadershipEyebrow}</SectionLabel>
+          <div className="mt-10 grid items-start gap-8 md:mt-14 lg:grid-cols-12 lg:gap-10 xl:gap-12">
               <div className="leadership-block order-1 lg:order-none lg:col-span-5 xl:col-span-5">
                 <div className="relative overflow-hidden">
                   <div className="absolute left-0 top-0 z-10 h-12 w-px bg-grithq-mauve/30" aria-hidden="true" />
@@ -243,18 +214,7 @@ export function IdentitySection() {
               </div>
 
               <div className="leadership-block order-2 flex flex-col justify-start lg:order-none lg:col-span-7 xl:col-span-7">
-                <p className={styles.eyebrowLight}>{identity.leadershipEyebrow}</p>
-
-                {/* <DisplayText
-                  as="h3"
-                  className={styles.identityFocusHeading}
-                >
-                  {identity.leadershipHeading.map((line, i) => (
-                    <span key={line} className={i > 0 ? 'block' : undefined}>
-                      {line}
-                    </span>
-                  ))}
-                </DisplayText> */}
+              
 
                 <div className="mt-10 md:mt-12">
                   <div className="flex flex-wrap items-center gap-3">
@@ -301,17 +261,6 @@ export function IdentitySection() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
-
-                {/* <Link
-                  to={ROUTES.messageFromMangala}
-                  className="group mt-8 inline-flex min-h-11 items-center gap-3 font-display text-xs tracking-[0.22em] text-grithq-deepAccent transition-colors duration-300 hover:text-grithq-burgundy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70 focus-visible:ring-offset-2 focus-visible:ring-offset-grithq-offwhite md:mt-10"
-                >
-                  {STRINGS.leadership.messageCta}
-                  <ArrowUpRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    strokeWidth={1.5}
-                  />
-                </Link> */}
               </div>
             </div>
           </div>
