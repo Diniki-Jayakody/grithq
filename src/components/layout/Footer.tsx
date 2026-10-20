@@ -78,7 +78,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {STRINGS.brand.name}. {STRINGS.footer.copyright}
           </p>
           <div className="flex gap-6">
-            <a
+            {/* <a
               href="#"
               className="text-xs text-grithq-cream/30 transition-colors hover:text-grithq-cream/60"
             >
@@ -89,7 +89,7 @@ export function Footer() {
               className="text-xs text-grithq-cream/30 transition-colors hover:text-grithq-cream/60"
             >
               {STRINGS.footer.terms}
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

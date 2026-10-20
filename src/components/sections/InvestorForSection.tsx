@@ -65,6 +65,7 @@ export function InvestorForSection() {
   const dossiers = investedBusinesses[1]
   const rootstone = investedBusinesses[2]
   const magicUnbound = investedBusinesses[3]
+  const viridian = investedBusinesses[4]
 
   useEffect(() => {
     const section = sectionRef.current
@@ -84,7 +85,7 @@ export function InvestorForSection() {
     return () => ctx.revert()
   }, [reducedMotion])
 
-  if (!flashHealth || !dossiers || !rootstone || !magicUnbound) return null
+  if (!flashHealth || !dossiers || !rootstone || !magicUnbound || !viridian) return null
 
   return (
     <section
@@ -97,29 +98,26 @@ export function InvestorForSection() {
         <SectionLabel variant="light">
           {STRINGS.sections.investorFor.eyebrow}
         </SectionLabel>
-        {/* <DisplayText
-          as="h2"
-          id="investor-for-heading"
-          className={styles.identityFocusHeading}
-        >
-          {STRINGS.sections.investorFor.heading}
-        </DisplayText>
-        <p className={`mt-4 max-w-lg ${styles.bodyTextMutedLight}`}>
-          {STRINGS.sections.investorFor.subtext}
-        </p> */}
-
-        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-8 md:mt-12 md:grid-cols-12 md:gap-x-8 md:gap-y-4 lg:gap-x-10">
-          <div className="md:col-span-5 md:col-start-1">
+        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-16 md:mt-14 md:grid-cols-12 md:grid-rows-2 md:gap-x-16 md:gap-y-20 lg:gap-x-20 lg:gap-y-28 xl:gap-x-24">
+          {/* Top-left */}
+          <div className="md:col-span-4 md:col-start-1 md:row-start-1">
             <InvestedProject business={flashHealth} imageClassName="aspect-[16/10]" />
           </div>
-          <div className="md:col-span-5 md:col-start-8 md:mt-16 lg:mt-20">
-            <InvestedProject business={dossiers} imageClassName="aspect-[5/3]" />
+          {/* Top-right */}
+          <div className="md:col-span-4 md:col-start-9 md:row-start-1">
+            <InvestedProject business={dossiers} imageClassName="aspect-[16/10]" />
           </div>
-          <div className="md:col-span-5 md:col-start-2 md:mt-8">
-            <InvestedProject business={rootstone} imageClassName="aspect-[16/11]" />
+          {/* Center (spans both rows) */}
+          <div className="md:col-span-4 md:col-start-5 md:row-span-2 md:row-start-1 md:self-center">
+            <InvestedProject business={rootstone} imageClassName="aspect-[3/2]" />
           </div>
-          <div className="md:col-span-4 md:col-start-9 md:mt-4 lg:mt-6">
-            <InvestedProject business={magicUnbound} imageClassName="aspect-[4/3]" />
+          {/* Bottom-left */}
+          <div className="md:col-span-4 md:col-start-1 md:row-start-2">
+            <InvestedProject business={magicUnbound} imageClassName="aspect-[16/10]" />
+          </div>
+          {/* Bottom-right */}
+          <div className="md:col-span-4 md:col-start-9 md:row-start-2">
+            <InvestedProject business={viridian} imageClassName="aspect-[16/10]" />
           </div>
         </div>
       </div>

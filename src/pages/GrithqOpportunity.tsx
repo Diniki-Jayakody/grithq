@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { contactInfo, gritHQPropertyData } from '@/constants/data'
@@ -23,6 +23,11 @@ export function GrithqOpportunity() {
   const reducedMotion = useReducedMotion()
   const { setCursorState } = useCursorState()
   const property = gritHQPropertyData
+  const [galleryExpanded, setGalleryExpanded] = useState(false)
+  const visibleGallery = galleryExpanded
+    ? property.gallery
+    : property.gallery.slice(0, property.galleryInitialCount)
+  const hasMoreGallery = property.gallery.length > property.galleryInitialCount && !galleryExpanded
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -44,7 +49,7 @@ export function GrithqOpportunity() {
 
       gsap.fromTo(
         hero.querySelector('.opportunity-hero-img'),
-        { scale: 1.1 },
+        { scale: 1 },
         {
           scale: 1,
           ease: 'none',
@@ -70,7 +75,7 @@ export function GrithqOpportunity() {
         <img
           src={property.heroImage}
           alt={`${property.name} building in Battaramulla`}
-          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover"
+          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
 
@@ -234,36 +239,50 @@ export function GrithqOpportunity() {
           </div>
 
           <div className="mt-12 border-t border-grithq-cream/10 pt-10">
-            <OpportunityHeading>{STRINGS.opportunity.photosHeading}</OpportunityHeading>
-
-            {/* Property Location */}
             <a
-              href="https://maps.app.goo.gl/rn2m3xMSUspSxbqA9"
+              href={property.mapHref}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.ctaButton} mt-6 w-full px-6 sm:w-auto sm:px-10`}
+              className={`${styles.ctaButton} min-h-11 w-full px-6 sm:w-auto sm:px-10`}
               onMouseEnter={() => setCursorState('open')}
               onMouseLeave={() => setCursorState('default')}
             >
-              View on Map
-            </a>
-
-            {/* Building Photos */}
-            <a
-              href={property.driveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.ctaButton} mt-3 w-full px-6 sm:w-auto sm:px-10`}
-              onMouseEnter={() => setCursorState('open')}
-              onMouseLeave={() => setCursorState('default')}
-            >
-              {STRINGS.opportunity.photosCta}
+              {STRINGS.opportunity.viewOnMap}
             </a>
           </div>
-
         </div>
       </section>
 
+      {property.gallery.length > 0 && (
+        <section className={`border-t border-grithq-cream/10 bg-grithq-black ${styles.opportunitySection}`}>
+          <div className={styles.sectionContainer}>
+            <OpportunityHeading>{STRINGS.opportunity.galleryHeading}</OpportunityHeading>
+            <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3 lg:gap-6">
+              {visibleGallery.map((image, index) => (
+                <img
+                  key={image}
+                  src={image}
+                  alt={`${property.name} ${index + 1}`}
+                  loading="lazy"
+                  className="mb-4 w-full lg:mb-6"
+                />
+              ))}
+            </div>
+            {hasMoreGallery && (
+              <button
+                type="button"
+                className={`${styles.ctaButton} mt-4 min-h-11 w-full px-6 sm:w-auto sm:px-10`}
+                onClick={() => setGalleryExpanded(true)}
+                onMouseEnter={() => setCursorState('open')}
+                onMouseLeave={() => setCursorState('default')}
+              >
+                {STRINGS.opportunity.seeMore}
+              </button>
+            )}
+          </div>
+        </section>
+      )}
+{/* 
       <section
         id="inquiry"
         className={`scroll-mt-28 border-t border-grithq-cream/10 bg-grithq-warm ${styles.opportunitySection}`}
@@ -312,7 +331,7 @@ export function GrithqOpportunity() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </article>
   )
 }

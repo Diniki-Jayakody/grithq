@@ -8,7 +8,7 @@ import grithqProjectLegacyImg from '@/assets/projects/grithq.jpg'
 import southBeachLegacyImg from '@/assets/projects/south_beach.jpg'
 import southBeach2LegacyImg from '@/assets/projects/south_beach_2.jpg'
 import asayaSandsMainImg from '@/assets/projects/asaya_sands/asaya_sands_main.jpg'
-import asayaSands1Img from '@/assets/projects/asaya_sands/asaya_sands_1.webp'
+import asayaSands1Img from '@/assets/projects/asaya_sands/asaya_sands_5.jpg'
 import asayaSands2Img from '@/assets/projects/asaya_sands/asaya_sands_2.webp'
 import asayaSands3Img from '@/assets/projects/asaya_sands/asaya_sands_3.webp'
 import asayaSands4Img from '@/assets/projects/asaya_sands/asaya_sands_4.jpg'
@@ -20,7 +20,14 @@ import asayaSummit1Img from '@/assets/projects/asaya_summit/asaya_summit_1.jpg'
 import asayaSummit2Img from '@/assets/projects/asaya_summit/asaya_summit_2.jpg'
 import asayaSummit3Img from '@/assets/projects/asaya_summit/asaya_summit_3.jpg'
 import asayaSummitYogaImg from '@/assets/projects/asaya_summit/asaya_summit_yoga.jpg'
-import grithqMainImg from '@/assets/projects/gritHQ/grithq_main.jpg'
+import grithqMainImg from '@/assets/projects/gritHQ/grithq_main.png'
+import grithq2Img from '@/assets/projects/gritHQ/grithq2.jpg'
+import grithq3Img from '@/assets/projects/gritHQ/grithq3.jpg'
+import grithq4Img from '@/assets/projects/gritHQ/grithq4.jpg'
+import grithq5Img from '@/assets/projects/gritHQ/grithq5.jpg'
+import grithq6Img from '@/assets/projects/gritHQ/grithq6.jpg'
+import grithq7Img from '@/assets/projects/gritHQ/grithq7.jpg'
+import grithq8Img from '@/assets/projects/gritHQ/grithq8.jpg'
 import southBeachMainImg from '@/assets/projects/south_beach/south_beach_main.jpg'
 import southBeach1Img from '@/assets/projects/south_beach/south_beach_1.jpg'
 import volunteer1 from '@/assets/volunteer/volunteer_1.jpg'
@@ -39,6 +46,7 @@ import flashHealthImg from '@/assets/projects/invested-projects/flashHealth.png'
 import dossiersImg from '@/assets/projects/invested-projects/Dossiers.png'
 import rootstoneImg from '@/assets/projects/invested-projects/Rootstone.png'
 import magicUnboundImg from '@/assets/projects/invested-projects/MagicUnbound.png'
+import viridianImg from '@/assets/projects/invested-projects/Viridian.png'
 
 export const images = {
   landing: landingBg,
@@ -73,6 +81,7 @@ export const images = {
     dossiers: dossiersImg,
     rootstone: rootstoneImg,
     magicUnbound: magicUnboundImg,
+    viridian: viridianImg
   },
 } as const
 
@@ -100,7 +109,15 @@ export const projectAssets = {
   },
   grithq: {
     main: grithqMainImg,
-    gallery: [] as readonly string[],
+    gallery: [
+      grithq2Img,
+      grithq3Img,
+      grithq4Img,
+      grithq5Img,
+      grithq6Img,
+      grithq7Img,
+      grithq8Img,
+    ],
   },
   southBeach: {
     main: southBeachMainImg,

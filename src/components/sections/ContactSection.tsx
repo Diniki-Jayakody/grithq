@@ -89,142 +89,18 @@ export function ContactSection() {
         </SectionLabel>
 
         <div className="mx-auto mt-12 w-full max-w-2xl">
-          {status === 'success' ? (
-            <div role="status" className="flex min-h-[400px] items-center justify-center">
-              <p className="font-display text-xl font-light text-grithq-offwhite">
-                {STRINGS.sections.contact.submitSuccess}
-              </p>
-            </div>
-          ) : (
+          
             <>
-              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                <div>
-                  <label htmlFor="name" className="sr-only">
-                    {copy.name}
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    value={values.name}
-                    onChange={(event) =>
-                      setValues((current) => ({ ...current, name: event.target.value }))
-                    }
-                    placeholder={copy.name}
-                    className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
-                    aria-invalid={Boolean(errors.name)}
-                    aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                  />
-                  {errors.name && (
-                    <p id="contact-name-error" className={styles.formError}>
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
+              
 
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    {copy.email}
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    value={values.email}
-                    onChange={(event) =>
-                      setValues((current) => ({ ...current, email: event.target.value }))
-                    }
-                    placeholder={copy.email}
-                    className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
-                    aria-invalid={Boolean(errors.email)}
-                    aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                  />
-                  {errors.email && (
-                    <p id="contact-email-error" className={styles.formError}>
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="sr-only">
-                    {copy.company}
-                  </label>
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    autoComplete="organization"
-                    value={values.company}
-                    onChange={(event) =>
-                      setValues((current) => ({ ...current, company: event.target.value }))
-                    }
-                    placeholder={copy.company}
-                    className="w-full border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="sr-only">
-                    {copy.message}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={values.message}
-                    onChange={(event) =>
-                      setValues((current) => ({ ...current, message: event.target.value }))
-                    }
-                    placeholder={copy.message}
-                    className="w-full resize-none border-b border-grithq-cream/20 bg-transparent py-4 text-sm text-grithq-offwhite placeholder:text-grithq-cream/30 focus:border-grithq-mauve focus:outline-none"
-                    aria-invalid={Boolean(errors.message)}
-                    aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                  />
-                  {errors.message && (
-                    <p id="contact-message-error" className={styles.formError}>
-                      {errors.message}
-                    </p>
-                  )}
-                </div>
-
-                {status === 'error' && (
-                  <div role="alert" className="border border-grithq-cream/15 px-5 py-4">
-                    <p className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
-                      {copy.error}
-                    </p>
-                    <p className={`mt-2 ${styles.formError}`}>{copy.errorMessage}</p>
-                  </div>
-                )}
-
-                <div className="flex justify-center">
-                  <MagneticButton
-                    type="submit"
-                    disabled={isSending}
-                    className="group mt-4 border border-grithq-cream/20 px-10 py-4 transition-colors hover:border-grithq-mauve hover:bg-grithq-mauve/10 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    <span className="font-display text-xs tracking-[0.3em] text-grithq-offwhite uppercase">
-                      {submitLabel}
-                    </span>
-                  </MagneticButton>
-                </div>
-              </form>
-
-              <div className="mt-16 border-t border-grithq-cream/10 pt-8 text-center">
                 <div className="space-y-3 text-sm text-grithq-cream/50">
                   <p>
                     {contactInfo.email}
                   </p>
-                  <p>{contactInfo.address}</p>
                 </div>
-              </div>
+         
             </>
-          )}
+          
         </div>
       </div>
     </section>
