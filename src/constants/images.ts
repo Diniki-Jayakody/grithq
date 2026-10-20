@@ -21,6 +21,13 @@ import asayaSummit2Img from '@/assets/projects/asaya_summit/asaya_summit_2.jpg'
 import asayaSummit3Img from '@/assets/projects/asaya_summit/asaya_summit_3.jpg'
 import asayaSummitYogaImg from '@/assets/projects/asaya_summit/asaya_summit_yoga.jpg'
 import grithqMainImg from '@/assets/projects/gritHQ/grithq_main.jpg'
+import grithq2Img from '@/assets/projects/gritHQ/grithq2.png'
+import grithq3Img from '@/assets/projects/gritHQ/grithq3.jpg'
+import grithq4Img from '@/assets/projects/gritHQ/grithq4.jpg'
+import grithq5Img from '@/assets/projects/gritHQ/grithq5.jpg'
+import grithq6Img from '@/assets/projects/gritHQ/grithq6.jpg'
+import grithq7Img from '@/assets/projects/gritHQ/grithq7.jpg'
+import grithq8Img from '@/assets/projects/gritHQ/grithq8.jpg'
 import southBeachMainImg from '@/assets/projects/south_beach/south_beach_main.jpg'
 import southBeach1Img from '@/assets/projects/south_beach/south_beach_1.jpg'
 import volunteer1 from '@/assets/volunteer/volunteer_1.jpg'
@@ -102,7 +109,15 @@ export const projectAssets = {
   },
   grithq: {
     main: grithqMainImg,
-    gallery: [] as readonly string[],
+    gallery: [
+      grithq2Img,
+      grithq3Img,
+      grithq4Img,
+      grithq5Img,
+      grithq6Img,
+      grithq7Img,
+      grithq8Img,
+    ],
   },
   southBeach: {
     main: southBeachMainImg,
