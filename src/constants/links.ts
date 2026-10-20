@@ -28,6 +28,10 @@ export const EXTERNAL_LINKS = {
     karu: 'https://karu.com/satkara/',
   },
 
+  karunaTrust: 'https://karuna.org/',
+
   asayaSands: 'https://asaya.lk/',
+  asayaSummitVideo: 'https://www.youtube.com/watch?v=e7kw97DSM6Y',
+  grithqMap: 'https://maps.app.goo.gl/rn2m3xMSUspSxbqA9',
   mangalaLinkedIn: 'https://www.linkedin.com/in/mangala',
 } as const
