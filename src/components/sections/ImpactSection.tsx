@@ -7,6 +7,7 @@ import {
   impactGallery,
 } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
+import { EXTERNAL_LINKS } from '@/constants/links'
 import { styles } from '@/styles/styles'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useIsMobile } from '@/hooks/useMediaQuery'
@@ -97,6 +98,24 @@ export function ImpactSection() {
           <p className="impact-intro-line mt-4 font-display text-[clamp(1.5rem,4vw,2.75rem)] font-light text-grithq-mauve">
             {STRINGS.sections.impact.emphasis}
           </p>
+          <div className="impact-intro-line mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <a
+              href={EXTERNAL_LINKS.satkara.calcey}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.ctaButton} min-h-11 w-full px-6 text-grithq-offwhite sm:w-auto sm:px-10`}
+            >
+              {STRINGS.sections.impact.satkaraLinks.calcey}
+            </a>
+            <a
+              href={EXTERNAL_LINKS.karunaTrust}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.ctaButton} min-h-11 w-full px-6 text-grithq-offwhite sm:w-auto sm:px-10`}
+            >
+              {STRINGS.sections.impact.karunaTrust}
+            </a>
+          </div>
         </div>
 
         <div className="mt-16 md:mt-20">

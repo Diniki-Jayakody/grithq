@@ -67,8 +67,6 @@ export function Project() {
     return <Navigate to="/" replace />
   }
 
-  const websiteCopy = STRINGS.project.websiteLink
-
   return (
     <article>
       <section ref={heroRef} className="relative flex min-h-[70vh] items-end overflow-hidden md:min-h-[85vh]">
@@ -91,8 +89,6 @@ export function Project() {
             <span>{project.location}</span>
             <span className="hidden h-3 w-px bg-grithq-cream/20 sm:block" />
             <span>{project.status}</span>
-            <span className="hidden h-3 w-px bg-grithq-cream/20 sm:block" />
-            <span>{project.year}</span>
           </div>
         </div>
       </section>
@@ -114,22 +110,6 @@ export function Project() {
                   </p>
                 ))}
               </div>
-              {project.websiteHref && (
-                <p className="mt-8 text-sm leading-relaxed text-grithq-cream/50 md:text-base">
-                  {websiteCopy.before}
-                  <a
-                    href={project.websiteHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.inlineLinkDark}
-                    onMouseEnter={() => !isMobile && setCursorState('open')}
-                    onMouseLeave={() => !isMobile && setCursorState('default')}
-                  >
-                    {websiteCopy.linkLabel}
-                  </a>
-                  {websiteCopy.after}
-                </p>
-              )}
             </div>
 
             <div className="lg:col-span-5">
@@ -141,7 +121,6 @@ export function Project() {
                   ['Location', project.location],
                   ['Status', project.status],
                   ['Development Type', project.developmentType],
-                  ['Year', project.year],
                   ['Category', project.category],
                 ].map(([label, value]) => (
                   <div key={label} className="flex justify-between gap-4 border-b border-grithq-cream/5 pb-4">
@@ -149,14 +128,47 @@ export function Project() {
                     <dd className="text-right text-sm text-grithq-cream/70">{value}</dd>
                   </div>
                 ))}
+                {project.websiteHref && (
+                  <div className="flex justify-between gap-4 border-b border-grithq-cream/5 pb-4">
+                    <dt className="text-xs tracking-widest text-grithq-cream/35 uppercase">
+                      {STRINGS.project.website}
+                    </dt>
+                    <dd className="text-right text-sm">
+                      <a
+                        href={project.websiteHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.inlineLinkDark}
+                        onMouseEnter={() => !isMobile && setCursorState('open')}
+                        onMouseLeave={() => !isMobile && setCursorState('default')}
+                      >
+                        {new URL(project.websiteHref).hostname}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {project.videoHref && (
+                  <div className="flex justify-between gap-4 border-b border-grithq-cream/5 pb-4">
+                    <dt className="text-xs tracking-widest text-grithq-cream/35 uppercase">
+                      {STRINGS.project.watchVideo}
+                    </dt>
+                    <dd className="text-right text-sm">
+                      <a
+                        href={project.videoHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.inlineLinkDark}
+                        onMouseEnter={() => !isMobile && setCursorState('open')}
+                        onMouseLeave={() => !isMobile && setCursorState('default')}
+                      >
+                        {STRINGS.project.watchVideo}
+                      </a>
+                    </dd>
+                  </div>
+                )}
               </dl>
 
-              <h2 className="mt-10 font-display text-xs tracking-[0.4em] text-grithq-mauve uppercase">
-                {STRINGS.project.vision}
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-grithq-cream/55 md:text-base">
-                {project.vision}
-              </p>
+              
             </div>
           </div>
 

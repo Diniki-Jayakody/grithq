@@ -98,7 +98,7 @@ export function InvestorForSection() {
         <SectionLabel variant="light">
           {STRINGS.sections.investorFor.eyebrow}
         </SectionLabel>
-        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-12 md:mt-14 md:grid-cols-12 md:grid-rows-2 md:gap-x-12 md:gap-y-16 lg:gap-x-16 lg:gap-y-24 xl:gap-x-20">
+        <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-16 md:mt-14 md:grid-cols-12 md:grid-rows-2 md:gap-x-16 md:gap-y-20 lg:gap-x-20 lg:gap-y-28 xl:gap-x-24">
           {/* Top-left */}
           <div className="md:col-span-4 md:col-start-1 md:row-start-1">
             <InvestedProject business={flashHealth} imageClassName="aspect-[16/10]" />

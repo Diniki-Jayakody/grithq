@@ -132,6 +132,7 @@ export interface Project {
   deal?: ProjectDeal
   valueStatement?: string
   websiteHref?: string
+  videoHref?: string
 }
 
 export const projects: Project[] = [
@@ -141,7 +142,7 @@ export const projects: Project[] = [
     name: 'Asaya Sands',
     category: 'Hospitality / Real Estate',
     location: 'Southern Coast, Sri Lanka',
-    status: 'In Development',
+    status: 'Operational',
     developmentType: 'Destination Resort',
     shortDescription:
       'A coastal hospitality property with guest rooms, shared workspace and a setting shaped by the landscape.',
@@ -152,7 +153,7 @@ export const projects: Project[] = [
       'Alongside guest accommodations, Asaya Sands offers shared workspace. The idea is to create a place that works equally well for rest and focused work.',
     ],
     vision:
-      'To build a coastal property with a clear identity and a long ownership view.',
+      '',
     heroImage: portfolioImages.asayaSands.hero,
     gallery: [...portfolioImages.asayaSands.gallery],
     featured: true,
@@ -177,7 +178,8 @@ export const projects: Project[] = [
       'The concept sits between hospitality and residential use, with a long view rather than a short stay product.',
     ],
     vision:
-      'To create a mountain destination that feels specific to its place.',
+      'T',
+    videoHref: EXTERNAL_LINKS.asayaSummitVideo,
     heroImage: portfolioImages.asayaSummit.hero,
     gallery: [...portfolioImages.asayaSummit.gallery],
     featured: true,
@@ -187,7 +189,7 @@ export const projects: Project[] = [
   {
     id: 'grithq',
     slug: 'grithq',
-    name: 'gritHQ',
+    name: 'Commercial Building',
     category: 'Commercial Real Estate',
     location: 'Colombo, Sri Lanka',
     status: 'Operational',
@@ -201,7 +203,7 @@ export const projects: Project[] = [
       'It is the holding company’s own commercial property and is now available for sale or rent.',
     ],
     vision:
-      'To own commercial space that businesses want to stay in over time.',
+      '',
     heroImage: portfolioImages.grithq.hero,
     gallery: [...portfolioImages.grithq.gallery],
     featured: true,
@@ -212,30 +214,6 @@ export const projects: Project[] = [
       route: ROUTES.grithqOpportunity,
     },
   },
-  // {
-  //   id: 'south-beach',
-  //   slug: 'south-beach',
-  //   name: 'South Beach',
-  //   category: 'Development / Real Estate',
-  //   location: 'Southern Coast, Sri Lanka',
-  //   status: 'Active Development',
-  //   developmentType: 'Mixed Use Coastal',
-  //   shortDescription:
-  //     'A coastal development on Sri Lanka’s southern coast, shaped by location and lifestyle.',
-  //   description:
-  //     'South Beach is a coastal development on Sri Lanka’s southern coast. The project is a luxury penthouse by the sea.',
-  //   overview: [
-  //     'The design looks to the coast, with outdoor space and a setting defined by the water.',
-  //     'It is planned as a lasting residential asset, not a generic seaside template.',
-  //   ],
-  //   vision:
-  //     'To create a coastal address that belongs to this place.',
-  //   heroImage: portfolioImages.southBeach.hero,
-  //   gallery: [...portfolioImages.southBeach.gallery],
-  //   featured: true,
-  //   year: '2024',
-  //   valueStatement: 'The Luxury Penthouse by Sea',
-  // },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -612,6 +590,9 @@ export const gritHQPropertyData = {
   category: 'Commercial Real Estate',
   location: 'Battaramulla, Sri Lanka',
   driveLink: EXTERNAL_LINKS.grithqPhotoDrive,
+  mapHref: EXTERNAL_LINKS.grithqMap,
+  gallery: portfolioImages.grithq.gallery,
+  galleryInitialCount: 3,
   commercialTerms: {
     sale: {
       label: STRINGS.opportunity.saleLabel,

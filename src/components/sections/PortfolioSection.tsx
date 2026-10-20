@@ -41,7 +41,7 @@ function FeaturedOpportunity({ project }: { project: Project }) {
 
       gsap.fromTo(
         card.querySelector('img'),
-        { scale: 1.08 },
+        { scale: 1 },
         {
           scale: 1,
           ease: 'none',
@@ -60,59 +60,56 @@ function FeaturedOpportunity({ project }: { project: Project }) {
 
   return (
     <article ref={cardRef} className="portfolio-project min-w-0">
-      <Link
-        to={href}
-        className="group block"
-        onMouseEnter={() => !isMobile && setCursorState('view-project')}
-        onMouseLeave={() => !isMobile && setCursorState('default')}
-        aria-label={`${project.name}: ${STRINGS.portfolio.viewOpportunity}`}
-      >
-        <div className="relative overflow-hidden">
-          <div className="aspect-[16/10] sm:aspect-[16/9] lg:aspect-[2/1] lg:max-h-[56vh]">
-            <img
-              src={project.heroImage}
-              alt={`${project.name} commercial building`}
-              loading="lazy"
-              className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.03]"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/85 via-grithq-burgundy/25 to-transparent" />
-          <div className="absolute top-5 left-5 md:top-8 md:left-8">
-            <span className="font-display text-[10px] tracking-[0.3em] text-grithq-cream">
-              {STRINGS.portfolio.currentOpportunity}
-            </span>
-          </div>
-          <div className="portfolio-featured-content absolute right-5 bottom-5 left-5 md:right-8 md:bottom-8 md:left-8">
-            <h3 className="font-display text-[clamp(2rem,6vw,4.5rem)] font-light tracking-tight text-grithq-offwhite">
-              {project.name}
-            </h3>
-          </div>
-        </div>
-      </Link>
-
-      <div className={`${styles.opportunityDealPanel} mt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between md:mt-6`}>
-        <div>
-          <p className={styles.eyebrowLight}>{STRINGS.portfolio.availableFor}</p>
-          <p className="mt-2 font-display text-[clamp(1.35rem,3vw,2rem)] font-light tracking-tight text-grithq-burgundy">
-            {STRINGS.portfolio.saleRent}
-          </p>
-          <p className="mt-2 text-xs tracking-[0.12em] text-grithq-burgundy/55">
-            {gritHQPropertyData.commercialTerms.sale.label}: {gritHQPropertyData.commercialTerms.sale.value}
-            <span className="mx-2 text-grithq-burgundy/25" aria-hidden="true">
-              ·
-            </span>
-            {gritHQPropertyData.commercialTerms.rent.label}: {gritHQPropertyData.commercialTerms.rent.value}
-          </p>
-        </div>
-        <Link
-          to={href}
-          className={`${styles.ctaButtonLight} min-h-11 w-full px-6 sm:w-auto`}
-          onMouseEnter={() => !isMobile && setCursorState('open')}
-          onMouseLeave={() => !isMobile && setCursorState('default')}
-        >
-          {STRINGS.portfolio.viewOpportunity}
-        </Link>
+      <div className="grid grid-cols-1 items-start gap-6 md:gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+  <Link
+    to={href}
+    className="group block lg:col-span-7"
+    onMouseEnter={() => !isMobile && setCursorState('view-project')}
+    onMouseLeave={() => !isMobile && setCursorState('default')}
+    aria-label={`${project.name}: ${STRINGS.portfolio.viewOpportunity}`}
+  >
+    <div className="relative overflow-hidden">
+      <div className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/3]">
+        <img
+          src={project.heroImage}
+          alt={`${project.name} commercial building`}
+          loading="lazy"
+          className="h-full w-full object-contain object-center"
+        />
       </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/85 via-grithq-burgundy/25 to-transparent" />
+    </div>
+  </Link>
+
+  <div className="lg:col-span-5">
+    <h3 className="portfolio-featured-content mb-4 font-display text-[clamp(1.25rem,2.4vw,1.85rem)] font-light leading-snug tracking-tight text-grithq-burgundy md:mb-5">
+      {STRINGS.portfolio.featuredHeadline}
+    </h3>
+    <div className={`${styles.opportunityDealPanel} flex flex-col gap-6`}>
+  <div>
+    <p className={styles.eyebrowLight}>{STRINGS.portfolio.availableFor}</p>
+      <p className="mt-3 font-display text-[clamp(1.5rem,3vw,2.25rem)] font-light tracking-tight text-grithq-burgundy">
+        {STRINGS.portfolio.saleRent}
+      </p>
+      <p className="mt-3 text-xs leading-relaxed tracking-[0.12em] text-grithq-burgundy/55">
+        {gritHQPropertyData.commercialTerms.sale.label}: {gritHQPropertyData.commercialTerms.sale.value}
+        <span className="mx-2 text-grithq-burgundy/25" aria-hidden="true">
+          ·
+        </span>
+        {gritHQPropertyData.commercialTerms.rent.label}: {gritHQPropertyData.commercialTerms.rent.value}
+      </p>
+    </div>
+    <Link
+      to={href}
+      className={`${styles.ctaButtonLight} min-h-11 w-full self-start px-6 sm:w-auto`}
+      onMouseEnter={() => !isMobile && setCursorState('open')}
+      onMouseLeave={() => !isMobile && setCursorState('default')}
+    >
+      {STRINGS.portfolio.viewOpportunity}
+    </Link>
+  </div>
+  </div>
+</div>
     </article>
   )
 }
@@ -222,9 +219,6 @@ export function PortfolioSection() {
         >
           {STRINGS.sections.portfolio.heading}
         </DisplayText>
-        {/* <p className={`mt-4 max-w-lg ${styles.bodyTextMutedLight}`}>
-          {STRINGS.sections.portfolio.subtext}
-        </p> */}
 
         <div className="mt-10 md:mt-12">
           {featured && <FeaturedOpportunity project={featured} />}

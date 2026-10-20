@@ -29,7 +29,7 @@ export function Home() {
       <PortfolioSection />
       {/* <PhilosophySection /> */}
       <ImpactSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
     </>
   )
 }

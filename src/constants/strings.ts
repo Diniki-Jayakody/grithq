@@ -71,6 +71,7 @@ export const STRINGS = {
         calcey: 'Calcey Satkara',
         karu: 'Karu Satkara',
       },
+      karunaTrust: 'Karuna Trust',
     },
     future: {
       label: 'Future',
@@ -228,6 +229,7 @@ export const STRINGS = {
     availableSaleRent: 'Available: Sale / Rent',
     exploreGritHQ: 'Explore gritHQ',
     viewOpportunity: 'View Opportunity →',
+    featuredHeadline: 'Fully furnished office complex at the heart of Battaramulla.',
   },
 
   message: {
@@ -256,6 +258,9 @@ export const STRINGS = {
     locationHeading: 'Location Benefits',
     photosCta: 'View Building Photos →',
     photosHeading: 'Building Information',
+    galleryHeading: 'Gallery',
+    seeMore: 'See More',
+    viewOnMap: 'View on Map',
     inquiryHeading: 'Interested in gritHQ?',
     inquiryIntro:
       'For sales, leasing and investment inquiries, contact our team.',
@@ -302,6 +307,8 @@ export const STRINGS = {
     viewing: 'Now viewing',
     viewAllPortfolio: 'View All Portfolio',
     continue: 'Continue →',
+    website: 'Website',
+    watchVideo: 'Watch Video',
     websiteLink: {
       before: 'More about the property, including rooms and workspace, is on the ',
       linkLabel: 'Asaya Sands website',
