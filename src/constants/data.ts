@@ -91,7 +91,7 @@ export const investmentFocusAreas: InvestmentFocusArea[] = [
     title: STRINGS.identity.investmentFocus.areas.hospitality.title,
     description: STRINGS.identity.investmentFocus.areas.hospitality.description,
     image: images.investmentFocus.hospitality,
-    href: ROUTES.portfolio,
+    href: `${ROUTES.portfolio.split('#')[0]}#hotels`,
     imageClassName: 'object-cover object-center',
   },
   {
