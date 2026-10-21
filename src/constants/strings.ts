@@ -261,6 +261,7 @@ export const STRINGS = {
     galleryHeading: 'Gallery',
     seeMore: 'See More',
     viewOnMap: 'View on Map',
+    reachLabel: 'Reach:',
     inquiryHeading: 'Interested in gritHQ?',
     inquiryIntro:
       'For sales, leasing and investment inquiries, contact our team.',
