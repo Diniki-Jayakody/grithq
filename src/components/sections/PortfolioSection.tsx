@@ -16,6 +16,7 @@ import { styles } from '@/styles/styles'
 import { useCursorState } from '@/hooks/useCursorState'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useIsMobile } from '@/hooks/useMediaQuery'
+import { projectAssets } from '@/constants/images'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -61,9 +62,9 @@ function FeaturedOpportunity({ project }: { project: Project }) {
   return (
     <article ref={cardRef} className="portfolio-project min-w-0">
       <div className="grid grid-cols-1 items-start gap-6 md:gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
-  <Link
+    <Link
     to={href}
-    className="group block lg:col-span-7"
+    className="group relative block lg:col-span-7"
     onMouseEnter={() => !isMobile && setCursorState('view-project')}
     onMouseLeave={() => !isMobile && setCursorState('default')}
     aria-label={`${project.name}: ${STRINGS.portfolio.viewOpportunity}`}
@@ -79,8 +80,19 @@ function FeaturedOpportunity({ project }: { project: Project }) {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-grithq-burgundy/85 via-grithq-burgundy/25 to-transparent" />
     </div>
-  </Link>
 
+    {/* Desktop only — second image overlapping the right side of the main one */}
+    <div className="pointer-events-none absolute right-[5%] bottom-[10%] z-10 hidden w-[36%] lg:block">
+      <div className="aspect-[4/5] overflow-hidden border-4 border-grithq-offwhite shadow-[0_24px_60px_-20px_rgba(90,12,61,0.45)]">
+        <img
+          src={projectAssets.grithq.gallery[3]}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.04]"
+        />
+      </div>
+    </div>
+  </Link>
   <div className="lg:col-span-5">
     <h3 className="portfolio-featured-content mb-4 font-display text-[clamp(1.25rem,2.4vw,1.85rem)] font-light leading-snug tracking-tight text-grithq-burgundy md:mb-5">
       {STRINGS.portfolio.featuredHeadline}
@@ -224,7 +236,7 @@ export function PortfolioSection() {
           {featured && <FeaturedOpportunity project={featured} />}
 
           <div className="portfolio-secondary-flow mt-12 md:mt-16 lg:mt-20">
-            <div className="grid items-start gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
+            <div id="hotels"  className="grid items-start gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
               {asayaSands && (
                 <div className="lg:col-span-7">
                   <SecondaryProject
