@@ -11,9 +11,24 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LETTERS = ['g', 'r', 'i', 't', 'H', 'Q']
 
+// Mobile groups the same six letters into two words, in order:
+// Line 1: grit (letters 0–3), Line 2: HQ (letters 4–5)
+const LETTER_ROWS = [
+  { word: 'grit', letters: LETTERS.slice(0, 4), startIndex: 0 },
+  { word: 'HQ', letters: LETTERS.slice(4), startIndex: 4 },
+] as const
+
 const DESKTOP_OFFSETS = [-2.8, -1.7, -0.85, 0.85, 1.7, 2.8]
-const MOBILE_OFFSETS_X = [-0.6, 0.6, -0.6, 0.6, -0.6, 0.6]
-const MOBILE_OFFSETS_Y = [-1.1, -1.1, 0, 0, 1.1, 1.1]
+const MOBILE_OFFSETS_Y = [-0.85, -0.85, -0.85, -0.85, 0.9, 0.9]
+
+const LETTER_CLASS = 'hero-letter inline-block font-display leading-none font-black text-grithq-offwhite'
+const LETTER_SHADOW = '0 0 80px rgba(247, 243, 244, 0.12)'
+
+// Desktop size (unchanged)
+const DESKTOP_FONT_SIZE = 'clamp(6rem, 12vw, 12rem)'
+// Mobile size: scales with the viewport so "grit" stays large on big phones
+// and still fits comfortably on small phones (≈320px wide)
+const MOBILE_FONT_SIZE = 'clamp(4rem, 24vw, 8rem)'
 
 // FEATURE FLAG
 // false = Static landing page (current mode)
@@ -43,7 +58,12 @@ export function HeroOpening() {
 
     if (!section || !pin || !lettersWrap || !bg || !statement) return
 
-    const letterEls = gsap.utils.toArray<HTMLElement>('.hero-letter')
+    // Both layouts are in the DOM (CSS shows one per breakpoint).
+    // Each letter carries data-index (its position in LETTERS) and
+    // data-layout ('mobile' | 'desktop'), so offsets always match the letter.
+    const letterEls = gsap.utils.toArray<HTMLElement>('.hero-letter', lettersWrap)
+    const indexOf = (el: HTMLElement) => Number(el.dataset.index ?? 0)
+    const isMobileEl = (el: HTMLElement) => el.dataset.layout === 'mobile'
 
     // ============================================================
     // STATIC MODE
@@ -90,14 +110,12 @@ export function HeroOpening() {
     // Set ENABLE_HERO_ANIMATION = true to enable this section.
     // ============================================================
 
-    const offsetsX = isMobile ? MOBILE_OFFSETS_X : DESKTOP_OFFSETS
-    const offsetsY = isMobile ? MOBILE_OFFSETS_Y : LETTERS.map(() => 0)
-    const spread = isMobile ? 28 : 72
-
     gsap.set(letterEls, {
       opacity: 1,
-      x: (i) => (isMobile ? 0 : offsetsX[i] * spread),
-      y: (i) => (isMobile ? offsetsY[i] * 24 : 0),
+      x: (_i: number, el: HTMLElement) =>
+        isMobileEl(el) ? 0 : DESKTOP_OFFSETS[indexOf(el)] * 72,
+      y: (_i: number, el: HTMLElement) =>
+        isMobileEl(el) ? MOBILE_OFFSETS_Y[indexOf(el)] * 24 : 0,
       rotation: 0,
       scale: 1,
     })
@@ -238,30 +256,64 @@ export function HeroOpening() {
         {/* GRITHQ letters */}
         <div
           ref={lettersWrapRef}
-          className={`relative z-10 px-4 ${
-            isMobile
-              ? 'grid grid-cols-2 gap-x-6 gap-y-1 place-items-center'
-              : 'flex items-center justify-center'
-          }`}
+          className="relative z-10 w-full max-w-full px-4"
+          role="img"
           aria-label="GRITHQ"
         >
-          {LETTERS.map((letter, i) => (
-            <span
-              key={i}
-              className={`hero-letter font-display leading-none font-black text-grithq-offwhite ${
-                isMobile ? 'text-center' : 'inline-block'
-              }`}
-              style={{
-                fontSize: isMobile
-                ? 'clamp(3rem, 16vw, 4.5rem)'
-                : 'clamp(6rem, 12vw, 12rem)',
-                textShadow: '0 0 80px rgba(247, 243, 244, 0.12)',
-                transform: 'rotate(0deg)',
-              }}
-            >
-              {letter}
-            </span>
-          ))}
+          {/* Mobile: two centred word lines — "grit" over "HQ" */}
+          <div
+            className="flex flex-col items-center justify-center gap-1 sm:gap-2 md:hidden"
+            aria-hidden="true"
+          >
+            {LETTER_ROWS.map((row) => (
+              <div
+                key={row.word}
+                className="flex flex-nowrap items-center justify-center whitespace-nowrap"
+              >
+                {row.letters.map((letter, offset) => {
+                  const index = row.startIndex + offset
+                  return (
+                    <span
+                      key={`m-${index}`}
+                      data-index={index}
+                      data-layout="mobile"
+                      className={LETTER_CLASS}
+                      style={{
+                        fontSize: MOBILE_FONT_SIZE,
+                        lineHeight: 0.92,
+                        textShadow: LETTER_SHADOW,
+                        transform: 'rotate(0deg)',
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: original single-line GRITHQ (unchanged) */}
+          <div
+            className="hidden items-center justify-center md:flex"
+            aria-hidden="true"
+          >
+            {LETTERS.map((letter, i) => (
+              <span
+                key={`d-${i}`}
+                data-index={i}
+                data-layout="desktop"
+                className={LETTER_CLASS}
+                style={{
+                  fontSize: DESKTOP_FONT_SIZE,
+                  textShadow: LETTER_SHADOW,
+                  transform: 'rotate(0deg)',
+                }}
+              >
+                {letter}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Headline and supporting text */}
