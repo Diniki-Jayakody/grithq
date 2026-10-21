@@ -249,6 +249,7 @@ export const STRINGS = {
     termsHeading: 'Sale / Rent Opportunity',
     saleLabel: 'Sale',
     rentLabel: 'Rent',
+    interestedEmail: 'hello@grithq.co',
     summaryHeading: 'Executive Summary',
     figuresHeading: 'Key Property Figures',
     specsHeading: 'Building Specifications',

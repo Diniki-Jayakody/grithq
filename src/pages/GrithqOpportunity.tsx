@@ -310,6 +310,37 @@ export function GrithqOpportunity() {
           </div>
         </section>
       )}
+
+            {/* Interested — compact contact strip */}
+            <section className="border-t border-grithq-cream/10 bg-grithq-warm">
+        <div
+          className={`${styles.sectionContainer} flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between md:py-10`}
+        >
+          <div>
+            <p className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
+              Interested?
+            </p>
+            <p className="mt-2 text-sm text-grithq-cream/65">
+              Interested in this building? Write to us at{' '}
+              <a
+                href={`mailto:${STRINGS.opportunity.interestedEmail}`}
+                className="text-grithq-cream/80 underline-offset-4 transition-colors hover:text-grithq-offwhite hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70"
+              >
+                {STRINGS.opportunity.interestedEmail}
+              </a>
+            </p>
+          </div>
+          <a
+            href={`mailto:${STRINGS.opportunity.interestedEmail}?subject=${encodeURIComponent(`Enquiry: ${property.name}`)}`}
+            className={`${styles.ctaButton} min-h-11 w-full shrink-0 px-6 sm:w-auto sm:px-8`}
+            onMouseEnter={() => setCursorState('open')}
+            onMouseLeave={() => setCursorState('default')}
+          >
+            Email us
+          </a>
+        </div>
+      </section>
+
 {/* 
       <section
         id="inquiry"
