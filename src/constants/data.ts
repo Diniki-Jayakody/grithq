@@ -593,6 +593,7 @@ export const gritHQPropertyData = {
   mapHref: EXTERNAL_LINKS.grithqMap,
   gallery: portfolioImages.grithq.gallery,
   galleryInitialCount: 3,
+  overlapImage: portfolioImages.grithq.gallery[0],
   commercialTerms: {
     sale: {
       label: STRINGS.opportunity.saleLabel,

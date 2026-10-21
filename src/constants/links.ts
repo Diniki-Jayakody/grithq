@@ -25,10 +25,10 @@ export const EXTERNAL_LINKS = {
 
   satkara: {
     calcey: 'https://calcey.com/satkara/',
-    karu: 'https://karu.com/satkara/',
+    karu: 'https://www.karunalanka.org/',
   },
 
-  karunaTrust: 'https://karuna.org/',
+  karunaTrust: 'https://www.karunalanka.org/',
 
   asayaSands: 'https://asaya.lk/',
   asayaSummitVideo: 'https://www.youtube.com/watch?v=e7kw97DSM6Y',

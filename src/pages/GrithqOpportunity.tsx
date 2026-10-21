@@ -77,7 +77,14 @@ export function GrithqOpportunity() {
           alt={`${property.name} building in Battaramulla`}
           className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
+        {property.overlapImage && (
+          <img
+            src={property.overlapImage}
+            alt={`${property.name}`}
+            className="pointer-events-none absolute bottom-[12%] right-[6%] z-[3] hidden aspect-[4/5] w-[min(34%,20rem)] border border-grithq-cream/20 object-cover shadow-[0_18px_40px_rgba(10,6,8,0.45)] lg:block"
+          />
+        )}
 
         <div className="opportunity-hero-content relative z-10 w-full section-padding pb-10 pt-28 md:pb-16 md:pt-32">
           <PageBackLink fallback={property.backHref} variant="dark" />
@@ -92,6 +99,18 @@ export function GrithqOpportunity() {
           </p>
         </div>
       </section>
+
+      {property.overlapImage && (
+        <div className="bg-grithq-black lg:hidden">
+          <div className={`${styles.sectionContainer} py-6 md:py-8`}>
+            <img
+              src={property.overlapImage}
+              alt={`${property.name} interior`}
+              className="w-full border border-grithq-cream/15 object-cover"
+            />
+          </div>
+        </div>
+      )}
 
       <section className={`bg-grithq-black ${styles.opportunitySection}`}>
         <div className={styles.sectionContainer}>
@@ -114,6 +133,15 @@ export function GrithqOpportunity() {
               </p>
             </div>
           </div>
+          <p className="mt-6 font-display text-xs tracking-[0.18em] text-grithq-cream/55 md:mt-8">
+            {STRINGS.opportunity.reachLabel}{' '}
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="text-grithq-cream/70 underline-offset-4 transition-colors hover:text-grithq-offwhite hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70"
+            >
+              {contactInfo.email}
+            </a>
+          </p>
 
           <div className="mt-14 md:mt-16">
             <OpportunityHeading>{STRINGS.opportunity.summaryHeading}</OpportunityHeading>

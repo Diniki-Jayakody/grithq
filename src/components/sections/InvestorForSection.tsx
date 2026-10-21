@@ -101,23 +101,23 @@ export function InvestorForSection() {
         <div className="investor-for-flow mt-10 grid grid-cols-1 items-start gap-16 md:mt-14 md:grid-cols-12 md:grid-rows-2 md:gap-x-16 md:gap-y-20 lg:gap-x-20 lg:gap-y-28 xl:gap-x-24">
           {/* Top-left */}
           <div className="md:col-span-4 md:col-start-1 md:row-start-1">
-            <InvestedProject business={flashHealth} imageClassName="aspect-[16/10]" />
+            <InvestedProject business={flashHealth} imageClassName="aspect-[16/10] md:scale-[1.06] md:origin-center" />
           </div>
           {/* Top-right */}
           <div className="md:col-span-4 md:col-start-9 md:row-start-1">
-            <InvestedProject business={dossiers} imageClassName="aspect-[16/10]" />
+            <InvestedProject business={dossiers} imageClassName="aspect-[16/10] md:scale-[1.06] md:origin-center" />
           </div>
           {/* Center (spans both rows) */}
           <div className="md:col-span-4 md:col-start-5 md:row-span-2 md:row-start-1 md:self-center">
-            <InvestedProject business={rootstone} imageClassName="aspect-[3/2]" />
+            <InvestedProject business={rootstone} imageClassName="aspect-[3/2] md:scale-[1.06] md:origin-center" />
           </div>
           {/* Bottom-left */}
           <div className="md:col-span-4 md:col-start-1 md:row-start-2">
-            <InvestedProject business={magicUnbound} imageClassName="aspect-[16/10]" />
+            <InvestedProject business={magicUnbound} imageClassName="aspect-[16/10] md:scale-[1.06] md:origin-center" />
           </div>
           {/* Bottom-right */}
           <div className="md:col-span-4 md:col-start-9 md:row-start-2">
-            <InvestedProject business={viridian} imageClassName="aspect-[16/10]" />
+            <InvestedProject business={viridian} imageClassName="aspect-[16/10] md:scale-[1.06] md:origin-center" />
           </div>
         </div>
       </div>
