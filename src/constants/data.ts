@@ -145,13 +145,10 @@ export const projects: Project[] = [
     status: 'Operational',
     developmentType: 'Destination Resort',
     shortDescription:
-      'A coastal hospitality property with guest rooms, shared workspace and a setting shaped by the landscape.',
+      'Asaya Sands is a beachfront boutique hotel in Mirissa, on Sri Lanka’s southern coast. It brings together relaxed coastal stays, exceptional connectivity, and world - class coworking spaces and meeting rooms.',
     description:
-      'Asaya Sands is a coastal hospitality property in southern Sri Lanka. It brings together guest stays, shared workspace, and a setting that remains closely connected to the surrounding landscape.',
-    overview: [
-      'The architecture is kept simple and open, so the buildings sit within the landscape rather than overpowering it.',
-      'Alongside guest accommodations, Asaya Sands offers shared workspace. The idea is to create a place that works equally well for rest and focused work.',
-    ],
+      'The architecture is simple and open, allowing the buildings to sit naturally within the surrounding landscape.',
+    overview: ['Designed for holidays, remote work, and team retreats, Asaya Sands offers space to unwind, focus, and come together - just steps from the ocean.'],
     vision:
       '',
     heroImage: portfolioImages.asayaSands.hero,
@@ -170,12 +167,11 @@ export const projects: Project[] = [
     status: 'Under Development',
     developmentType: 'Destination Concept',
     shortDescription:
-      'A mountain destination concept planned around the highland setting and a quieter pace.',
+      '',
     description:
-      'Asaya Summit is a destination concept in the central highlands of Sri Lanka. The project is still under development.',
+      'Asaya Summit is an intimate mountain wellness retreat in Sri Lanka designed around nervous system regulation, physical vitality, and personal renewal.',
     overview: [
-      'It is planned around the mountain setting, with views, local materials and a slower pace of stay.',
-      'The concept sits between hospitality and residential use, with a long view rather than a short stay product.',
+      'Through immersive multi-day programs combining mindfulness, somatic therapy, movement, nature, and guided reflection, we help guests reset, build resilience, and return to life with greater clarity, energy, and balance.',
     ],
     vision:
       'T',
@@ -195,7 +191,7 @@ export const projects: Project[] = [
     status: 'Operational',
     developmentType: 'Commercial Office',
     shortDescription:
-      'A commercial building in Colombo, designed as a modern workspace for lasting use.',
+      '',
     description:
       'gritHQ is a commercial building in Colombo. It is designed as a modern workspace for businesses that want a strong location and a lasting home.',
     overview: [
@@ -492,17 +488,17 @@ export const impactPillars: ImpactPillar[] = [
   {
     id: 'nourishment',
     title: 'Nourishment',
-    description: 'Helping provide nutritious meals to school children across the communities we work with.',
+    description: 'Helping provide nutritious meals to schoolchildren in the communities we work with.',
   },
   {
     id: 'education',
     title: 'Education',
-    description: 'Supporting schools and learning environments where children can learn, grow, and focus on their futures.',
+    description: 'Supporting schools and creating better spaces for children to learn.',
   },
   {
     id: 'community',
     title: 'Community',
-    description: 'Building lasting partnerships with local volunteers, teachers, and community leaders.',
+    description: 'Working alongside local volunteers, teachers and community leaders.',
   },
 ]
 

@@ -19,7 +19,7 @@ export const EXTERNAL_LINKS = {
     Dossiers: 'https://www.dossiers.wiki',
     FlashHealth: 'https://flash.health',
     MagicUnbound: 'https://www.magicunbound.co',
-    Rootstone: 'https://rootstone.io',
+    Rootstone: 'https://rootstone.co/',
     Viridian: 'https://viridian.fund/',
   },
 
