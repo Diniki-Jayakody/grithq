@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { DisplayText } from '@/components/typography/DisplayText'
 import { SectionLabel } from '@/components/typography/SectionLabel'
 import {
@@ -10,7 +10,6 @@ import {
   leadershipProfiles,
 } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
-import { ROUTES } from '@/constants/links'
 import { styles } from '@/styles/styles'
 import { ArchitecturalGrid } from '@/components/grid/ArchitecturalGrid'
 import { useCursorState } from '@/hooks/useCursorState'
@@ -161,7 +160,7 @@ export function IdentitySection() {
 
           <div className="identity-reveal min-w-0 md:justify-self-end lg:pt-10">
             <ul className="grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-1 lg:gap-y-5">
-            {STRINGS.identity.grit.letters.map((item, index) => (
+            {STRINGS.identity.grit.letters.map((item, _index) => (
                 <li key={item.letter} className="flex flex-col gap-2 lg:flex-row lg:items-baseline lg:gap-5">
                   <span className={`${styles.gritLetter} inline-block w-[0.8em] shrink-0 text-center`}>
                     {item.letter}
