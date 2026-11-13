@@ -38,7 +38,7 @@ export const STRINGS = {
     },
     investorFor: {
       label: 'Investor For',
-      eyebrow: 'Startup Investments',
+      eyebrow: 'Selected Investments',
       heading: 'Investor For',
       subtext:
         'Businesses gritHQ has invested in, seperate from the property portfolio.',

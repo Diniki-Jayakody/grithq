@@ -133,15 +133,7 @@ export function GrithqOpportunity() {
               </p>
             </div>
           </div>
-          <p className="mt-6 font-display text-xs tracking-[0.18em] text-grithq-cream/55 md:mt-8">
-            {STRINGS.opportunity.reachLabel}{' '}
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="text-grithq-cream/70 underline-offset-4 transition-colors hover:text-grithq-offwhite hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70"
-            >
-              {contactInfo.email}
-            </a>
-          </p>
+          
 
           <div className="mt-14 md:mt-16">
             <OpportunityHeading>{STRINGS.opportunity.summaryHeading}</OpportunityHeading>
