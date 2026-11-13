@@ -4,7 +4,7 @@ export const STRINGS = {
   brand: {
     name: 'GRITHQ',
     tagline:
-      'Building value through strategic ownership, development and lasting vision.',
+      'Building value through active ownership, development and a long-term view.',
   },
 
   hero: {
@@ -23,13 +23,13 @@ export const STRINGS = {
       label: 'Our Identity',
       eyebrow: 'OUR IDENTITY',
       heading: [
-        'We built businesses',
-        'We invest our own capital',
-        'We think long term',
-        'We back entrepreneurs',
+        'We build businesses.',
+        'We invest our own capital.',
+        'We think long term.',
+        'We back entrepreneurs.',
       ],
       subtext:
-        'gritHQ is a privately held family investment office based in Sri Lanka. We invest our own capital in technology, hospitality, real estate and selected private companies.',
+        'gritHQ is a family investment office based in Sri Lanka. We invest our own capital in technology, hospitality, real estate and selected private companies.',
       leadershipTitle: 'Leadership',
       leadershipEyebrow: 'LEADERSHIP',
       leadershipHeading: ['Vision with purpose.'],
@@ -38,7 +38,7 @@ export const STRINGS = {
     },
     investorFor: {
       label: 'Investor For',
-      eyebrow: 'Startup Investments',
+      eyebrow: 'Selected Investments',
       heading: 'Investor For',
       subtext:
         'Businesses gritHQ has invested in, seperate from the property portfolio.',
@@ -57,8 +57,8 @@ export const STRINGS = {
     },
     impact: {
       label: 'Impact',
-      heading: 'We build value.',
-      subheading: 'But value is not measured only in assets.',
+      heading: 'We build businesses with a long-term view',
+      subheading: 'While creating opportunities for the people and communities around them.',
       emphasis: 'It is measured in lives touched.',
       whyWeGive: 'Why We Give',
       feedingFutures: 'Feeding Futures',
@@ -109,7 +109,7 @@ export const STRINGS = {
       eyebrow: 'WHAT WE INVEST IN',
       heading: ['Capital with a', 'long view.'],
       subtext:
-        'A diversified portfolio built with a long-term view from physical assets to the business shaping what comes next.',
+        'A diversified portfolio built with a long-term view, from physical assets to the businesses shaping what comes next.',
       explore: 'Explore',
       areas: {
         realEstate: {
@@ -125,7 +125,7 @@ export const STRINGS = {
         technology: {
           title: 'Technology',
           description:
-            'Backing teams and platforms that build softwares for growing markets.',
+            'Backing teams that build technology for growing markets.',
         },
       },
       approach: {
@@ -174,7 +174,7 @@ export const STRINGS = {
     description:
       'Mangala Karunaratne sets the direction for gritHQ, with a practical view of investment and a focus on lasting value.',
     biography: [
-      'Mangala spent his twenties in Silicon Valley working with startups and large technology companies during the dot-com era before returning to Sri Lanka to found Calcey Technologies in 2002. He grew Calcey into a global digital product engineering business, which later joined forces with Surge Global and Payable to form Short Circuit, where he serves as a director and shareholder.',
+      'Mangala spent his twenties in Silicon Valley working with startups and large technology companies during the dot-com era before returning to Sri Lanka to found Calcey Technologies in 2002. He grew Calcey into a global digital product engineering business, which later joined forces with Surge Global and Payable to form Short Circuit, where he serves as a board member.',
       'A serial entrepreneur, investor, and long-time advocate for Sri Lanka’s startup ecosystem, Mangala now brings that experience to gritHQ, his family’s private investment firm, investing across technology, real estate, and hospitality.',
     ],
     linkedinLabel: 'LinkedIn',

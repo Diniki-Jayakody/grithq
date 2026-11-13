@@ -100,6 +100,9 @@ export function Project() {
               <h2 className="font-display text-xs tracking-[0.4em] text-grithq-mauve uppercase">
                 {STRINGS.project.overview}
               </h2>
+              {project.shortDescription ??<p className="mt-6 text-base leading-relaxed text-grithq-cream/60 md:text-lg">
+                {project.shortDescription}
+              </p>}
               <p className="mt-6 text-base leading-relaxed text-grithq-cream/60 md:text-lg">
                 {project.description}
               </p>

@@ -238,7 +238,7 @@ export function PortfolioSection() {
           <div className="portfolio-secondary-flow mt-12 md:mt-16 lg:mt-20">
             <div id="hotels"  className="grid items-start gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-12">
               {asayaSands && (
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-6">
                   <SecondaryProject
                     project={asayaSands}
                     imageClassName="aspect-[16/10]"
@@ -246,11 +246,10 @@ export function PortfolioSection() {
                 </div>
               )}
               {asayaSummit && (
-                <div className="lg:col-span-5 lg:row-span-2">
+                <div className="lg:col-span-6 ">
                   <SecondaryProject
                     project={asayaSummit}
-                    imageClassName="aspect-[16/11]"
-                    fill
+                    imageClassName="aspect-[16/10]"
                   />
                 </div>
               )}

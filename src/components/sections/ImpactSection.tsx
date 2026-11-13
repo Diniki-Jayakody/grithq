@@ -95,9 +95,9 @@ export function ImpactSection() {
           <p className="impact-intro-line mt-6 max-w-2xl text-lg leading-relaxed text-grithq-cream/55 md:text-xl">
             {STRINGS.sections.impact.subheading}
           </p>
-          <p className="impact-intro-line mt-4 font-display text-[clamp(1.5rem,4vw,2.75rem)] font-light text-grithq-mauve">
+          {/* <p className="impact-intro-line mt-4 font-display text-[clamp(1.5rem,4vw,2.75rem)] font-light text-grithq-mauve">
             {STRINGS.sections.impact.emphasis}
-          </p>
+          </p> */}
           <div className="impact-intro-line mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <a
               href={EXTERNAL_LINKS.satkara.calcey}

@@ -163,8 +163,7 @@ export function IdentitySection() {
             <ul className="grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-1 lg:gap-y-5">
             {STRINGS.identity.grit.letters.map((item, index) => (
                 <li key={item.letter} className="flex flex-col gap-2 lg:flex-row lg:items-baseline lg:gap-5">
-                  <span className={`${styles.gritLetter} inline-block w-[0.8em] shrink-0 text-center ${
-                      index === 0 ? 'bg-grithq-burgundy py-[0.08em] !text-grithq-offwhite' : ''}`}>
+                  <span className={`${styles.gritLetter} inline-block w-[0.8em] shrink-0 text-center`}>
                     {item.letter}
                   </span>                 
                   <span className={styles.gritWord}>{item.word}</span>
