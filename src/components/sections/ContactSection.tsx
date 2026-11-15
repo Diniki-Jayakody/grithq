@@ -6,6 +6,7 @@ import { STRINGS } from '@/constants/strings'
 import { sendSiteEmail } from '@/constants/emailjs'
 import { isValidEmail } from '@/utils/validation'
 import { styles } from '@/styles/styles'
+import { ProtectedEmail } from '@/utils/protectedEmail'
 
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
@@ -93,10 +94,8 @@ export function ContactSection() {
             <>
               
 
-                <div className="space-y-3 text-sm text-grithq-cream/50">
-                  <p>
-                    {contactInfo.email}
-                  </p>
+            <div className="space-y-3 text-sm">
+                  <ProtectedEmail variant="dark" />
                 </div>
          
             </>
