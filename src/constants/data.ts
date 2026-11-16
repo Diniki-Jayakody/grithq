@@ -185,7 +185,7 @@ export const projects: Project[] = [
   {
     id: 'grithq',
     slug: 'grithq',
-    name: 'Commercial Building',
+    name: 'Prime Commercial Property',
     category: 'Commercial Real Estate',
     location: 'Colombo, Sri Lanka',
     status: 'Operational',
@@ -578,7 +578,7 @@ export const identityVisual = {
 
 export const gritHQPropertyData = {
   id: 'grithq',
-  name: 'Commercial Building',
+  name: 'Prime Commercial Property',
   route: ROUTES.grithqOpportunity,
   backHref: ROUTES.portfolio,
   inquiryHref: '#inquiry',
@@ -601,9 +601,9 @@ export const gritHQPropertyData = {
     },
   },
   executiveSummary: [
-    'We are pleased to present this exceptional commercial opportunity at a modern, fully furnished office complex designed to meet the demanding requirements of modern corporations.',
-    'This premium property offers nearly 25,000 sq ft of total floor area across six floors. It is located in the heart of Battaramulla\'s thriving business district.',
-    'The building provides capacity for 381 occupants, with 266 individual workstations and comprehensive meeting facilities for 50.',
+    'We are pleased to present this exceptional commercial opportunity: a state-of-the-art, fully furnished office complex designed to meet the demanding requirements of modern corporations.',
+    'This premium property offers 24,746 sq ft of covered floor area across six floors, plus 3,772 sq ft of open parking, in the heart of Battaramulla’s thriving business district.',
+    'The building accommodates up to 331 occupants, with 266 workspaces (including six conference rooms seating 50) and 65 additional seats in collaboration and break areas.',
   ],
   keyFigures: [
     { value: '24,746', label: 'SQ FT COVERED' },

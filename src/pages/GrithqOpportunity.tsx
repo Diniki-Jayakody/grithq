@@ -69,25 +69,44 @@ export function GrithqOpportunity() {
 
   return (
     <article className="overflow-x-hidden">
-      <section
+            <section
         ref={heroRef}
-        className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[72vh]"
+        className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[72vh] lg:min-h-[80vh]"
       >
+        {/* Mobile / tablet: full-bleed photo (portrait screens need little zoom) */}
         <img
           src={property.heroImage}
           alt={`${property.name} building in Battaramulla`}
-          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center"
+          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center lg:hidden"
         />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
-        {property.overlapImage && (
-          <img
-            src={property.overlapImage}
-            alt={`${property.name}`}
-            className="pointer-events-none absolute bottom-[12%] right-[6%] z-[3] hidden aspect-[4/5] w-[min(34%,20rem)] border border-grithq-cream/20 object-cover shadow-[0_18px_40px_rgba(10,6,8,0.45)] lg:block"
-          />
-        )}
 
-        <div className="opportunity-hero-content relative z-10 w-full section-padding pb-10 pt-28 md:pb-16 md:pt-32">
+        {/* Desktop: soft blurred backdrop of the same photo */}
+        <img
+          src={property.heroImage}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full scale-110 object-cover object-center opacity-50 blur-2xl lg:block"
+        />
+
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
+
+        {/* Desktop: sharp, uncropped building photo on the right, interior photo overlapping it */}
+        <div className="pointer-events-none absolute top-28 right-[7%] bottom-12 z-[2] hidden lg:block">
+          <img
+            src={property.heroImage}
+            alt={`${property.name} building in Battaramulla`}
+            className="block h-full w-auto border border-grithq-cream/15 object-contain shadow-[0_24px_60px_rgba(10,6,8,0.5)]"
+          />
+          {property.overlapImage && (
+            <img
+              src={property.overlapImage}
+              alt={`${property.name} interior`}
+              className="absolute bottom-[8%] -left-[40%] z-[3] aspect-[4/5] w-[60%] border border-grithq-cream/20 object-cover shadow-[0_18px_40px_rgba(10,6,8,0.45)]"
+            />
+          )}
+        </div>
+
+        <div className="opportunity-hero-content relative z-10 w-full section-padding pb-10 pt-28 md:pb-16 md:pt-32 lg:max-w-[55%]">
           <PageBackLink fallback={property.backHref} variant="dark" />
           <p className="mt-8 font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
             {STRINGS.opportunity.eyebrow}
