@@ -2,7 +2,7 @@
 
 export const STRINGS = {
   brand: {
-    name: 'GRITHQ',
+    name: 'gritHQ',
     tagline:
       'Building value through active ownership, development and a long-term view.',
   },
@@ -15,7 +15,7 @@ export const STRINGS = {
   },
 
   loader: {
-    label: 'GRITHQ',
+    label: 'gritHQ',
   },
 
   sections: {
