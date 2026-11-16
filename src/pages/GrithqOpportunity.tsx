@@ -330,7 +330,7 @@ export function GrithqOpportunity() {
             Interested?
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-grithq-cream/65">
-            <span>Interested in this building? Write to us at</span>
+            <span>Write to us at</span>
             <ProtectedEmail variant="dark" className="text-sm" />
           </div>
         </div>
