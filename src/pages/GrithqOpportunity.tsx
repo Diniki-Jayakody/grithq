@@ -10,6 +10,7 @@ import { OpportunityInquiryForm } from '@/components/forms/OpportunityInquiryFor
 import { useLenisScroll } from '@/providers/SmoothScrollProvider'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useCursorState } from '@/hooks/useCursorState'
+import { ProtectedEmail } from '@/utils/protectedEmail'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -68,25 +69,44 @@ export function GrithqOpportunity() {
 
   return (
     <article className="overflow-x-hidden">
-      <section
+            <section
         ref={heroRef}
-        className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[72vh]"
+        className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[72vh] lg:min-h-[80vh]"
       >
+        {/* Mobile / tablet: full-bleed photo (portrait screens need little zoom) */}
         <img
           src={property.heroImage}
           alt={`${property.name} building in Battaramulla`}
-          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center"
+          className="opportunity-hero-img absolute inset-0 h-full w-full object-cover object-center lg:hidden"
         />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
-        {property.overlapImage && (
-          <img
-            src={property.overlapImage}
-            alt={`${property.name}`}
-            className="pointer-events-none absolute bottom-[12%] right-[6%] z-[3] hidden aspect-[4/5] w-[min(34%,20rem)] border border-grithq-cream/20 object-cover shadow-[0_18px_40px_rgba(10,6,8,0.45)] lg:block"
-          />
-        )}
 
-        <div className="opportunity-hero-content relative z-10 w-full section-padding pb-10 pt-28 md:pb-16 md:pt-32">
+        {/* Desktop: soft blurred backdrop of the same photo */}
+        <img
+          src={property.heroImage}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full scale-110 object-cover object-center opacity-50 blur-2xl lg:block"
+        />
+
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-grithq-black via-grithq-black/55 to-grithq-black/20" />
+
+        {/* Desktop: sharp, uncropped building photo on the right, interior photo overlapping it */}
+        <div className="pointer-events-none absolute top-28 right-[7%] bottom-12 z-[2] hidden lg:block">
+          <img
+            src={property.heroImage}
+            alt={`${property.name} building in Battaramulla`}
+            className="block h-full w-auto border border-grithq-cream/15 object-contain shadow-[0_24px_60px_rgba(10,6,8,0.5)]"
+          />
+          {property.overlapImage && (
+            <img
+              src={property.overlapImage}
+              alt={`${property.name} interior`}
+              className="absolute bottom-[8%] -left-[40%] z-[3] aspect-[4/5] w-[60%] border border-grithq-cream/20 object-cover shadow-[0_18px_40px_rgba(10,6,8,0.45)]"
+            />
+          )}
+        </div>
+
+        <div className="opportunity-hero-content relative z-10 w-full section-padding pb-10 pt-28 md:pb-16 md:pt-32 lg:max-w-[55%]">
           <PageBackLink fallback={property.backHref} variant="dark" />
           <p className="mt-8 font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
             {STRINGS.opportunity.eyebrow}
@@ -303,86 +323,18 @@ export function GrithqOpportunity() {
         </section>
       )}
 
-            {/* Interested — compact contact strip */}
-            <section className="border-t border-grithq-cream/10 bg-grithq-warm">
-        <div
-          className={`${styles.sectionContainer} flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between md:py-10`}
-        >
-          <div>
-            <p className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
-              Interested?
-            </p>
-            <p className="mt-2 text-sm text-grithq-cream/65">
-              Interested in this building? Write to us at{' '}
-              <a
-                href={`mailto:${STRINGS.opportunity.interestedEmail}`}
-                className="text-grithq-cream/80 underline-offset-4 transition-colors hover:text-grithq-offwhite hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70"
-              >
-                {STRINGS.opportunity.interestedEmail}
-              </a>
-            </p>
+      {/* Interested — compact contact strip */}
+      <section className="border-t border-grithq-cream/10 bg-grithq-warm">
+        <div className={`${styles.sectionContainer} py-8 md:py-10`}>
+          <p className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
+            Interested?
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-grithq-cream/65">
+            <span>Interested in this building? Write to us at</span>
+            <ProtectedEmail variant="dark" className="text-sm" />
           </div>
-          <a
-            href={`mailto:${STRINGS.opportunity.interestedEmail}?subject=${encodeURIComponent(`Enquiry: ${property.name}`)}`}
-            className={`${styles.ctaButton} min-h-11 w-full shrink-0 px-6 sm:w-auto sm:px-8`}
-            onMouseEnter={() => setCursorState('open')}
-            onMouseLeave={() => setCursorState('default')}
-          >
-            Email us
-          </a>
         </div>
       </section>
-
-{/* 
-      <section
-        id="inquiry"
-        className={`scroll-mt-28 border-t border-grithq-cream/10 bg-grithq-warm ${styles.opportunitySection}`}
-      >
-        <div className={styles.sectionContainer}>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-light text-grithq-offwhite">
-                {STRINGS.opportunity.inquiryHeading}
-              </h2>
-              <p className={`mt-4 max-w-xl ${styles.bodyTextMuted}`}>
-                {STRINGS.opportunity.inquiryIntro}
-              </p>
-
-              <dl className="mt-8 space-y-5">
-                <div>
-                  <dt className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
-                    {STRINGS.opportunity.contactPersonLabel}
-                  </dt>
-                  <dd className="mt-2 text-sm text-grithq-cream/70">{contactInfo.contactPerson}</dd>
-                </div>
-                <div>
-                  <dt className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
-                    {STRINGS.opportunity.emailLabel}
-                  </dt>
-                  <dd className="mt-2">
-                    <a
-                      href={`mailto:${contactInfo.email}`}
-                      className="text-sm text-grithq-cream/70 underline-offset-4 transition-colors hover:text-grithq-offwhite hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grithq-mauve/70"
-                    >
-                      {contactInfo.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-display text-[10px] tracking-[0.3em] text-grithq-mauve uppercase">
-                    {STRINGS.opportunity.locationLabel}
-                  </dt>
-                  <dd className="mt-2 text-sm text-grithq-cream/70">{contactInfo.address}</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div className="min-w-0 lg:col-span-7">
-              <OpportunityInquiryForm />
-            </div>
-          </div>
-        </div>
-      </section> */}
     </article>
   )
 }

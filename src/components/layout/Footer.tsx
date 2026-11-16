@@ -3,6 +3,7 @@ import { navItems, tagline } from '@/constants/navigation'
 import { contactInfo } from '@/constants/data'
 import { STRINGS } from '@/constants/strings'
 import { useCursorState } from '@/hooks/useCursorState'
+import { ProtectedEmail } from '@/utils/protectedEmail'
 
 export function Footer() {
   const { setCursorState } = useCursorState()
@@ -48,14 +49,9 @@ export function Footer() {
               {STRINGS.footer.connect}
             </p>
             <ul className="mt-4 space-y-2">
-              <li>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-sm text-grithq-cream/60 transition-colors hover:text-grithq-offwhite"
-                >
-                  {contactInfo.email}
-                </a>
-              </li>
+            <li>
+              <ProtectedEmail variant="dark" className="text-sm" />
+            </li>
               <li className="flex gap-4 pt-2">
                 {Object.entries(contactInfo.social).map(([key, href]) => (
                   <a
