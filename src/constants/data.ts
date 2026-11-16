@@ -597,7 +597,7 @@ export const gritHQPropertyData = {
     },
     rent: {
       label: STRINGS.opportunity.rentLabel,
-      value: 'LKR 8.5 Million + VAT',
+      value: 'LKR 8.5 Mn + VAT',
     },
   },
   executiveSummary: [
@@ -677,7 +677,7 @@ export const gritHQPropertyData = {
     'Four soundproof phone booths with integrated power and data connections',
     'Double pane glass frontage for superior insulation and noise reduction',
     'Professional grade flooring and lighting',
-    '160KW generator',
+    '160 kW generator',
     'All floors and meeting rooms have air conditioning except the 5th floor',
     'Each floor has a mini pantry',
     'Larger pantry and bar on the 5th floor',
